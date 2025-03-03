@@ -122,7 +122,7 @@ export default function Layout({ children }) {
                     <Settings size={24} />
                     <span className="text-xs">{translations[language].settings}</span>
                 </Link>
-                <Link href="/favorite" className="flex flex-col items-center">
+                <Link href="/favourite" className="flex flex-col items-center">
                     <Star size={24} />
                     <span className="text-xs">{translations[language].favorite}</span>
                 </Link>

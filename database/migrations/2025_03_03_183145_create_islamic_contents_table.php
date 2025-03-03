@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('title_en');
             $table->text('content_en');
             $table->string('category_en')->nullable();
+            $table->string('slug')->unique(); // Add slug field
             $table->string('banner')->nullable();
             $table->string('media')->nullable();
             $table->timestamps();

@@ -14,6 +14,17 @@ Route::get('/', function () {
     ]);
 });
 
+// Drawer Menu
+Route::get('/history', function () {
+    return Inertia::render('History');
+})->name('history');
+
+
+// Bottom Menu
+Route::get('/favourite', function () {
+    return Inertia::render('Favourite');
+})->name('favourite');
+
 Route::get('/settings', function () {
     return Inertia::render('Setting');
 })->name('settings');
