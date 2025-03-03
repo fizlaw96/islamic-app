@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IslamicContent;
+use Inertia\Inertia;
 
 class IslamicContentController extends Controller
 {
@@ -12,16 +13,39 @@ class IslamicContentController extends Controller
      */
     public function index()
     {
-        $contents = IslamicContent::select('slug', 'topic_bm', 'topic_en')->get();
+        $contents = IslamicContent::select('id', 'topic_bm', 'topic_en')
+            ->distinct()
+            ->groupBy('topic_bm', 'topic_en', 'id') // Ensure unique topics
+            ->get();
+
         return response()->json($contents);
     }
 
     /**
-     * Get a single Islamic content by slug.
+     * Fetch content by topic slug.
      */
-    public function show($slug)
+    public function listByTopic($id)
     {
-        $content = IslamicContent::where('slug', $slug)->firstOrFail();
-        return response()->json($content);
+        $topic = IslamicContent::where('id', $id)->firstOrFail();
+        $contents = IslamicContent::where('topic_bm', $topic->topic_bm)
+            ->orWhere('topic_en', $topic->topic_en)
+            ->get();
+
+        return Inertia::render('ListContentTopic', [
+            'topic' => $topic,
+            'contents' => $contents
+        ]);
+    }
+
+    /**
+     * Fetch a single content by slug.
+     */
+    public function show($id)
+    {
+        $content = IslamicContent::findOrFail($id);
+
+        return Inertia::render('IslamicContent', [
+            'content' => $content
+        ]);
     }
 }

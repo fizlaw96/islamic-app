@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IslamicContentController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,11 +31,10 @@ Route::get('/settings', function () {
     return Inertia::render('Setting');
 })->name('settings');
 
-// Functional data
-Route::get('/islamic-content/{slug}', function ($slug) {
-    $content = IslamicContent::where('slug', $slug)->firstOrFail();
-    return Inertia::render('IslamicContent', ['content' => $content]);
-});
+Route::get('/islamic-topics', [IslamicContentController::class, 'index']);
+Route::get('/islamic-content/{id}', [IslamicContentController::class, 'show'])->name('islamic-content.show');
+Route::get('/topic/{id}', [IslamicContentController::class, 'listByTopic'])
+    ->name('topic.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IslamicContentController;
+use App\Http\Controllers\ContentInteractionController;
 use Inertia\Inertia;
 
 Route::get('/user', function (Request $request) {
@@ -17,6 +18,3 @@ Route::get('/history', [ContentInteractionController::class, 'getHistory']);
 
 // Fetch all Islamic content topics
 Route::get('/islamic-contents', [IslamicContentController::class, 'index']);
-
-// Fetch a single Islamic content by slug
-Route::get('/islamic-content/{slug}', [IslamicContentController::class, 'show']);
