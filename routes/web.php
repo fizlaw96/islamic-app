@@ -29,6 +29,12 @@ Route::get('/settings', function () {
     return Inertia::render('Setting');
 })->name('settings');
 
+// Functional data
+Route::get('/islamic-content/{slug}', function ($slug) {
+    $content = IslamicContent::where('slug', $slug)->firstOrFail();
+    return Inertia::render('IslamicContent', ['content' => $content]);
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -1,10 +1,9 @@
 <?php
 
-// php artisan db:seed --class=IslamicContentSeeder
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use League\Csv\Reader;
+use Illuminate\Support\Str;
 
 class IslamicContentSeeder extends Seeder
 {
@@ -24,7 +23,7 @@ class IslamicContentSeeder extends Seeder
         $records = $csv->getRecords();
 
         // Optional: Clear old data to prevent duplication
-        DB::table('islamic_content')->truncate();
+        DB::table('islamic_contents')->truncate();
 
         foreach ($records as $record) {
             if (empty($record['topic_bm']) || empty($record['title_bm']) || empty($record['content_bm'])) {
@@ -32,7 +31,7 @@ class IslamicContentSeeder extends Seeder
                 continue;
             }
 
-            DB::table('islamic_content')->insert([
+            DB::table('islamic_contents')->insert([
                 'topic_bm' => $record['topic_bm'],
                 'title_bm' => $record['title_bm'],
                 'content_bm' => $record['content_bm'],
@@ -43,11 +42,12 @@ class IslamicContentSeeder extends Seeder
                 'category_en' => $record['category_en'] ?? null,
                 'banner' => $record['banner'] ?? null,
                 'media' => $record['media'] ?? null,
+                'slug' => Str::slug($record['title_en']), // Generate slug from title_en
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
 
-        $this->command->info("Islamic content seeded successfully.");
+        $this->command->info("Islamic content seeded successfully with slugs.");
     }
 }

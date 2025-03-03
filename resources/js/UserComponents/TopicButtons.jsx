@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 export default function TopicButtons() {
-    const topics = [
-        "Asas Islam dan Gaya Hidup",
-        "Kaifiat Solat dan Doa",
-        "Sirah Nabi dan Sahabat",
-        "Sebalik Nama Surah",
-        "FAQ Islam",
-        "Ruqyah"
-    ];
+    const [topics, setTopics] = useState([]);
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+
+    useEffect(() => {
+        axios.get("/api/islamic-contents")
+            .then((response) => {
+                setTopics(response.data);
+            })
+            .catch((error) => console.error("Error fetching topics:", error));
+
+        // Listen for language changes
+        const handleStorageChange = () => {
+            setLanguage(localStorage.getItem("language") || "en");
+        };
+        window.addEventListener("storage", handleStorageChange);
+
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
 
     return (
         <motion.div
@@ -18,15 +31,16 @@ export default function TopicButtons() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-2 gap-4 w-full max-w-md"
         >
-            {topics.map((label, index) => (
-                <motion.button
+            {topics.map((item, index) => (
+                <motion.a
                     key={index}
+                    href={`/islamic-content/${item.slug}`}
                     whileHover={{ scale: 1.1, backgroundColor: "#1E3A8A", color: "#fff" }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-6 bg-green-500 text-white rounded-lg shadow-md dark:bg-green-700 dark:text-white dark:hover:bg-green-600"
+                    className="p-6 bg-green-500 text-white rounded-lg shadow-md dark:bg-green-700 dark:text-white dark:hover:bg-green-600 text-center"
                 >
-                    {label}
-                </motion.button>
+                    {language === "bm" ? item.topic_bm : item.topic_en}
+                </motion.a>
             ))}
         </motion.div>
     );
