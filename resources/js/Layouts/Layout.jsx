@@ -90,7 +90,7 @@ export default function Layout({ children }) {
                     <li className="p-2 border-b"><Link href="/daily-reminder">{translations[language].dailyReminder}</Link></li>
                     <li className="p-2 border-b"><Link href="/ask-question">{translations[language].askQuestion}</Link></li>
                     <li className="p-2 border-b"><Link href="/donate">{translations[language].donate}</Link></li>
-                    <li className="p-2"><Link href="/bookmark">{translations[language].bookmark}</Link></li>
+                    {/* <li className="p-2"><Link href="/bookmark">{translations[language].bookmark}</Link></li> */}
                 </ul>
             </motion.div>
 
@@ -110,10 +110,10 @@ export default function Layout({ children }) {
                     <Home size={24} />
                     <span className="text-xs">{translations[language].home}</span>
                 </Link>
-                <Link href="/profile" className="flex flex-col items-center">
+                {/* <Link href="/profile" className="flex flex-col items-center">
                     <User size={24} />
                     <span className="text-xs">{translations[language].profile}</span>
-                </Link>
+                </Link> */}
                 <Link href="/quiz" className="flex flex-col items-center">
                     <Clipboard size={24} />
                     <span className="text-xs">{translations[language].quiz}</span>
