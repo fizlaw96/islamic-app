@@ -40,9 +40,9 @@ class IslamicContentController extends Controller
     /**
      * Fetch a single content by slug.
      */
-    public function show($id)
+    public function show($slug)
     {
-        $content = IslamicContent::findOrFail($id);
+        $content = IslamicContent::where('slug', $slug)->firstOrFail();
 
         return Inertia::render('IslamicContent', [
             'content' => $content

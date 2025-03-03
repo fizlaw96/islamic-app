@@ -26,7 +26,7 @@ export default function ListContentTopic({ topic, contents }) {
                 <div className="grid gap-4">
                     {contents.length > 0 ? (
                         contents.map((content) => (
-                            <Link key={content.id} href={`/islamic-content/${content.id}`}>
+                            <Link key={content.slug} href={route("islamic-content.show", { slug: content.slug })}>
                                 <button className="p-4 bg-green-500 text-white rounded-lg shadow-md w-full">
                                     {language === "bm" ? content.title_bm : content.title_en}
                                 </button>

@@ -32,7 +32,7 @@ Route::get('/settings', function () {
 })->name('settings');
 
 Route::get('/islamic-topics', [IslamicContentController::class, 'index']);
-Route::get('/islamic-content/{id}', [IslamicContentController::class, 'show'])->name('islamic-content.show');
+Route::get('/islamic-content/{slug}', [IslamicContentController::class, 'show'])->name('islamic-content.show');
 Route::get('/topic/{id}', [IslamicContentController::class, 'listByTopic'])
     ->name('topic.show');
 
