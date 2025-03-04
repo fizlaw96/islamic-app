@@ -70,8 +70,11 @@ export default function TopicButtons() {
 
                                 {/* ✅ Topic Text with Shadow for Readability */}
                                 <span
-                                    className="relative z-10 text-lg font-bold text-white text-center"
-                                    style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)" }} // ✅ Custom Text Shadow
+                                    className="relative z-10 text-1xl md:text-2xl font-bold text-white text-center"
+                                    style={{
+                                        textShadow: "4px 4px 10px rgba(0, 0, 0, 1)", // ✅ Stronger Shadow
+                                        textStroke: "2px black", // ✅ Ensure Compatibility
+                                    }}
                                 >
                                     {topicTitle}
                                 </span>
