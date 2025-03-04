@@ -37,7 +37,7 @@ Route::get('/topic/{id}', [IslamicContentController::class, 'listByTopic'])
     ->name('topic.show');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Admin/Dashboard'); // ✅ Correct path for Dashboard inside Admin folder
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

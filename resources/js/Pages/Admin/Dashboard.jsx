@@ -1,7 +1,25 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Detect if the user is on a mobile device
+        const checkMobile = () => {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            setIsMobile(
+                /android|iphone|ipad|iPod|mobile/i.test(userAgent)
+            );
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <AuthenticatedLayout
             header={
@@ -11,6 +29,13 @@ export default function Dashboard() {
             }
         >
             <Head title="Dashboard" />
+
+            {/* 🚨 Mobile Alert */}
+            {isMobile && (
+                <div className="bg-red-500 text-white text-center p-4 rounded-md mx-4 mb-4">
+                    ⚠️ Full functionality is available only on Windows or Desktop.
+                </div>
+            )}
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
