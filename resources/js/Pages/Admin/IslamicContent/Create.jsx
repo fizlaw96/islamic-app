@@ -12,6 +12,8 @@ export default function Create() {
         content_bm: "",
         content_en: "",
         slug: "",
+        banner: null,
+        media: null,
     });
 
     const handleSubmit = (e) => {

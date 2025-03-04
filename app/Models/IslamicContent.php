@@ -10,7 +10,7 @@ class IslamicContent extends Model
 {
     use HasFactory;
 
-    protected $table = 'islamic_contents'; // Make sure this matches your database
+    protected $table = 'islamic_contents'; // Ensure table name is correct
 
     protected $fillable = [
         'topic_bm', 'title_bm', 'content_bm', 'category_bm',
@@ -22,11 +22,16 @@ class IslamicContent extends Model
     {
         parent::boot();
 
-        // Automatically create a slug when inserting
+        // Automatically generate slug on creating
         static::creating(function ($content) {
             if (empty($content->slug)) {
                 $content->slug = Str::slug($content->title_en);
             }
+        });
+
+        // Automatically update slug on updating (optional)
+        static::updating(function ($content) {
+            $content->slug = Str::slug($content->title_en);
         });
     }
 }
