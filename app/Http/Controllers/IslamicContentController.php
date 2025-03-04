@@ -66,6 +66,7 @@ class IslamicContentController extends Controller
         return Inertia::render('Admin/IslamicContent/Edit', ['content' => $content]);
     }
 
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -77,48 +78,10 @@ class IslamicContentController extends Controller
             'category_en' => 'required|string|max:255',
             'content_bm' => 'required|string',
             'content_en' => 'required|string',
-            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'media' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:10000',
         ]);
 
         $content = IslamicContent::findOrFail($id);
-        $oldSlug = $content->slug;
-
-        // ✅ Update fields safely without overwriting existing values with null
-        $content->update([
-            'topic_bm' => $request->topic_bm,
-            'topic_en' => $request->topic_en,
-            'title_bm' => $request->title_bm,
-            'title_en' => $request->title_en,
-            'category_bm' => $request->category_bm,
-            'category_en' => $request->category_en,
-            'content_bm' => $request->content_bm,
-            'content_en' => $request->content_en,
-        ]);
-
-        // ✅ Update slug if title_en changes
-        if ($oldSlug !== Str::slug($request->title_en)) {
-            $newSlug = Str::slug($request->title_en);
-            Storage::move("public/{$request->topic_bm}/{$oldSlug}-banner", "public/{$request->topic_bm}/{$newSlug}-banner");
-            Storage::move("public/{$request->topic_bm}/{$oldSlug}-media", "public/{$request->topic_bm}/{$newSlug}-media");
-
-            $content->slug = $newSlug;
-            $content->save();
-        }
-
-        // ✅ Handle Banner Update
-        if ($request->hasFile('banner')) {
-            Storage::delete($content->banner);
-            $bannerPath = $request->file('banner')->store("public/{$request->topic_bm}/{$content->slug}-banner");
-            $content->banner = str_replace('public/', 'storage/', $bannerPath);
-        }
-
-        // ✅ Handle Media Update
-        if ($request->hasFile('media')) {
-            Storage::delete($content->media);
-            $mediaPath = $request->file('media')->store("public/{$request->topic_bm}/{$content->slug}-media");
-            $content->media = str_replace('public/', 'storage/', $mediaPath);
-        }
+        $content->update($request->all()); // ✅ Update content
 
         return redirect()->route('admin.islamic-contents.index')->with('success', 'Islamic Content updated successfully!');
     }

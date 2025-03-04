@@ -16,34 +16,11 @@ export default function Edit() {
         content_bm: content.content_bm || "",
         content_en: content.content_en || "",
         slug: content.slug || "",
-        banner: null, // ✅ Ensure banner is handled properly
-        media: null, // ✅ Ensure media is handled properly
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const formData = new FormData();
-        formData.append("topic_bm", data.topic_bm || ""); // Ensure value exists
-        formData.append("topic_en", data.topic_en || "");
-        formData.append("title_bm", data.title_bm || "");
-        formData.append("title_en", data.title_en || "");
-        formData.append("category_bm", data.category_bm || "");
-        formData.append("category_en", data.category_en || "");
-        formData.append("content_bm", data.content_bm || "");
-        formData.append("content_en", data.content_en || "");
-        formData.append("slug", data.slug || "");
-
-        if (data.banner) formData.append("banner", data.banner);
-        if (data.media) formData.append("media", data.media);
-
-        put(route("admin.islamic-contents.update", content.id), {
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-            onSuccess: () => {
-                window.location.href = route("admin.islamic-contents.show", content.id);
-            },
-        });
+        put(route("admin.islamic-contents.update", content.id)); // ✅ Use PUT instead of POST
     };
 
     return (
