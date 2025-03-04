@@ -24,15 +24,22 @@ export default function Setting() {
     }, [fontSize]);
 
     const toggleDarkMode = () => {
-        localStorage.setItem("darkMode", !darkMode);
-        window.location.reload(); // Reload page to apply changes globally
+        const newDarkMode = !darkMode;
+        setDarkMode(newDarkMode);
+        localStorage.setItem("darkMode", newDarkMode);
+        document.documentElement.classList.toggle("dark", newDarkMode);
+
+        // Reload the page to apply changes globally
+        setTimeout(() => {
+            window.location.reload();
+        }, 100); // Small delay to ensure the setting is saved before reload
     };
 
     const changeLanguage = (e) => {
         const selectedLanguage = e.target.value;
         setLanguage(selectedLanguage);
         localStorage.setItem("language", selectedLanguage);
-        window.location.reload(); // Reload the page to apply changes
+        window.dispatchEvent(new Event("storage")); // Notify all components
     };
 
     const increaseFontSize = () => setFontSize((prev) => Math.min(prev + 2, 24));
@@ -53,7 +60,7 @@ export default function Setting() {
 
     return (
         <Layout>
-            <div className="w-full max-w-lg mx-auto p-6">
+            <div className="w-full max-w-lg mx-auto p-6 text-white">
 
                 {/* Dark Mode Toggle */}
                 <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">

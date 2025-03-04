@@ -7,7 +7,9 @@ import { MessageCircle } from "lucide-react";
 export default function Home() {
     return (
         <Layout>
-            <TopicButtons />
+            <div className="mt-6">
+                <TopicButtons />
+            </div>
         </Layout>
     );
 }
