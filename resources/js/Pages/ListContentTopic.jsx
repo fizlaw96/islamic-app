@@ -15,18 +15,26 @@ export default function ListContentTopic({ topic, contents }) {
             setDarkMode(localStorage.getItem("darkMode") === "true");
         };
         window.addEventListener("storage", handleStorageChange);
-
-        return () => {
-            window.removeEventListener("storage", handleStorageChange);
-        };
+        return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
-    // ✅ Filter content based on search term
+    // ✅ Filter contents based on search term
     const filteredContents = contents.filter((content) =>
         (language === "bm" ? content.title_bm : content.title_en)
             .toLowerCase()
             .includes(searchTerm.toLowerCase())
     );
+
+    // ✅ Group filtered contents by category
+    const groupedContents = filteredContents.reduce((acc, content) => {
+        const category = language === "bm" ? content.category_bm : content.category_en || "Uncategorized";
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(content);
+        return acc;
+    }, {});
+
+    // ✅ Sort categories alphabetically
+    const sortedCategories = Object.keys(groupedContents).sort();
 
     return (
         <Layout>
@@ -56,16 +64,27 @@ export default function ListContentTopic({ topic, contents }) {
             {/* Content Section */}
             <div className={`p-4 ${darkMode ? "text-white" : "text-black"}`} style={{ fontSize: `${fontSize}px` }}>
                 <div className="grid gap-4">
-                    {filteredContents.length > 0 ? (
-                        filteredContents.map((content) => (
-                            <Link key={content.slug} href={route("islamic-content.show", { slug: content.slug })}>
-                                <button
-                                    className={`p-4 rounded-lg shadow-md w-full transition-all duration-200
-                                        ${darkMode ? "bg-green-500 text-white" : "bg-green-200 text-black hover:bg-green-300"}`}
-                                >
-                                    {language === "bm" ? content.title_bm : content.title_en}
-                                </button>
-                            </Link>
+                    {sortedCategories.length > 0 ? (
+                        sortedCategories.map((category, index) => (
+                            <div key={category}>
+                                {/* Category Title */}
+                                <h2 className="text-xl font-bold mb-2">{category}</h2>
+
+                                {/* List of Contents */}
+                                {groupedContents[category].map((content) => (
+                                    <Link key={content.slug} href={route("islamic-content.show", { slug: content.slug })}>
+                                        <button
+                                            className={`p-4 rounded-lg shadow-md w-full transition-all duration-200
+                                                ${darkMode ? "bg-green-500 text-white" : "bg-green-200 text-black hover:bg-green-300"}`}
+                                        >
+                                            {language === "bm" ? content.title_bm : content.title_en}
+                                        </button>
+                                    </Link>
+                                ))}
+
+                                {/* Separator Between Categories */}
+                                {index !== sortedCategories.length - 1 && <hr className="my-4 border-gray-400 dark:border-gray-600" />}
+                            </div>
                         ))
                     ) : (
                         <p className="text-gray-500">

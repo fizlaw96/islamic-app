@@ -27,8 +27,10 @@ class IslamicContentController extends Controller
     public function listByTopic($id)
     {
         $topic = IslamicContent::where('id', $id)->firstOrFail();
+
         $contents = IslamicContent::where('topic_bm', $topic->topic_bm)
             ->orWhere('topic_en', $topic->topic_en)
+            ->orderBy('category_en') // Sort contents by category_en for consistency
             ->get();
 
         return Inertia::render('ListContentTopic', [

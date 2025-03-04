@@ -60,13 +60,13 @@ export default function Setting() {
 
     return (
         <Layout>
-            <div className="w-full max-w-lg mx-auto p-6 text-white">
+            <div className="w-full max-w-lg mx-auto p-6">
                 <h1 className="text-2xl font-bold mb-4">
                     {language === "bm" ? "Tetapan" : "Setting"}
                 </h1>
 
                 {/* Dark Mode Toggle */}
-                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
                     <span>{translations[language].darkMode}</span>
                     <button
                         onClick={toggleDarkMode}
@@ -77,7 +77,7 @@ export default function Setting() {
                 </div>
 
                 {/* Language Selection */}
-                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
                     <span>{translations[language].language}</span>
                     <select
                         value={language}
@@ -90,7 +90,7 @@ export default function Setting() {
                 </div>
 
                 {/* Font Size Control */}
-                <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
                     <span>{translations[language].fontSize}</span>
                     <div className="flex items-center gap-3">
                         <button
