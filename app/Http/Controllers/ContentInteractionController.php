@@ -10,16 +10,15 @@ class ContentInteractionController extends Controller
     // 📌 Toggle Favorite
     public function toggleFavorite(Request $request)
     {
-        $request->validate(['islamic_content_id' => 'required|exists:islamic_contents,id']);
-        $sessionId = session()->getId();
+        $request->validate(['session_id' => 'required', 'islamic_content_id' => 'required|exists:islamic_contents,id']);
+        $sessionId = $request->session_id;
 
-        // Check if content is already favorited
-        $favorite = DB::table('favorites')
+        $existing = DB::table('favorites')
             ->where('session_id', $sessionId)
             ->where('islamic_content_id', $request->islamic_content_id)
             ->first();
 
-        if ($favorite) {
+        if ($existing) {
             DB::table('favorites')
                 ->where('session_id', $sessionId)
                 ->where('islamic_content_id', $request->islamic_content_id)
@@ -38,11 +37,25 @@ class ContentInteractionController extends Controller
         }
     }
 
+    // 📌 Get Favorites with Content Details
+    public function getFavorites(Request $request)
+    {
+        $sessionId = $request->session_id;
+
+        $favorites = DB::table('favorites')
+            ->join('islamic_contents', 'favorites.islamic_content_id', '=', 'islamic_contents.id')
+            ->where('favorites.session_id', $sessionId)
+            ->select('islamic_contents.id', 'islamic_contents.title_en', 'islamic_contents.title_bm', 'islamic_contents.slug')
+            ->get();
+
+        return response()->json($favorites);
+    }
+
     // 📌 Save Reading History
     public function addToHistory(Request $request)
     {
         $request->validate(['islamic_content_id' => 'required|exists:islamic_contents,id']);
-        $sessionId = session()->getId();
+        $sessionId = $request->input('session_id');
 
         DB::table('history')->updateOrInsert(
             ['session_id' => $sessionId, 'islamic_content_id' => $request->islamic_content_id],
@@ -52,20 +65,17 @@ class ContentInteractionController extends Controller
         return response()->json(['message' => 'History updated']);
     }
 
-    // 📌 Get Favorites
-    public function getFavorites()
-    {
-        $sessionId = session()->getId();
-        $favorites = DB::table('favorites')->where('session_id', $sessionId)->pluck('islamic_content_id');
-
-        return response()->json($favorites);
-    }
-
     // 📌 Get Reading History
-    public function getHistory()
+    public function getHistory(Request $request)
     {
-        $sessionId = session()->getId();
-        $history = DB::table('history')->where('session_id', $sessionId)->orderBy('viewed_at', 'desc')->get();
+        $sessionId = $request->session_id;
+
+        $history = DB::table('history')
+            ->join('islamic_contents', 'history.islamic_content_id', '=', 'islamic_contents.id')
+            ->where('history.session_id', $sessionId)
+            ->select('history.id', 'islamic_contents.title_en', 'islamic_contents.title_bm', 'islamic_contents.slug', 'history.viewed_at')
+            ->orderBy('history.viewed_at', 'desc')
+            ->get();
 
         return response()->json($history);
     }

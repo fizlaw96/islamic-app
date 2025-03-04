@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "@inertiajs/react";
 import Layout from "../Layouts/Layout";
 
 export default function Favourite() {
     const [favorites, setFavorites] = useState([]);
+    const sessionId = localStorage.getItem("session_id"); // Get stored session ID
 
     useEffect(() => {
-        axios.get("/api/favorites").then((response) => {
-            setFavorites(response.data);
-        });
+        axios.post("/api/favorites", { session_id: sessionId }) // 🔹 Change to POST
+            .then((response) => {
+                setFavorites(response.data);
+            })
+            .catch((error) => console.error("Error fetching favorites:", error));
     }, []);
 
     return (
@@ -18,14 +22,17 @@ export default function Favourite() {
                 {favorites.length === 0 ? (
                     <p className="text-gray-500">No favourites yet.</p>
                 ) : (
-                    favorites.map((contentId) => (
-                        <div key={contentId} className="p-4 border rounded-lg shadow-md mb-2 bg-white dark:bg-gray-800">
+                    favorites.map((content) => (
+                        <div key={content.id} className="p-4 border rounded-lg shadow-md mb-2 bg-white dark:bg-gray-800">
                             <h2 className="text-lg font-semibold text-yellow-600 dark:text-yellow-400">
-                                Islamic Content ID: {contentId}
+                                {content.title_en}
                             </h2>
                             <p className="text-sm text-gray-600 dark:text-gray-300">
-                                This content is marked as your favourite.
+                                {content.title_bm}
                             </p>
+                            <Link href={`/islamic-content/${content.slug}`} className="text-blue-500 hover:underline">
+                                Read More →
+                            </Link>
                         </div>
                     ))
                 )}

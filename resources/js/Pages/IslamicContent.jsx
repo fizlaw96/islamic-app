@@ -6,40 +6,62 @@ import axios from "axios";
 export default function IslamicContent() {
     const { props } = usePage(); // Get data from Inertia
     const { content } = props; // Destructure props
+
+    // State Variables
     const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
     const [favorites, setFavorites] = useState([]);
     const [readHistory, setReadHistory] = useState([]);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+    const [sessionId, setSessionId] = useState(localStorage.getItem("session_id") || "");
 
+    // ✅ Fetch session ID if not available
     useEffect(() => {
-        // Listen for language & dark mode changes
+        if (!sessionId) {
+            axios.get("/api/session-id").then((response) => {
+                const newSessionId = response.data.session_id;
+                localStorage.setItem("session_id", newSessionId);
+                setSessionId(newSessionId);
+            });
+        }
+    }, [sessionId]);
+
+    // ✅ Listen for language & dark mode changes
+    useEffect(() => {
         const handleStorageChange = () => {
             setLanguage(localStorage.getItem("language") || "en");
             setDarkMode(localStorage.getItem("darkMode") === "true");
         };
         window.addEventListener("storage", handleStorageChange);
-
-        return () => {
-            window.removeEventListener("storage", handleStorageChange);
-        };
+        return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
+    // ✅ Fetch favorites & read history
     useEffect(() => {
-        // Fetch favorites & read history
-        axios.get("/api/favorites").then((response) => setFavorites(response.data));
-        axios.get("/api/history").then((response) => setReadHistory(response.data));
-    }, []);
-
-    const toggleFavorite = (id) => {
-        axios.post("/api/favorite", { islamic_content_id: id }).then(() => {
-            setFavorites((prevFavorites) =>
-                prevFavorites.includes(id)
-                    ? prevFavorites.filter((favId) => favId !== id)
-                    : [...prevFavorites, id]
+        if (sessionId) {
+            axios.post("/api/favorites", { session_id: sessionId }).then((response) =>
+                setFavorites(response.data.map((fav) => fav.id)) // Store only IDs
             );
-        });
+            axios.post("/api/history/list", { session_id: sessionId }).then((response) =>
+                setReadHistory(response.data)
+            );
+        }
+    }, [sessionId]);
+
+    // ✅ Toggle Favorite Function
+    const toggleFavorite = (id) => {
+        axios
+            .post("/api/favorite", { islamic_content_id: id, session_id: sessionId })
+            .then(() => {
+                setFavorites((prevFavorites) =>
+                    prevFavorites.includes(id)
+                        ? prevFavorites.filter((favId) => favId !== id) // Remove from state if exists
+                        : [...prevFavorites, id] // Add to state if not exists
+                );
+            })
+            .catch((error) => console.error("Error toggling favorite:", error));
     };
 
+    // ✅ If Content Not Found
     if (!content) {
         return (
             <Layout>
@@ -77,7 +99,7 @@ export default function IslamicContent() {
                         {favorites.includes(content.id) ? "★ Favorited" : "☆ Favorite"}
                     </button>
 
-                    {readHistory.includes(content.id) && (
+                    {readHistory.some((item) => item.islamic_content_id === content.id) && (
                         <span className="text-sm text-gray-500 dark:text-gray-300">✔ Read</span>
                     )}
                 </div>
