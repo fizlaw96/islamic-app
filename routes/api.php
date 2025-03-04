@@ -12,7 +12,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
+//<--                              UUID                                           -->//
 Route::post('/session-id', function (Request $request) {
     $sessionId = $request->input('session_id');
 
@@ -27,6 +27,7 @@ Route::get('/session-id', function () {
     return response()->json(['session_id' => session()->getId()]);
 });
 
+//<--                              ContentInteractionController                                           -->//
 // 📌 Toggle Favorite
 Route::post('/favorite', [ContentInteractionController::class, 'toggleFavorite']);
 // 📌 Get Favorites
@@ -39,5 +40,6 @@ Route::post('/history/list', [ContentInteractionController::class, 'getHistory']
 // 📌 Clear History Route
 Route::post('/history/clear', [ContentInteractionController::class, 'clearHistory']);
 
+//<--                              IslamicContentController                                           -->//
 // Fetch all Islamic content topics
-Route::get('/islamic-contents', [IslamicContentController::class, 'index']);
+Route::get('/islamic-contents', [IslamicContentController::class, 'indexUser']);

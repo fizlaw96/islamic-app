@@ -24,11 +24,20 @@ export default function AuthenticatedLayout({ header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {/* Dashboard Link */}
                                 <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
                                     Dashboard
+                                </NavLink>
+
+                                {/* Islamic Content Index Link */}
+                                <NavLink
+                                    href={route('admin.islamic-contents.index')} // Ensure the route name matches your web.php
+                                    active={route().current('admin.islamic-contents.index')}
+                                >
+                                    Islamic Content
                                 </NavLink>
                             </div>
                         </div>
