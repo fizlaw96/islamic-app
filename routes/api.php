@@ -43,3 +43,4 @@ Route::post('/history/clear', [ContentInteractionController::class, 'clearHistor
 //<--                              IslamicContentController                                           -->//
 // Fetch all Islamic content topics
 Route::get('/islamic-contents', [IslamicContentController::class, 'indexUser']);
+Route::post('/islamic-contents/{id}/update-media', [IslamicContentController::class, 'updateMedia']);

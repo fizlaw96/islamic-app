@@ -114,11 +114,30 @@ export default function IslamicContent() {
                 </div>
             </nav>
 
-            {/* Content Section (Margin added to avoid overlap with navbar) */}
-            <div className={`pt-28 p-4 ${darkMode ? "text-white" : "text-black"}`}>
-                <h1 className="text-2xl font-bold mb-4">
-                    {language === "bm" ? content.title_bm : content.title_en}
-                </h1>
+            {/* ✅ Show Banner If Available */}
+            {content.banner ? (
+                <div className="relative w-full h-64 bg-cover bg-center" style={{ backgroundImage: `url(/${content.banner})` }}>
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-black opacity-50"></div>
+
+                    {/* Title at Bottom Center of Banner */}
+                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 text-center">
+                        <h1 className="text-2xl md:text-3xl font-bold text-white">
+                            {language === "bm" ? content.title_bm : content.title_en}
+                        </h1>
+                    </div>
+                </div>
+            ) : (
+                // ✅ Show Title Normally If No Banner
+                <div className={`pt-28 p-4 ${darkMode ? "text-white" : "text-black"}`}>
+                    <h1 className="text-2xl font-bold mb-4">
+                        {language === "bm" ? content.title_bm : content.title_en}
+                    </h1>
+                </div>
+            )}
+
+            {/* ✅ Content Section (Less Margin If Banner Exists) */}
+            <div className={`p-6 ${content.banner ? "mt-4" : "pt-4"} ${darkMode ? "text-white" : "text-black"}`}>
                 <p className="text-lg mb-4">
                     {language === "bm" ? content.content_bm : content.content_en}
                 </p>

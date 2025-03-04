@@ -86,6 +86,38 @@ class IslamicContentController extends Controller
         return redirect()->route('admin.islamic-contents.index')->with('success', 'Islamic Content updated successfully!');
     }
 
+    public function updateMedia(Request $request, $id)
+    {
+        $request->validate([
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'media'  => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:10000',
+        ]);
+
+        $content = IslamicContent::findOrFail($id);
+
+        // ✅ Handle Banner Upload
+        if ($request->hasFile('banner')) {
+            if ($content->banner) {
+                Storage::delete($content->banner); // Delete old banner
+            }
+            $bannerPath = $request->file('banner')->store('islamic-contents', 'public'); // ✅ Save to public disk
+            $content->banner = 'storage/' . $bannerPath;
+        }
+
+        // ✅ Handle Media Upload
+        if ($request->hasFile('media')) {
+            if ($content->media) {
+                Storage::delete($content->media); // Delete old media
+            }
+            $mediaPath = $request->file('media')->store('islamic-contents', 'public'); // ✅ Save to public disk
+            $content->media = 'storage/' . $mediaPath;
+        }
+
+        $content->save();
+
+        return response()->json(['message' => 'Media updated successfully!']);
+    }
+
     // ✅ Show a single content
     public function show($id)
     {
@@ -98,15 +130,23 @@ class IslamicContentController extends Controller
     {
         $content = IslamicContent::findOrFail($id);
 
-        // ✅ Delete Files (Banner & Media)
-        if ($content->banner) {
-            Storage::delete(str_replace('storage/', 'public/', $content->banner));
-        }
-        if ($content->media) {
-            Storage::delete(str_replace('storage/', 'public/', $content->media));
+        // ✅ Extract file paths for deletion
+        $bannerPath = str_replace('storage/', 'public/', $content->banner);
+        $mediaPath = str_replace('storage/', 'public/', $content->media);
+
+        // ✅ Check if Banner Exists and Delete
+        if ($content->banner && Storage::exists($bannerPath)) {
+            Storage::delete($bannerPath);
         }
 
+        // ✅ Check if Media Exists and Delete
+        if ($content->media && Storage::exists($mediaPath)) {
+            Storage::delete($mediaPath);
+        }
+
+        // ✅ Delete Content from Database
         $content->delete();
+
         return redirect()->route('admin.islamic-contents.index')->with('success', 'Islamic Content deleted successfully!');
     }
 
