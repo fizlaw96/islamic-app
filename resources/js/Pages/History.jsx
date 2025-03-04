@@ -6,7 +6,8 @@ import Layout from "../Layouts/Layout";
 export default function History() {
     const [history, setHistory] = useState([]);
     const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
-    const sessionId = localStorage.getItem("session_id"); // Ensure session_id is fetched like in Favourite.jsx
+    const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+    const sessionId = localStorage.getItem("session_id"); // Ensure session_id is fetched
 
     useEffect(() => {
         if (sessionId) {
@@ -18,12 +19,33 @@ export default function History() {
         }
     }, [sessionId]);
 
+    // ✅ Clear History Function
+    const clearHistory = () => {
+        axios.post("/api/history/clear", { session_id: sessionId })
+            .then(() => {
+                setHistory([]); // Clear frontend history state
+            })
+            .catch((error) => console.error("Error clearing history:", error));
+    };
+
     return (
         <Layout>
             <div className="p-4">
-                <h1 className="text-2xl font-bold mb-4">
-                    {language === "bm" ? "Sejarah Bacaan" : "Reading History"}
-                </h1>
+                {/* Title & Clear Button (Same Line) */}
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className="text-2xl font-bold">
+                        {language === "bm" ? "Sejarah Bacaan" : "Reading History"}
+                    </h1>
+                    {history.length > 0 && (
+                        <button
+                            onClick={clearHistory}
+                            className="p-2 text-sm rounded bg-red-500 text-white hover:bg-red-600"
+                        >
+                            {language === "bm" ? "Padam Sejarah" : "Clear History"}
+                        </button>
+                    )}
+                </div>
+
                 {history.length === 0 ? (
                     <p className="text-gray-500">
                         {language === "bm" ? "Tiada sejarah bacaan." : "No history found."}

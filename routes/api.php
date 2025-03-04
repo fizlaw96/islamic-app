@@ -29,15 +29,15 @@ Route::get('/session-id', function () {
 
 // 📌 Toggle Favorite
 Route::post('/favorite', [ContentInteractionController::class, 'toggleFavorite']);
-
 // 📌 Get Favorites
 Route::post('/favorites', [ContentInteractionController::class, 'getFavorites']);
 
 // 📌 Save History
 Route::post('/history', [ContentInteractionController::class, 'addToHistory']);
-
 // 📌 Get History
 Route::post('/history/list', [ContentInteractionController::class, 'getHistory']);
+// 📌 Clear History Route
+Route::post('/history/clear', [ContentInteractionController::class, 'clearHistory']);
 
 // Fetch all Islamic content topics
 Route::get('/islamic-contents', [IslamicContentController::class, 'index']);

@@ -61,6 +61,9 @@ export default function Setting() {
     return (
         <Layout>
             <div className="w-full max-w-lg mx-auto p-6 text-white">
+                <h1 className="text-2xl font-bold mb-4">
+                    {language === "bm" ? "Tetapan" : "Setting"}
+                </h1>
 
                 {/* Dark Mode Toggle */}
                 <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">

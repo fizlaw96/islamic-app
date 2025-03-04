@@ -81,4 +81,15 @@ class ContentInteractionController extends Controller
 
         return response()->json($history);
     }
+
+    public function clearHistory(Request $request)
+    {
+        $request->validate(['session_id' => 'required']); // Ensure session_id is provided
+
+        $sessionId = $request->input('session_id');
+
+        DB::table('history')->where('session_id', $sessionId)->delete();
+
+        return response()->json(['message' => 'History cleared successfully']);
+    }
 }
