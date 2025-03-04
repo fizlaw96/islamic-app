@@ -138,9 +138,9 @@ export default function IslamicContent() {
 
             {/* ✅ Content Section (Less Margin If Banner Exists) */}
             <div className={`w-full p-6 ${content.banner ? "mt-4" : "pt-4"} ${darkMode ? "text-white" : "text-black"}`}>
-                <p className="text-lg mb-4 max-w-7xl mx-auto">
-                    {language === "bm" ? content.content_bm : content.content_en}
-                </p>
+                <div className="text-lg mb-4 max-w-7xl mx-auto"
+                    dangerouslySetInnerHTML={{ __html: language === "bm" ? content.content_bm : content.content_en }}>
+                </div>
             </div>
         </Layout>
     );

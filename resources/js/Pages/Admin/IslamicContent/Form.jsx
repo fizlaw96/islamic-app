@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CreatableSelect from "react-select/creatable";
 import axios from "axios";
+import "summernote/dist/summernote-lite.css";
+import $ from "jquery";
+import "summernote/dist/summernote-lite";
 
 const topics = [
     { bm: "Asas Islam dan Gaya Hidup", en: "Islamic Fundamentals and Lifestyle" },
@@ -12,6 +15,8 @@ const topics = [
 ];
 
 export default function Form({ data, setData, handleSubmit, errors, processing, categories, isEdit = false }) {
+    const [loadingTranslate, setLoadingTranslate] = useState(false);
+
     // ✅ Format categories for React-Select
     const categoryOptions = categories
         ? categories.map(cat => ({
@@ -19,6 +24,29 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
             label: `${cat.category_bm} | ${cat.category_en}`
         }))
         : [];
+
+    useEffect(() => {
+        // ✅ Initialize Summernote for content_bm
+        $("#content_bm").summernote({
+            height: 200,
+            callbacks: {
+                onChange: function(contents) {
+                    setData("content_bm", contents);
+                }
+            }
+        }).summernote("code", data.content_bm);
+
+        // ✅ Initialize Summernote for content_en
+        $("#content_en").summernote({
+            height: 200,
+            callbacks: {
+                onChange: function(contents) {
+                    setData("content_en", contents);
+                }
+            }
+        }).summernote("code", data.content_en);
+
+    }, []); // Runs only once on component mount
 
     // ✅ Handle Category Selection
     const handleCategoryChange = (selectedOption) => {
@@ -29,25 +57,22 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
         }
     };
 
-    // ✅ Handle New Category Creation
+    // ✅ Handle New Category Creation with Auto-Translation
     const handleCreateCategory = async (inputValue) => {
         setData("category_bm", inputValue);
+        setData("category_en", ""); // Clear previous translation
+        setLoadingTranslate(true);
 
-        // Auto-translate category_bm to category_en
         try {
             const response = await axios.get(`https://api.mymemory.translated.net/get?q=${inputValue}&langpair=ms|en`);
             const translatedText = response.data.responseData.translatedText;
             setData("category_en", translatedText);
         } catch (error) {
             console.error("Translation error:", error);
-            setData("category_en", ""); // Let user manually input category_en
+            setData("category_en", ""); // Allow manual input if translation fails
+        } finally {
+            setLoadingTranslate(false);
         }
-    };
-
-    // ✅ Clear Category Inputs
-    const clearCategory = () => {
-        setData("category_bm", "");
-        setData("category_en", "");
     };
 
     return (
@@ -60,8 +85,8 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                         value={data.topic_bm}
                         onChange={(e) => {
                             const selectedTopic = topics.find(topic => topic.bm === e.target.value);
-                            setData("topic_bm", selectedTopic.bm);
-                            setData("topic_en", selectedTopic.en);
+                            setData("topic_bm", selectedTopic?.bm || "");
+                            setData("topic_en", selectedTopic?.en || "");
                         }}
                         className="w-full p-3 border rounded"
                     >
@@ -87,9 +112,9 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                 </div>
             </div>
 
-            {/* ✅ Two-column layout for Category with Search & Add */}
+            {/* ✅ Two-column layout for Category */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="relative">
+                <div>
                     <label className="block font-semibold mb-1">Category (BM)</label>
                     <CreatableSelect
                         isClearable
@@ -103,13 +128,6 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                         }
                         className="w-full"
                     />
-                    <button
-                        type="button"
-                        onClick={clearCategory}
-                        className="absolute right-3 top-10 text-red-500 hover:text-red-700"
-                    >
-                        ❌
-                    </button>
                     {errors.category_bm && <p className="text-red-500">{errors.category_bm}</p>}
                 </div>
 
@@ -120,7 +138,8 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                         value={data.category_en}
                         onChange={(e) => setData("category_en", e.target.value)}
                         className="w-full p-3 border rounded"
-                        placeholder="Enter category in English"
+                        placeholder={loadingTranslate ? "Translating..." : "Enter category in English"}
+                        disabled={loadingTranslate}
                     />
                     {errors.category_en && <p className="text-red-500">{errors.category_en}</p>}
                 </div>
@@ -149,15 +168,14 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                 </div>
             </div>
 
-            {/* ✅ Two-column layout for Content */}
+            {/* ✅ Two-column layout for Content with Summernote */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label className="block font-semibold mb-1">Content (BM)</label>
                     <textarea
-                        value={data.content_bm}
-                        onChange={(e) => setData("content_bm", e.target.value)}
-                        className="w-full p-3 border rounded"
-                        rows="5"
+                        id="content_bm"
+                        defaultValue={data.content_bm}
+                        className="w-full p-3 border rounded hidden"
                     ></textarea>
                     {errors.content_bm && <p className="text-red-500">{errors.content_bm}</p>}
                 </div>
@@ -165,17 +183,20 @@ export default function Form({ data, setData, handleSubmit, errors, processing, 
                 <div>
                     <label className="block font-semibold mb-1">Content (EN)</label>
                     <textarea
-                        value={data.content_en}
-                        onChange={(e) => setData("content_en", e.target.value)}
-                        className="w-full p-3 border rounded"
-                        rows="5"
+                        id="content_en"
+                        defaultValue={data.content_en}
+                        className="w-full p-3 border rounded hidden"
                     ></textarea>
                     {errors.content_en && <p className="text-red-500">{errors.content_en}</p>}
                 </div>
             </div>
 
             {/* ✅ Submit Button */}
-            <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded font-bold hover:bg-blue-700 transition">
+            <button
+                type="submit"
+                className="bg-blue-600 text-white px-6 py-3 rounded font-bold hover:bg-blue-700 transition"
+                disabled={processing}
+            >
                 {processing ? (isEdit ? "Updating..." : "Creating...") : isEdit ? "Update Content" : "Create Content"}
             </button>
         </form>

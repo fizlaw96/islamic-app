@@ -63,27 +63,26 @@ export default function ListContentTopic({ topic, contents }) {
 
             {/* Content Section */}
             <div className={`p-4 ${darkMode ? "text-white" : "text-black"}`} style={{ fontSize: `${fontSize}px` }}>
-                <div className="grid gap-4">
+                <div className="flex flex-col gap-8"> {/* ✅ Adds margin between categories */}
                     {sortedCategories.length > 0 ? (
-                        sortedCategories.map((category, index) => (
-                            <div key={category}>
+                        sortedCategories.map((category) => (
+                            <div key={category} className="space-y-4"> {/* ✅ Adds spacing within each category */}
                                 {/* Category Title */}
                                 <h2 className="text-xl font-bold mb-2">{category}</h2>
 
                                 {/* List of Contents */}
-                                {groupedContents[category].map((content) => (
-                                    <Link key={content.slug} href={route("islamic-content.show", { slug: content.slug })}>
-                                        <button
-                                            className={`p-4 rounded-lg shadow-md w-full transition-all duration-200
-                                                ${darkMode ? "bg-green-500 text-white" : "bg-green-200 text-black hover:bg-green-300"}`}
-                                        >
-                                            {language === "bm" ? content.title_bm : content.title_en}
-                                        </button>
-                                    </Link>
-                                ))}
-
-                                {/* Separator Between Categories */}
-                                {index !== sortedCategories.length - 1 && <hr className="my-4 border-gray-400 dark:border-gray-600" />}
+                                <div className="grid grid-cols-1 gap-4">
+                                    {groupedContents[category].map((content) => (
+                                        <Link key={content.slug} href={route("islamic-content.show", { slug: content.slug })}>
+                                            <button
+                                                className={`p-4 rounded-lg shadow-md w-full transition-all duration-200
+                                                    ${darkMode ? "bg-green-500 text-white" : "bg-green-200 text-black hover:bg-green-300"}`}
+                                            >
+                                                {language === "bm" ? content.title_bm : content.title_en}
+                                            </button>
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
                         ))
                     ) : (
