@@ -17,10 +17,16 @@ class IslamicContentController extends Controller
         return Inertia::render('Admin/IslamicContent/Index', ['contents' => $contents]);
     }
 
-    // ✅ Show create form
     public function create()
     {
-        return Inertia::render('Admin/IslamicContent/Create');
+        // ✅ Fetch unique categories for dropdown
+        $categories = IslamicContent::select('category_bm', 'category_en')
+            ->distinct()
+            ->get();
+
+        return Inertia::render('Admin/IslamicContent/Create', [
+            'categories' => $categories
+        ]);
     }
 
     // ✅ Store new Islamic content
@@ -40,18 +46,27 @@ class IslamicContentController extends Controller
         ]);
 
         $content = new IslamicContent($request->all());
-        $content->slug = Str::slug($request->title_en); // Auto-generate slug
+        $content->slug = Str::slug($request->title_en); // ✅ Auto-generate slug
+
+        // ✅ Define the storage path
+        $storagePath = "public/islamic-contents/{$content->slug}";
 
         // ✅ Handle Banner Upload
         if ($request->hasFile('banner')) {
-            $bannerPath = $request->file('banner')->store("public/{$request->topic_bm}/{$content->slug}-banner");
-            $content->banner = str_replace('public/', 'storage/', $bannerPath);
+            $bannerFile = $request->file('banner');
+            $bannerName = 'banner_' . time() . '.' . $bannerFile->getClientOriginalExtension();
+            $bannerPath = $bannerFile->storeAs($storagePath, $bannerName);
+
+            $content->banner = str_replace('public/', 'storage/', $bannerPath); // ✅ Format path for public access
         }
 
         // ✅ Handle Media Upload
         if ($request->hasFile('media')) {
-            $mediaPath = $request->file('media')->store("public/{$request->topic_bm}/{$content->slug}-media");
-            $content->media = str_replace('public/', 'storage/', $mediaPath);
+            $mediaFile = $request->file('media');
+            $mediaName = 'media_' . time() . '.' . $mediaFile->getClientOriginalExtension();
+            $mediaPath = $mediaFile->storeAs($storagePath, $mediaName);
+
+            $content->media = str_replace('public/', 'storage/', $mediaPath); // ✅ Format path for public access
         }
 
         $content->save();
@@ -59,13 +74,20 @@ class IslamicContentController extends Controller
         return redirect()->route('admin.islamic-contents.index')->with('success', 'Islamic Content created successfully!');
     }
 
-    // ✅ Show edit form
     public function edit($id)
     {
         $content = IslamicContent::findOrFail($id);
-        return Inertia::render('Admin/IslamicContent/Edit', ['content' => $content]);
-    }
 
+        // ✅ Fetch unique categories for dropdown
+        $categories = IslamicContent::select('category_bm', 'category_en')
+            ->distinct()
+            ->get();
+
+        return Inertia::render('Admin/IslamicContent/Edit', [
+            'content' => $content,
+            'categories' => $categories
+        ]);
+    }
 
     public function update(Request $request, $id)
     {

@@ -1,12 +1,16 @@
 import React from "react";
-import { useForm, Link } from "@inertiajs/react";
+import { useForm, usePage, Link } from "@inertiajs/react"; // ✅ Import usePage
 import Layout from "@/Layouts/Layout";
-import Form from "./Form"; // ✅ Import the shared form
+import Form from "./Form"; // ✅ Import the form
 
 export default function Create() {
+    const { categories = [] } = usePage().props; // ✅ Get categories from props
+
     const { data, setData, post, errors, processing } = useForm({
         topic_bm: "",
         topic_en: "",
+        title_bm: "",
+        title_en: "",
         category_bm: "",
         category_en: "",
         content_bm: "",
@@ -19,9 +23,8 @@ export default function Create() {
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("admin.islamic-contents.store"), {
-            onSuccess: () => {
-                window.location.href = route("admin.islamic-contents.index");
-            },
+            data,
+            onSuccess: () => window.location.href = route("admin.islamic-contents.index"),
         });
     };
 
@@ -34,15 +37,15 @@ export default function Create() {
                 >
                     ← Back to List
                 </Link>
-                <h1 className="text-2xl font-bold mb-8">Create Islamic Content</h1>
+                <h1 className="text-2xl font-bold mb-8">Create New Islamic Content</h1>
 
-                {/* ✅ Use the shared form */}
                 <Form
                     data={data}
                     setData={setData}
                     handleSubmit={handleSubmit}
                     errors={errors}
                     processing={processing}
+                    categories={categories} // ✅ Pass categories to Form
                 />
             </div>
         </Layout>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "@inertiajs/react"; // Use Inertia Link
+import { Link } from "@inertiajs/react";
 import axios from "axios";
 
 export default function TopicButtons() {
@@ -10,10 +10,18 @@ export default function TopicButtons() {
     useEffect(() => {
         axios.get("/api/islamic-contents")
             .then((response) => {
-                setTopics(response.data);
+                // ✅ Remove duplicate topics based on topic_bm
+                const uniqueTopics = response.data.reduce((acc, item) => {
+                    if (!acc.some((t) => t.topic_bm === item.topic_bm)) {
+                        acc.push(item);
+                    }
+                    return acc;
+                }, []);
+                setTopics(uniqueTopics);
             })
             .catch((error) => console.error("Error fetching topics:", error));
 
+        // ✅ Handle language change from localStorage
         const handleStorageChange = () => {
             setLanguage(localStorage.getItem("language") || "en");
         };
@@ -24,7 +32,7 @@ export default function TopicButtons() {
         };
     }, []);
 
-    // ✅ Updated Mapping for Laravel Storage
+    // ✅ Topic Image Mapping
     const topicImages = {
         "Asas Islam dan Gaya Hidup": "/storage/assets/button/asas.jpg",
         "Islamic Fundamentals and Lifestyle": "/storage/assets/button/asas.jpg",
@@ -48,12 +56,12 @@ export default function TopicButtons() {
                 transition={{ duration: 0.5 }}
                 className="grid grid-cols-2 gap-4 w-full max-w-md"
             >
-                {topics.map((item, index) => {
+                {topics.map((item) => {
                     const topicTitle = language === "bm" ? item.topic_bm : item.topic_en;
-                    const topicImage = topicImages[topicTitle] || "/storage/button/default.jpg"; // ✅ Use Laravel Storage
+                    const topicImage = topicImages[topicTitle] || "/storage/assets/button/default.jpg";
 
                     return (
-                        <Link key={index} href={`/topic/${item.id}`} className="w-full">
+                        <Link key={item.id} href={`/topic/${item.id}`} className="w-full">
                             <motion.button
                                 whileHover={{ scale: 1.05, opacity: 0.9 }}
                                 whileTap={{ scale: 0.95 }}
@@ -72,8 +80,7 @@ export default function TopicButtons() {
                                 <span
                                     className="relative z-10 text-1xl md:text-2xl font-bold text-white text-center"
                                     style={{
-                                        textShadow: "4px 4px 10px rgba(0, 0, 0, 1)", // ✅ Stronger Shadow
-                                        textStroke: "2px black", // ✅ Ensure Compatibility
+                                        textShadow: "4px 4px 10px rgba(0, 0, 0, 1)",
                                     }}
                                 >
                                     {topicTitle}
