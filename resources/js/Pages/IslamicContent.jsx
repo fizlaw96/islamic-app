@@ -35,17 +35,24 @@ export default function IslamicContent() {
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
-    // ✅ Fetch favorites & read history
+    // ✅ Fetch favorites & read history & save history when visiting the page
     useEffect(() => {
-        if (sessionId) {
+        if (sessionId && content) {
+            // Fetch favorites
             axios.post("/api/favorites", { session_id: sessionId }).then((response) =>
-                setFavorites(response.data.map((fav) => fav.id)) // Store only IDs
+                setFavorites(response.data.map((fav) => fav.id))
             );
+
+            // Fetch history
             axios.post("/api/history/list", { session_id: sessionId }).then((response) =>
                 setReadHistory(response.data)
-            );
+            ).catch((error) => console.error("Error fetching history:", error));
+
+            // ✅ Save to history automatically
+            axios.post("/api/history", { islamic_content_id: content.id, session_id: sessionId })
+                .catch((error) => console.error("Error saving history:", error));
         }
-    }, [sessionId]);
+    }, [sessionId, content]);
 
     // ✅ Toggle Favorite Function
     const toggleFavorite = (id) => {
@@ -92,6 +99,7 @@ export default function IslamicContent() {
 
                 {/* Favorite & Read History (Right Side) */}
                 <div className="flex items-center gap-3">
+                    {/* Favorite Button */}
                     <button
                         onClick={() => toggleFavorite(content.id)}
                         className={`p-2 rounded ${favorites.includes(content.id) ? "bg-yellow-500 text-white" : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"}`}
@@ -99,9 +107,10 @@ export default function IslamicContent() {
                         {favorites.includes(content.id) ? "★ Favorited" : "☆ Favorite"}
                     </button>
 
-                    {readHistory.some((item) => item.islamic_content_id === content.id) && (
+                    {/* Read History Badge ✅ */}
+                    {/* {readHistory.some((item) => item.islamic_content_id === content.id) && (
                         <span className="text-sm text-gray-500 dark:text-gray-300">✔ Read</span>
-                    )}
+                    )} */}
                 </div>
             </nav>
 

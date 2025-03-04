@@ -68,12 +68,14 @@ class ContentInteractionController extends Controller
     // 📌 Get Reading History
     public function getHistory(Request $request)
     {
-        $sessionId = $request->session_id;
+        $request->validate(['session_id' => 'required']); // Ensure session_id is provided
+
+        $sessionId = $request->input('session_id');
 
         $history = DB::table('history')
             ->join('islamic_contents', 'history.islamic_content_id', '=', 'islamic_contents.id')
             ->where('history.session_id', $sessionId)
-            ->select('history.id', 'islamic_contents.title_en', 'islamic_contents.title_bm', 'islamic_contents.slug', 'history.viewed_at')
+            ->select('history.id', 'islamic_contents.title_en', 'islamic_contents.title_bm', 'islamic_contents.slug', 'history.viewed_at', 'islamic_contents.id as islamic_content_id')
             ->orderBy('history.viewed_at', 'desc')
             ->get();
 
