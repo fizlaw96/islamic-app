@@ -16,12 +16,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
-            'password' => bcrypt('1234qwer'), // Default password
+            'password' => bcrypt('1234qwer'),
         ]);
 
         // Run other seeders
         $this->call([
-            IslamicContentSeeder::class, // Ensure Islamic content is seeded
+            IslamicContentSeeder::class,
+            LessonSeeder::class,
         ]);
     }
 }

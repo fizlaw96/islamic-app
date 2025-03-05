@@ -8,9 +8,11 @@ return new class extends Migration {
     public function up() {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->integer('level')->default(1);
+            $table->string('title_bm');
+            $table->string('title_en');
+            $table->text('description_bm')->nullable();
+            $table->text('description_en')->nullable();
+            $table->integer('level');
             $table->timestamps();
         });
     }

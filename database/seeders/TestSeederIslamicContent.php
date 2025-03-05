@@ -88,11 +88,11 @@ class IslamicContentSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'topic_bm' => 'Ruqyah',
+                'topic_bm' => 'Perasaan Anda Sekarang',
                 'title_bm' => 'Panduan Ruqyah Syariah',
                 'content_bm' => 'Cara-cara melakukan ruqyah secara syariah.',
                 'category_bm' => 'Perubatan Islam',
-                'topic_en' => 'Ruqyah',
+                'topic_en' => 'Your Feeling Now',
                 'title_en' => 'Guide to Islamic Ruqyah',
                 'content_en' => 'How to perform ruqyah according to Islamic teachings.',
                 'category_en' => 'Islamic Healing',

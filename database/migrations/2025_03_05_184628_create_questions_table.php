@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lesson_id')->constrained('lessons')->onDelete('cascade');
-            $table->enum('question_type', ['mcq', 'binary', 'ordered']);
-            $table->text('question_text');
-            $table->integer('level')->default(1);
+            $table->foreignId('lesson_id')->constrained()->onDelete('cascade');
+            $table->string('question_type'); // mcq, binary, ordered
+            $table->text('question_text_bm');
+            $table->text('question_text_en');
+            $table->integer('level');
             $table->timestamps();
         });
     }
