@@ -15,8 +15,8 @@ export default function Journey() {
 
     return (
         <Layout>
-            <div className="flex flex-col items-center min-h-screen bg-white dark:bg-gray-900 py-10">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Your Learning Journey</h1>
+            <div className="flex flex-col items-center min-h-screen py-10">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-black mb-6">Your Learning Journey</h1>
 
                 <div className="relative flex flex-col items-center gap-6">
                     {journeySteps.map((step, index) => (
