@@ -31,7 +31,7 @@ export default function Layout({ children }) {
             askQuestion: "Ask Question",
             donate: "Donate",
             home: "Home",
-            quiz: "Quiz",
+            journey: "Journey",
             settings: "Settings",
             favorite: "Favorite",
         },
@@ -44,7 +44,7 @@ export default function Layout({ children }) {
             askQuestion: "Tanya Soalan",
             donate: "Derma",
             home: "Laman Utama",
-            quiz: "Kuiz",
+            journey: "Pengembaraan",
             settings: "Tetapan",
             favorite: "Kegemaran",
         },
@@ -62,7 +62,9 @@ export default function Layout({ children }) {
                 <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
                     <Menu size={24} />
                 </button>
-                <h1 className="text-lg font-semibold">{translations[language].appName}</h1>
+                <h1 className="flex justify-center items-center">
+                    <img src="/assets/button/name.png" alt="App Name" className="h-8 w-auto" />
+                </h1>
                 <button className="p-2">
                     <Bell size={24} />
                 </button>
@@ -99,9 +101,9 @@ export default function Layout({ children }) {
                     <Home size={24} />
                     <span className="text-xs">{translations[language].home}</span>
                 </Link>
-                <Link href="/quiz" className="flex flex-col items-center">
-                    <Clipboard size={24} />
-                    <span className="text-xs">{translations[language].quiz}</span>
+                <Link href={route("journey")} className="flex flex-col items-center">
+                    <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
+                    <span className="text-xs">{translations[language].journey}</span>
                 </Link>
                 <Link href="/settings" className="flex flex-col items-center">
                     <Settings size={24} />

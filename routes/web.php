@@ -23,6 +23,10 @@ Route::get('/history', function () {
 
 
 // Bottom Menu
+Route::get('/journey', function () {
+    return Inertia::render('Journey');
+})->name('journey');
+
 Route::get('/favourite', function () {
     return Inertia::render('Favourite');
 })->name('favourite');
