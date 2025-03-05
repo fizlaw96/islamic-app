@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IslamicContentController;
+use App\Http\Controllers\LessonController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::get('/history', function () {
 Route::get('/journey', function () {
     return Inertia::render('Journey');
 })->name('journey');
+
+Route::get('/lesson/{id}', [LessonController::class, 'show'])->name('lesson.show');
 
 Route::get('/favourite', function () {
     return Inertia::render('Favourite');

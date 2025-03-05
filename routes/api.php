@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\IslamicContentController;
 use App\Http\Controllers\ContentInteractionController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserProgressController;
+
 use Inertia\Inertia;
 
 Route::get('/user', function (Request $request) {
@@ -44,3 +48,13 @@ Route::post('/history/clear', [ContentInteractionController::class, 'clearHistor
 // Fetch all Islamic content topics
 Route::get('/islamic-contents', [IslamicContentController::class, 'indexUser']);
 Route::post('/islamic-contents/{id}/update-media', [IslamicContentController::class, 'updateMedia']);
+
+//<--                              Journey                                           -->//
+Route::get('/lessons', [LessonController::class, 'index']);
+Route::get('/lessons/{id}', [LessonController::class, 'show']);
+
+Route::get('/questions/{lesson_id}', [QuestionController::class, 'index']);
+Route::post('/questions/{question_id}/answer', [QuestionController::class, 'submitAnswer']);
+
+Route::post('/user/progress', [UserProgressController::class, 'getProgress']);
+Route::post('/user/progress/update', [UserProgressController::class, 'updateProgress']);
