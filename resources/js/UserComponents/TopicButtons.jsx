@@ -39,7 +39,7 @@ export default function TopicButtons() {
         "Kaifiat Solat dan Doa": "/storage/assets/button/solat.jpg",
         "Prayer and Supplication Guide": "/storage/assets/button/solat.jpg",
         "Sirah Nabi dan Sahabat": "/storage/assets/button/sirah.jpg",
-        "Prophet’s Biography and Companions": "/storage/assets/button/sirah.jpg",
+        "Prophet's Biography and Companions": "/storage/assets/button/sirah.jpg",
         "Sebalik Nama Surah": "/storage/assets/button/surah.jpg",
         "Meanings Behind Surah Names": "/storage/assets/button/surah.jpg",
         "FAQ Islam": "/storage/assets/button/faq.jpg",

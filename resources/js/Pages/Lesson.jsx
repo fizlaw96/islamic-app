@@ -30,10 +30,10 @@ export default function Lesson() {
                     </button>
                 </div>
 
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <h1 className="text-3xl font-bold text-white dark:text-black mb-4">
                     {language === "bm" ? lesson.title_bm : lesson.title_en}
                 </h1>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                <p className="text-lg text-white dark:text-black mb-6">
                     {language === "bm" ? lesson.description_bm : lesson.description_en}
                 </p>
 
@@ -49,7 +49,10 @@ export default function Lesson() {
                             {question.question_type === "mcq" && (
                                 <div className="space-y-2">
                                     {question.options.map((option, idx) => (
-                                        <label key={idx} className="block p-2 border rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                                        <label
+                                            key={idx}
+                                            className="block p-2 border rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-white"
+                                        >
                                             <input type="radio" name={`question-${question.id}`} className="mr-2" />
                                             {language === "bm" ? option.option_text_bm : option.option_text_en}
                                         </label>
@@ -61,7 +64,10 @@ export default function Lesson() {
                             {question.question_type === "binary" && (
                                 <div className="flex gap-4">
                                     {question.options.map((option, idx) => (
-                                        <label key={idx} className="block px-4 py-2 border rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                                        <label
+                                            key={idx}
+                                            className="block px-4 py-2 border rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-white"
+                                        >
                                             <input type="radio" name={`question-${question.id}`} className="mr-2" />
                                             {language === "bm" ? option.option_text_bm : option.option_text_en}
                                         </label>
@@ -75,7 +81,10 @@ export default function Lesson() {
                                     {question.options
                                         .sort((a, b) => a.order - b.order) // Ensure correct order
                                         .map((option, idx) => (
-                                            <div key={idx} className="p-2 border rounded-lg bg-gray-100 dark:bg-gray-700">
+                                            <div
+                                                key={idx}
+                                                className="p-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-white"
+                                            >
                                                 {idx + 1}. {language === "bm" ? option.option_text_bm : option.option_text_en}
                                             </div>
                                         ))}
