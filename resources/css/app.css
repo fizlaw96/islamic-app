@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+blockquote {
+    border-left: 4px solid #4a5568; /* Dark gray border */
+    padding-left: 1rem; /* Indentation */
+    font-style: italic;
+    color: #4a5568; /* Text color */
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Dark mode blockquote */
+.dark blockquote {
+    border-left: 4px solid #cbd5e0;
+    color: #cbd5e0;
+    background-color: rgba(255, 255, 255, 0.1);
+}

@@ -62,7 +62,7 @@ export default function ListContentTopic({ topic, contents }) {
             </div>
 
             {/* Content Section */}
-            <div className={`p-4 ${darkMode ? "text-white" : "text-black"}`} style={{ fontSize: `${fontSize}px` }}>
+            <div className={`p-4 ${darkMode ? "text-white" : "text-black"} mb-20`} style={{ fontSize: `${fontSize}px` }}>
                 <div className="flex flex-col gap-8"> {/* ✅ Adds margin between categories */}
                     {sortedCategories.length > 0 ? (
                         sortedCategories.map((category) => (
