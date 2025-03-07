@@ -14,11 +14,14 @@ export default function LessonMain() {
     const [gameOver, setGameOver] = useState(false);
     const [finished, setFinished] = useState(false);
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
+    const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
     useEffect(() => {
         const handleStorageChange = () => {
             setLanguage(localStorage.getItem("language") || "bm");
+            setDarkMode(localStorage.getItem("darkMode") === "true");
         };
+
         window.addEventListener("storage", handleStorageChange);
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
@@ -59,12 +62,14 @@ export default function LessonMain() {
         if (finished) {
             setTimeout(() => {
                 window.location.href = `/lesson-complete?score=${score}&total=${questions.length}`;
-            }, 2000);
+            }, 1000);
         }
     }, [finished]);
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-100">
+        <div className={`min-h-screen flex flex-col items-center justify-center p-6
+            ${darkMode ? "bg-gray-900" : "bg-gray-100"} text-black`}>
+
             <LessonNav currentQuestion={currentQuestion + 1} totalQuestions={questions.length} lives={lives} />
 
             {questions[currentQuestion].question_type === "ordered" ? (
@@ -76,11 +81,11 @@ export default function LessonMain() {
             {/* ✅ Modal Popup (Game Over / Next Question) */}
             {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm">
+                    <div className={`p-6 rounded-lg shadow-lg text-center max-w-sm bg-white text-black`}>
                         <p className="text-xl font-bold">{modalMessage}</p>
                         <button
                             onClick={handleNextQuestion}
-                            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+                            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
                         >
                             {gameOver ? (language === "bm" ? "OK" : "OK") : language === "bm" ? "Teruskan" : "Continue"}
                         </button>

@@ -12,7 +12,7 @@ export default function LessonComplete() {
             <div className="h-screen flex items-center justify-center bg-white dark:bg-gray-900 text-black dark:text-white">
                 <div className="text-center p-6 max-w-lg">
                     {/* ✅ Responsive Heading */}
-                    <h1 className="text-3xl sm:text-4xl font-bold">
+                    <h1 className="text-3xl sm:text-4xl font-bold whitespace-nowrap overflow-hidden text-center">
                         🎉 {percentage === 100 ? "Hebat! Semua Betul!" : "Tahniah Anda Berjaya!"} 🎉
                     </h1>
 
