@@ -21,7 +21,7 @@ class LessonController extends Controller
         $lesson = Lesson::findOrFail($id);
         $questions = Question::where('lesson_id', $id)->with('options')->get();
 
-        return Inertia::render('Lesson', [
+        return Inertia::render('Journey/Lesson', [
             'lesson' => $lesson,
             'questions' => $questions,
         ]);
