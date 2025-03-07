@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function LessonNav({ currentQuestion, totalQuestions, lives }) {
-    // ✅ Ensure progress starts at 0% properly
     const progress = totalQuestions > 0 ? (currentQuestion / totalQuestions) * 100 : 0;
 
     return (
@@ -30,8 +29,8 @@ export default function LessonNav({ currentQuestion, totalQuestions, lives }) {
             {/* ✅ Heart with Number of Lives */}
             <div className="flex items-center text-lg font-bold">
                 <div className="relative w-10 h-10 flex items-center justify-center text-white text-xl font-bold">
-                    <span className="absolute w-full h-full text-red-500 text-4xl">❤️</span>
-                    <span className="relative z-10">{lives}</span>
+                    <span className="absolute w-full h-full text-red-500 text-5xl">❤️</span>
+                    <span className="relative z-10 ml-2">{lives}</span>
                 </div>
             </div>
         </div>

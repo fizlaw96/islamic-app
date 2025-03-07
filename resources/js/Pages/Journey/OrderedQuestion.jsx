@@ -62,6 +62,13 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
                 </Droppable>
             </DragDropContext>
 
+            {/* ✅ Instruction Message for Users */}
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                {language === "bm"
+                    ? "Seret dan susun jawapan dalam urutan yang betul."
+                    : "Drag and arrange the answers in the correct order."}
+            </p>
+
             <button
                 onClick={handleSubmit}
                 className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"

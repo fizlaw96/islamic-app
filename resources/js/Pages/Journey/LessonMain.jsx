@@ -27,20 +27,58 @@ export default function LessonMain() {
     }, []);
 
     const handleAnswer = (isCorrect) => {
+        const wrongAnswersBM = [
+            "Cuba lagi dengan lebih fokus!",
+            "Oops! Itu bukan jawapan yang betul. Jangan putus asa!",
+            "Hmm... Salah kali ini, tapi anda semakin hampir!",
+            "Tidak mengapa, ini peluang untuk belajar!",
+            "Salah kali ini, tapi cuba fikir dengan lebih teliti!"
+        ];
+
+        const wrongAnswersEN = [
+            "Try again with more focus!",
+            "Oops! That’s not the correct answer. Don’t give up!",
+            "Hmm… Wrong this time, but you're getting closer!",
+            "It’s okay, this is a chance to learn!",
+            "Wrong this time, but try thinking more carefully!"
+        ];
+
         if (isCorrect) {
             setScore(score + 1);
             setModalMessage(language === "bm" ? "Jawapan Betul! ✅" : "Correct Answer! ✅");
         } else {
             if (lives - 1 === 0) {
                 setGameOver(true);
-                setModalMessage(language === "bm" ? "Permainan Tamat ❌" : "Game Over ❌");
+                setFinished(true); // ✅ Trigger finish state
             } else {
                 setLives(lives - 1);
-                setModalMessage(language === "bm" ? "Jawapan Salah ❌" : "Wrong Answer ❌");
+                const randomWrongMessage = language === "bm"
+                    ? (
+                        <>
+                            <strong className="block text-red-500 text-xl">❌ Jawapan Salah!</strong>
+                            <span className="text-gray-800">{wrongAnswersBM[Math.floor(Math.random() * wrongAnswersBM.length)]}</span>
+                        </>
+                    )
+                    : (
+                        <>
+                            <strong className="block text-red-500 text-xl">❌ Wrong Answer!</strong>
+                            <span className="text-gray-800">{wrongAnswersEN[Math.floor(Math.random() * wrongAnswersEN.length)]}</span>
+                        </>
+                    );
+                setModalMessage(randomWrongMessage);
             }
         }
         setShowModal(true);
     };
+
+    // ✅ Redirect to LessonComplete page after finishing
+    useEffect(() => {
+        if (finished) {
+            setTimeout(() => {
+                window.location.href = `/lesson-complete?score=${score}&total=${questions.length}`;
+            }, 1000);
+        }
+    }, [finished]);
 
     const handleNextQuestion = () => {
         setShowModal(false);
@@ -56,15 +94,6 @@ export default function LessonMain() {
             setFinished(true);
         }
     };
-
-    // ✅ Redirect to LessonComplete page after finishing
-    useEffect(() => {
-        if (finished) {
-            setTimeout(() => {
-                window.location.href = `/lesson-complete?score=${score}&total=${questions.length}`;
-            }, 1000);
-        }
-    }, [finished]);
 
     return (
         <div className={`min-h-screen flex flex-col items-center justify-center p-6
