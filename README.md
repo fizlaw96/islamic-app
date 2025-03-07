@@ -7,5 +7,6 @@ npm install react-select
 npm install jquery
 npm install summernote
 npm install react-beautiful-dnd
+npm install moment-hijri
 
 composer require league/csv
