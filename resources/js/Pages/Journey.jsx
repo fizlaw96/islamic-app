@@ -30,11 +30,11 @@ export default function Journey() {
         <Layout>
             <div className="flex flex-col items-center min-h-screen py-10">
                 {/* ✅ Page Title (BM/EN) */}
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-black mb-6">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-black mb-6 text-center w-full">
                     {language === "bm" ? "Perjalanan Pembelajaran Anda" : "Your Learning Journey"}
                 </h1>
 
-                <div className="relative flex flex-col items-center gap-6">
+                <div className="relative flex flex-col items-center gap-6 mb-20">
                     {journeySteps.map((step, index) => (
                         <motion.div
                             key={index}
