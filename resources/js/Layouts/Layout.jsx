@@ -63,7 +63,7 @@ export default function Layout({ children }) {
                     <Menu size={24} />
                 </button>
                 <h1 className="flex justify-center items-center">
-                    <img src="/assets/button/name.png" alt="App Name" className="h-8 w-auto" />
+                    <img src="/assets/button/name.svg" alt="App Name" className="h-8 w-auto filter invert" />
                 </h1>
                 <button className="p-2">
                     <Bell size={24} />
@@ -79,7 +79,7 @@ export default function Layout({ children }) {
             >
                 <ul className="space-y-2">
                     <li className="p-2 border-b"><Link href="/history">{translations[language].history}</Link></li>
-                    <li className="p-2 border-b"><Link href="/video">{translations[language].video}</Link></li>
+                    {/* <li className="p-2 border-b"><Link href="/video">{translations[language].video}</Link></li> */}
                     <li className="p-2 border-b"><Link href="/question">{translations[language].question}</Link></li>
                     <li className="p-2 border-b"><Link href="/daily-reminder">{translations[language].dailyReminder}</Link></li>
                     <li className="p-2 border-b"><Link href="/ask-question">{translations[language].askQuestion}</Link></li>
