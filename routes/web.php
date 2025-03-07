@@ -29,6 +29,12 @@ Route::get('/journey', function () {
 })->name('journey');
 
 Route::get('/lesson/{id}', [LessonController::class, 'show'])->name('lesson.show');
+Route::get('/lesson-complete', function () {
+    return Inertia::render('Journey/LessonComplete', [
+        'score' => request('score'), // Get score from query string
+        'total' => request('total'), // Get total questions from query string
+    ]);
+});
 
 Route::get('/favourite', function () {
     return Inertia::render('Favourite');

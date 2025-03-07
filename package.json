@@ -25,6 +25,7 @@
         "framer-motion": "^12.4.7",
         "jquery": "^3.7.1",
         "lucide-react": "^0.477.0",
+        "react-beautiful-dnd": "^13.1.1",
         "react-select": "^5.10.1",
         "summernote": "^0.9.1",
         "uuid": "^11.1.0"
