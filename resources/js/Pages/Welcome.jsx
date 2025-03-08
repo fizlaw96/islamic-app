@@ -27,7 +27,7 @@ export default function Home() {
     return (
         <Layout>
             <div className="mt-6 flex flex-col items-center gap-6">
-                <HijriCalendar />
+                <HijriCalendar insideDrawer={false} />
                 <TopicButtons />
             </div>
         </Layout>

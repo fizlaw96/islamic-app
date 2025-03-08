@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment-hijri";
 
-export default function HijriCalendar() {
+export default function HijriCalendar({ insideDrawer = false }) {
     const [hijriDate, setHijriDate] = useState("");
     const [reminder, setReminder] = useState("");
     const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
 
     useEffect(() => {
-        moment.locale("en"); // Ensure locale is English
+        moment.locale(language === "bm" ? "ms" : "en"); // Set locale based on language
 
         const todayHijri = moment();
         const tomorrowHijri = moment().add(1, "day");
@@ -36,20 +36,18 @@ export default function HijriCalendar() {
                 reminderMessage = language === "bm" ? "Esok: Puasa Asyura' (10 Muharram)! 🏴" : "Tomorrow: Asyura' Fasting (10 Muharram)! 🏴";
             } else if (tomorrowHijriMonth === 12 && tomorrowHijriDay > 1) {
                 reminderMessage = language === "bm" ? "Esok: Puasa Zulhijjah! 🕋" : "Tomorrow: Zulhijjah Fasting! 🕋";
-            } else if (moment().add(1, "day").isoWeekday() === 1 || moment().add(1, "day").isoWeekday() === 4) {
+            } else if (tomorrowHijri.isoWeekday() === 1 || tomorrowHijri.isoWeekday() === 4) {
                 reminderMessage = language === "bm" ? "Esok: Puasa Isnin & Khamis! 🌙" : "Tomorrow: Monday & Thursday Fasting! 🌙";
             }
         }
 
         setReminder(reminderMessage);
-    }, [language]); // ✅ Updates when language changes
+    }, [language]);
 
     return (
-        <div className="sticky top-0 w-full z-50 bg-gradient-to-r from-green-500 to-blue-600 text-white text-center shadow-md py-2">
+        <div className={`w-full text-center py-2 ${insideDrawer ? "bg-green-700" : "bg-gradient-to-r from-green-500 to-blue-600 shadow-md text-white"}`}>
             {/* ✅ Display Hijri Date */}
-            <p className="text-sm font-bold">
-                {hijriDate}
-            </p>
+            <p className="text-sm font-bold">{hijriDate}</p>
 
             {/* ✅ Puasa Reminder */}
             {reminder && (

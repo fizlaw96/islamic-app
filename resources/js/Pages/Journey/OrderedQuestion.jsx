@@ -4,16 +4,19 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 export default function OrderedQuestion({ question, language, onAnswer }) {
     // ✅ Function to shuffle array randomly
     const shuffleArray = (array) => {
-        return array.sort(() => Math.random() - 0.5);
+        return [...array].sort(() => Math.random() - 0.5);
     };
 
-    // ✅ Keep correct order in one state, but shuffle the displayed order
-    const [correctOrder] = useState([...question.options].sort((a, b) => a.order - b.order));
-    const [userOrder, setUserOrder] = useState(shuffleArray([...correctOrder])); // Random order
+    // ✅ State for correct order and user-selected order
+    const [correctOrder, setCorrectOrder] = useState([]);
+    const [userOrder, setUserOrder] = useState([]);
 
+    // ✅ Reinitialize when `question` changes
     useEffect(() => {
-        setUserOrder(shuffleArray([...correctOrder])); // Re-shuffle when question changes
-    }, [question]);
+        const sortedOrder = [...question.options].sort((a, b) => a.order - b.order);
+        setCorrectOrder(sortedOrder);
+        setUserOrder(shuffleArray(sortedOrder));
+    }, [question]); // Runs every time `question` changes
 
     const handleDragEnd = (result) => {
         if (!result.destination) return;

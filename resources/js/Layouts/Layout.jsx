@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
-import { Menu, Bell, User, Settings, Star, Clipboard, Home } from "lucide-react";
+import { Menu, Bell, Settings, Star, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import Drawer from "./Drawer";
 
 export default function Layout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -52,7 +53,7 @@ export default function Layout({ children }) {
 
     return (
         <div className={`min-h-screen flex flex-col ${darkMode ? "bg-green-900 text-white" : "bg-green-50 text-black"}`}>
-            {/* Top Navbar */}
+            {/* ✅ Top Navbar */}
             <motion.nav
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -70,27 +71,13 @@ export default function Layout({ children }) {
                 </button>
             </motion.nav>
 
-            {/* Sidebar Drawer (Higher z-index to prevent navbar interference) */}
-            <motion.div
-                initial={{ x: -250 }}
-                animate={{ x: menuOpen ? 0 : -250 }}
-                transition={{ duration: 0.3 }}
-                className={`fixed left-0 top-16 w-64 h-screen bg-white dark:bg-green-800 shadow-md p-4 z-50`}
-            >
-                <ul className="space-y-2">
-                    <li className="p-2 border-b"><Link href="/history">{translations[language].history}</Link></li>
-                    {/* <li className="p-2 border-b"><Link href="/video">{translations[language].video}</Link></li> */}
-                    <li className="p-2 border-b"><Link href="/question">{translations[language].question}</Link></li>
-                    <li className="p-2 border-b"><Link href="/daily-reminder">{translations[language].dailyReminder}</Link></li>
-                    <li className="p-2 border-b"><Link href="/ask-question">{translations[language].askQuestion}</Link></li>
-                    <li className="p-2 border-b"><Link href="/donate">{translations[language].donate}</Link></li>
-                </ul>
-            </motion.div>
+            {/* ✅ Sidebar Drawer */}
+            <Drawer menuOpen={menuOpen} setMenuOpen={setMenuOpen} translations={translations} language={language} />
 
-            {/* Main Content (Adds padding to prevent navbar overlap) */}
+            {/* ✅ Main Content (Adds padding to prevent navbar overlap) */}
             <main className="flex-1 pt-16 p-6">{children}</main>
 
-            {/* Bottom Navbar */}
+            {/* ✅ Bottom Navbar */}
             <motion.nav
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
