@@ -1,7 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function MCQBinaryQuestion({ question, language, onAnswer }) {
     const [selectedOption, setSelectedOption] = useState(null);
+    const [shuffledOptions, setShuffledOptions] = useState([]);
+
+    // Shuffle options whenever the question changes
+    useEffect(() => {
+        setShuffledOptions(shuffleArray([...question.options]));
+        setSelectedOption(null); // Reset selected option when question changes
+    }, [question]);
+
+    // Function to shuffle options randomly
+    const shuffleArray = (array) => {
+        return array.sort(() => Math.random() - 0.5);
+    };
 
     const handleSubmit = () => {
         if (!selectedOption) return;
@@ -15,7 +27,7 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
             </p>
 
             <div className="grid gap-2">
-                {question.options.map((option, idx) => (
+                {shuffledOptions.map((option, idx) => (
                     <button
                         key={idx}
                         onClick={() => setSelectedOption(option)}
@@ -30,7 +42,10 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
 
             <button
                 onClick={handleSubmit}
-                className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+                disabled={!selectedOption} // Reset on question change
+                className={`mt-4 px-4 py-2 rounded-lg ${
+                    selectedOption ? "bg-green-500 text-white" : "bg-gray-400 cursor-not-allowed"
+                }`}
             >
                 {language === "bm" ? "Jawab" : "Answer"}
             </button>

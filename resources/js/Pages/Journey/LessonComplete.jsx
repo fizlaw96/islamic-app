@@ -27,14 +27,14 @@ export default function LessonComplete() {
     // ✅ BM/EN Messages
     const messages = {
         bm: {
-            title_good: "🎉 Hebat! Semua Betul! 🎉",
+            title_good: "🎉 Anda Memang Hebat! 🎉",
             title_avg: "💪 Teruskan Usaha! 💪",
             title_fail: "😢 Cuba Lagi!",
             score_text: "Anda mendapat",
             back: "Kembali ke Perjalanan",
         },
         en: {
-            title_good: "🎉 Amazing! Perfect Score! 🎉",
+            title_good: "🎉 You're Amazing! 🎉",
             title_avg: "💪 Keep Going! 💪",
             title_fail: "😢 Try Again!",
             score_text: "You scored",
