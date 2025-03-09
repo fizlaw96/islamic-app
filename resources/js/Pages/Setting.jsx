@@ -93,18 +93,31 @@ export default function Setting() {
                 <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
                     <span>{translations[language].fontSize}</span>
                     <div className="flex items-center gap-3">
+                        {/* Decrease Font Size */}
                         <button
                             onClick={decreaseFontSize}
                             className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
                         >
                             A-
                         </button>
+
+                        {/* Display Current Font Size */}
                         <span className="text-lg font-semibold">{fontSize}px</span>
+
+                        {/* Increase Font Size */}
                         <button
                             onClick={increaseFontSize}
                             className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
                         >
                             A+
+                        </button>
+
+                        {/* ✅ Reset Font Size Button */}
+                        <button
+                            onClick={() => setFontSize(16)} // Set font size back to 16px
+                            className="p-2 bg-red-500 text-white rounded-lg"
+                        >
+                            Reset
                         </button>
                     </div>
                 </div>

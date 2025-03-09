@@ -31,7 +31,7 @@ export default function HijriCalendar({ insideDrawer = false }) {
             if ([13, 14, 15].includes(tomorrowHijriDay)) {
                 reminderMessage.push(language === "bm" ? "Esok: Puasa Ayyamul Bidh! 🌕" : "Tomorrow: Ayyamul Bidh Fasting! 🌕");
             }
-            if (tomorrowHijriMonth === 10 && tomorrowHijriDay >= 2) { // ✅ Fixed: Start from 2 Syawal
+            if (tomorrowHijriMonth === 10 && tomorrowHijriDay >= 2) {
                 reminderMessage.push(language === "bm" ? "Esok: Puasa 6 Syawal! 🌙" : "Tomorrow: 6 Syawal Fasting! 🌙");
             }
             if (tomorrowHijriDay === 9 && tomorrowHijriMonth === 1) {

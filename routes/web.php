@@ -49,6 +49,19 @@ Route::get('/islamic-content/{slug}', [IslamicContentController::class, 'showUse
 Route::get('/topic/{id}', [IslamicContentController::class, 'listByTopic'])
     ->name('topic.show');
 
+// ✅ Corrected Paths (No extra "Pages/")
+Route::get('/special/raya-aidilfitri', function () {
+    return Inertia::render('SpecialButton/RayaAidilfitri');
+})->name('special.rayaAidilfitri');
+
+Route::get('/special/raya-aidiladha', function () {
+    return Inertia::render('SpecialButton/RayaAidiladha');
+})->name('special.rayaAidiladha');
+
+Route::get('/special/ramadhan', function () {
+    return Inertia::render('SpecialButton/Ramadhan');
+})->name('special.ramadhan');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard'); // ✅ Correct path for Dashboard inside Admin folder
 })->middleware(['auth', 'verified'])->name('dashboard');

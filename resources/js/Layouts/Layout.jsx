@@ -4,6 +4,8 @@ import { Menu, Bell, Settings, Star, Home } from "lucide-react";
 import { motion } from "framer-motion";
 import Drawer from "./Drawer";
 
+import SpecialButton from "../UserComponents/SpecialButton";
+
 export default function Layout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
@@ -82,23 +84,39 @@ export default function Layout({ children }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="fixed bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-4 flex justify-around"
+                className="sticky bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-4 flex items-center justify-between relative"
             >
+                {/* ✅ Home Button */}
                 <Link href="/" className="flex flex-col items-center">
                     <Home size={24} />
-                    <span className="text-xs">{translations[language].home}</span>
                 </Link>
-                <Link href={route("journey")} className="flex flex-col items-center">
+
+                {/* ✅ Journey Button (Adds Right Margin if SpecialButton Exists) */}
+                <Link
+                    href={route("journey")}
+                    className={`flex flex-col items-center ${typeof SpecialButton !== "undefined" ? "mr-6 sm:mr-10" : ""}`}
+                >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
-                    <span className="text-xs">{translations[language].journey}</span>
                 </Link>
-                <Link href="/settings" className="flex flex-col items-center">
+
+                {/* ✅ SpecialButton - Centered & Overflowing (Only Renders If Exists) */}
+                {typeof SpecialButton !== "undefined" && (
+                    <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2">
+                        <SpecialButton />
+                    </div>
+                )}
+
+                {/* ✅ Settings Button (Adds Left Margin if SpecialButton Exists) */}
+                <Link
+                    href="/settings"
+                    className={`flex flex-col items-center ${typeof SpecialButton !== "undefined" ? "ml-6 sm:ml-10" : ""}`}
+                >
                     <Settings size={24} />
-                    <span className="text-xs">{translations[language].settings}</span>
                 </Link>
+
+                {/* ✅ Favourite Button */}
                 <Link href="/favourite" className="flex flex-col items-center">
                     <Star size={24} />
-                    <span className="text-xs">{translations[language].favorite}</span>
                 </Link>
             </motion.nav>
         </div>
