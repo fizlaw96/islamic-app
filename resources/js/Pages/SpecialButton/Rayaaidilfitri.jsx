@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../../Layouts/Layout";
+import Layout from "../../Layouts/Layout";
 
 export default function RayaAidilfitri() {
     const [openSection, setOpenSection] = useState(null);

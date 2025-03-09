@@ -54,7 +54,7 @@ Route::get('/special/{event}', function ($event) {
     // Capitalize first letter to match folder structure
     $event = ucfirst(str_replace('-', '', $event));
 
-    return Inertia::render("SpecialButton/{$event}/main");
+    return Inertia::render("SpecialButton/{$event}");
 })->name('special.event');
 
 Route::get('/dashboard', function () {
