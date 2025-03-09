@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { Menu, Bell, Settings, Star, Home } from "lucide-react";
 import { motion } from "framer-motion";
+import moment from "moment-hijri";
 import Drawer from "./Drawer";
 
 import SpecialButton from "../UserComponents/SpecialButton";
@@ -10,6 +11,7 @@ export default function Layout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
     const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [isSpecial, setIsSpecial] = useState(false); // Track if the special button should be shown
 
     useEffect(() => {
         if (darkMode) {
@@ -23,6 +25,14 @@ export default function Layout({ children }) {
     useEffect(() => {
         localStorage.setItem("language", language);
     }, [language]);
+
+    useEffect(() => {
+        // Check if the SpecialButton should be displayed
+        const todayHijri = moment().iMonth() + 1; // Get Hijri month
+        if ([9, 10, 12].includes(todayHijri)) {
+            setIsSpecial(true);
+        }
+    }, []);
 
     const translations = {
         en: {
@@ -94,14 +104,14 @@ export default function Layout({ children }) {
                 {/* ✅ Journey Button (Adds Right Margin if SpecialButton Exists) */}
                 <Link
                     href={route("journey")}
-                    className={`flex flex-col items-center ${typeof SpecialButton !== "undefined" ? "mr-6 sm:mr-10" : ""}`}
+                    className={`flex flex-col items-center ${isSpecial ? "mr-6 sm:mr-10" : ""}`}
                 >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
                 </Link>
 
                 {/* ✅ SpecialButton - Centered & Overflowing (Only Renders If Exists) */}
-                {typeof SpecialButton !== "undefined" && (
-                    <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2">
+                {isSpecial && (
+                    <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2 animate-shine">
                         <SpecialButton />
                     </div>
                 )}
@@ -109,7 +119,7 @@ export default function Layout({ children }) {
                 {/* ✅ Settings Button (Adds Left Margin if SpecialButton Exists) */}
                 <Link
                     href="/settings"
-                    className={`flex flex-col items-center ${typeof SpecialButton !== "undefined" ? "ml-6 sm:ml-10" : ""}`}
+                    className={`flex flex-col items-center ${isSpecial ? "ml-6 sm:ml-10" : ""}`}
                 >
                     <Settings size={24} />
                 </Link>

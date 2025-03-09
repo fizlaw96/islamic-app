@@ -41,16 +41,22 @@ export default function SpecialButton() {
             href={isSpecial ? `/special/${buttonName.toLowerCase().replace(/\s+/g, "-")}` : "/special"}
             className="flex flex-col items-center relative"
         >
-            {/* ✅ Special Button: Rounded + Hover Animation */}
-            <img
-                src={buttonImage}
-                alt={buttonName}
-                className={`rounded-full shadow-lg transition-all duration-300 ${
-                    isSpecial
-                        ? "w-16 h-16 sm:w-20 sm:h-20 -mt-4 sm:-mt-6 hover:scale-110"
-                        : "w-10 h-10 sm:w-12 sm:h-12 hover:scale-105"
-                }`}
-            />
+            {/* ✅ Special Button: Shining Animation */}
+            <div className="relative">
+                <img
+                    src={buttonImage}
+                    alt={buttonName}
+                    className={`rounded-full shadow-lg transition-all duration-300 ${
+                        isSpecial
+                            ? "w-16 h-16 sm:w-20 sm:h-20 -mt-4 sm:-mt-6 hover:scale-110 animate-shine"
+                            : "w-10 h-10 sm:w-12 sm:h-12 hover:scale-105"
+                    }`}
+                />
+                {isSpecial && (
+                    <div className="absolute inset-0 w-full h-full rounded-full animate-glow"></div>
+                )}
+            </div>
+
             <span className="text-xs sm:text-sm mt-1">{buttonName}</span>
         </Link>
     );

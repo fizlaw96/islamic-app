@@ -50,17 +50,12 @@ Route::get('/topic/{id}', [IslamicContentController::class, 'listByTopic'])
     ->name('topic.show');
 
 // ✅ Corrected Paths (No extra "Pages/")
-Route::get('/special/raya-aidilfitri', function () {
-    return Inertia::render('SpecialButton/RayaAidilfitri');
-})->name('special.rayaAidilfitri');
+Route::get('/special/{event}', function ($event) {
+    // Capitalize first letter to match folder structure
+    $event = ucfirst(str_replace('-', '', $event));
 
-Route::get('/special/raya-aidiladha', function () {
-    return Inertia::render('SpecialButton/RayaAidiladha');
-})->name('special.rayaAidiladha');
-
-Route::get('/special/ramadhan', function () {
-    return Inertia::render('SpecialButton/Ramadhan');
-})->name('special.ramadhan');
+    return Inertia::render("SpecialButton/{$event}/main");
+})->name('special.event');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard'); // ✅ Correct path for Dashboard inside Admin folder

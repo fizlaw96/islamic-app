@@ -15,6 +15,20 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                shine: "shine 1.5s infinite alternate",
+                glow: "glow 1.5s infinite alternate",
+            },
+            keyframes: {
+                shine: {
+                    "0%": { filter: "brightness(1)" },
+                    "100%": { filter: "brightness(1.5)" },
+                },
+                glow: {
+                    "0%": { boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)" },
+                    "100%": { boxShadow: "0 0 20px rgba(255, 255, 255, 0.9)" },
+                },
+            },
         },
     },
 
