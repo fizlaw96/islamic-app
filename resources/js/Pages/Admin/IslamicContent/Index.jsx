@@ -1,10 +1,27 @@
 import React from "react";
 import { Link, usePage, useForm } from "@inertiajs/react";
+import { useEffect, useState } from 'react';
 import Layout from "@/Layouts/Layout";
 
 export default function Index() {
     const { contents } = usePage().props;
+    const [isMobile, setIsMobile] = useState(false);
     const { delete: destroy } = useForm(); // Inertia delete function
+
+    useEffect(() => {
+        // Detect if the user is on a mobile device
+        const checkMobile = () => {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            setIsMobile(
+                /android|iphone|ipad|iPod|mobile/i.test(userAgent)
+            );
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const handleDelete = (id) => {
         if (confirm("Are you sure you want to delete this content?")) {
@@ -16,6 +33,13 @@ export default function Index() {
         <Layout>
             <div className="p-6">
                 <h1 className="text-2xl font-bold mb-4">Islamic Content Management</h1>
+
+                {/* 🚨 Mobile Alert */}
+                {isMobile && (
+                    <div className="bg-red-500 text-white text-center p-4 rounded-md mx-4 mb-4">
+                        ⚠️ Full functionality is available only on Windows or Desktop.
+                    </div>
+                )}
 
                 {/* ✅ Add New Content Button */}
                 <Link

@@ -37,12 +37,19 @@ export default function Layout({ children }) {
     const translations = {
         en: {
             appName: "Islamic App",
+
+            adminSection: "Admin",
+            adminIslamicContent: "Islamic Content",
+            dashboard: "Go to Dashboard",
+            login: "Login",
+            register: "Register",
             history: "History",
-            video: "Video",
-            question: "Question",
             dailyReminder: "Daily Reminder",
+            question: "Question",
             askQuestion: "Ask Question",
             donate: "Donate",
+            logout: "Log Out",
+
             home: "Home",
             journey: "Journey",
             settings: "Settings",
@@ -50,12 +57,19 @@ export default function Layout({ children }) {
         },
         bm: {
             appName: "Aplikasi Islam",
+
+            adminSection: "Pentadbir",
+            adminIslamicContent: "Kandungan Islam",
+            dashboard: "Pergi ke Papan Pemuka",
+            login: "Log Masuk",
+            register: "Daftar",
             history: "Sejarah",
-            video: "Video",
-            question: "Soalan",
             dailyReminder: "Peringatan Harian",
+            question: "Soalan",
             askQuestion: "Tanya Soalan",
             donate: "Derma",
+            logout: "Log Keluar",
+
             home: "Laman Utama",
             journey: "Pengembaraan",
             settings: "Tetapan",
@@ -94,17 +108,17 @@ export default function Layout({ children }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="sticky bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-4 flex items-center justify-between relative"
+                className="sticky bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-3 flex items-center justify-between relative"
             >
                 {/* ✅ Home Button */}
-                <Link href="/" className="flex flex-col items-center">
+                <Link href="/" className="flex flex-col items-center ml-4 sm:ml-10">
                     <Home size={24} />
                 </Link>
 
                 {/* ✅ Journey Button (Adds Right Margin if SpecialButton Exists) */}
                 <Link
                     href={route("journey")}
-                    className={`flex flex-col items-center ${isSpecial ? "mr-6 sm:mr-10" : ""}`}
+                    className={`flex flex-col items-center ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
                 >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
                 </Link>
@@ -119,13 +133,13 @@ export default function Layout({ children }) {
                 {/* ✅ Settings Button (Adds Left Margin if SpecialButton Exists) */}
                 <Link
                     href="/settings"
-                    className={`flex flex-col items-center ${isSpecial ? "ml-6 sm:ml-10" : ""}`}
+                    className={`flex flex-col items-center ${isSpecial ? "ml-10 sm:ml-10" : ""}`}
                 >
                     <Settings size={24} />
                 </Link>
 
                 {/* ✅ Favourite Button */}
-                <Link href="/favourite" className="flex flex-col items-center">
+                <Link href="/favourite" className="flex flex-col items-center mr-4 sm:mr-10">
                     <Star size={24} />
                 </Link>
             </motion.nav>

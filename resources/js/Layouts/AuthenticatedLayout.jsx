@@ -39,12 +39,19 @@ export default function AuthenticatedLayout({ children }) {
     const translations = {
         en: {
             appName: "Islamic App",
+
+            adminSection: "Admin",
+            adminIslamicContent: "Islamic Content",
+            dashboard: "Go to Dashboard",
+            login: "Login",
+            register: "Register",
             history: "History",
-            video: "Video",
-            question: "Question",
             dailyReminder: "Daily Reminder",
+            question: "Question",
             askQuestion: "Ask Question",
             donate: "Donate",
+            logout: "Log Out",
+
             home: "Home",
             journey: "Journey",
             settings: "Settings",
@@ -52,12 +59,19 @@ export default function AuthenticatedLayout({ children }) {
         },
         bm: {
             appName: "Aplikasi Islam",
+
+            adminSection: "Pentadbir",
+            adminIslamicContent: "Kandungan Islam",
+            dashboard: "Pergi ke Papan Pemuka",
+            login: "Log Masuk",
+            register: "Daftar",
             history: "Sejarah",
-            video: "Video",
-            question: "Soalan",
             dailyReminder: "Peringatan Harian",
+            question: "Soalan",
             askQuestion: "Tanya Soalan",
             donate: "Derma",
+            logout: "Log Keluar",
+
             home: "Laman Utama",
             journey: "Pengembaraan",
             settings: "Tetapan",
@@ -118,10 +132,6 @@ export default function AuthenticatedLayout({ children }) {
 
                 <Link href="/favourite" className="flex flex-col items-center">
                     <Star size={24} />
-                </Link>
-
-                <Link href={route("logout")} method="post" as="button" className="flex flex-col items-center text-white">
-                    <LogOut size={24} />
                 </Link>
             </motion.nav>
         </div>
