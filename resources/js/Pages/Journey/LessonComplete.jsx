@@ -45,8 +45,8 @@ export default function LessonComplete() {
     return (
         <Layout>
             {/* ✅ Full-page Centered Container (No Scroll) */}
-            <div className="h-screen flex items-center justify-center text-white dark:text-black">
-                <div className="text-center p-6 max-w-lg">
+            <div className="mt-20 flex items-center justify-center text-white dark:text-black">
+                <div className="text-center">
 
                     {/* ✅ Dynamic Score Image (Ensuring Same Size) */}
                     <div className="flex justify-center">

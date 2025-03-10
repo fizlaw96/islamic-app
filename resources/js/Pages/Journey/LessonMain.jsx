@@ -3,6 +3,8 @@ import { usePage } from "@inertiajs/react";
 import LessonNav from "./LessonNav";
 import MCQBinaryQuestion from "./MCQBinaryQuestion";
 import OrderedQuestion from "./OrderedQuestion";
+import { motion } from "framer-motion";
+import { CheckCircle, XCircle } from "lucide-react";
 
 export default function LessonMain() {
     const { lesson, questions } = usePage().props;
@@ -13,6 +15,7 @@ export default function LessonMain() {
     const [modalMessage, setModalMessage] = useState("");
     const [gameOver, setGameOver] = useState(false);
     const [finished, setFinished] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(null);
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
@@ -26,52 +29,27 @@ export default function LessonMain() {
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
-    const handleAnswer = (isCorrect) => {
-        const wrongAnswersBM = [
-            "Cuba lagi dengan lebih fokus!",
-            "Oops! Itu bukan jawapan yang betul. Jangan putus asa!",
-            "Hmm... Salah kali ini, tapi anda semakin hampir!",
-            "Tidak mengapa, ini peluang untuk belajar!",
-            "Salah kali ini, tapi cuba fikir dengan lebih teliti!"
-        ];
+    const handleAnswer = (correct) => {
+        setIsCorrect(correct);
+        setShowModal(true);
 
-        const wrongAnswersEN = [
-            "Try again with more focus!",
-            "Oops! That’s not the correct answer. Don’t give up!",
-            "Hmm… Wrong this time, but you're getting closer!",
-            "It’s okay, this is a chance to learn!",
-            "Wrong this time, but try thinking more carefully!"
-        ];
-
-        if (isCorrect) {
+        if (correct) {
             setScore(score + 1);
-            setModalMessage(language === "bm" ? "Jawapan Betul! ✅" : "Correct Answer! ✅");
+            setModalMessage(language === "bm" ? "Jawapan Betul!" : "Correct Answer!");
         } else {
             if (lives - 1 === 0) {
                 setGameOver(true);
-                setFinished(true); // ✅ Trigger finish state
+                setFinished(true);
             } else {
                 setLives(lives - 1);
-                const randomWrongMessage = language === "bm"
-                    ? (
-                        <>
-                            <strong className="block text-red-500 text-xl">❌ Jawapan Salah!</strong>
-                            <span className="text-gray-800">{wrongAnswersBM[Math.floor(Math.random() * wrongAnswersBM.length)]}</span>
-                        </>
-                    )
-                    : (
-                        <>
-                            <strong className="block text-red-500 text-xl">❌ Wrong Answer!</strong>
-                            <span className="text-gray-800">{wrongAnswersEN[Math.floor(Math.random() * wrongAnswersEN.length)]}</span>
-                        </>
-                    );
-                setModalMessage(randomWrongMessage);
+                const wrongMessages = language === "bm"
+                    ? ["Cuba lagi!", "Oops! Itu bukan jawapan yang betul.", "Salah kali ini, tapi cuba fikir lagi!"]
+                    : ["Try again!", "Oops! That’s not correct.", "Wrong this time, but try thinking more!"];
+                setModalMessage(wrongMessages[Math.floor(Math.random() * wrongMessages.length)]);
             }
         }
-        setShowModal(true);
     };
 
-    // ✅ Redirect to LessonComplete page after finishing
     useEffect(() => {
         if (finished) {
             setTimeout(() => {
@@ -84,7 +62,7 @@ export default function LessonMain() {
         setShowModal(false);
 
         if (gameOver) {
-            window.location.href = "/journey"; // Redirect after Game Over confirmation
+            window.location.href = "/journey";
             return;
         }
 
@@ -97,7 +75,7 @@ export default function LessonMain() {
 
     return (
         <div className={`min-h-screen flex flex-col items-center justify-center p-6
-            ${darkMode ? "bg-gray-900" : "bg-gray-100"} text-black`}>
+            ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
 
             <LessonNav currentQuestion={currentQuestion + 1} totalQuestions={questions.length} lives={lives} />
 
@@ -109,17 +87,38 @@ export default function LessonMain() {
 
             {/* ✅ Modal Popup (Game Over / Next Question) */}
             {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className={`p-6 rounded-lg shadow-lg text-center max-w-sm bg-white text-black`}>
-                        <p className="text-xl font-bold">{modalMessage}</p>
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 50 }}
+                    className="fixed bottom-0 left-0 w-full flex justify-center bg-opacity-50"
+                >
+                    <div
+                        className={`p-6 rounded-t-lg shadow-lg text-center max-w-sm w-full
+                            ${isCorrect ? "bg-green-200 text-green-900" : "bg-red-200 text-red-900"}`}
+                    >
+                        {/* Top Section with Icon and Message */}
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                {isCorrect ? (
+                                    <CheckCircle size={24} className="text-green-600" />
+                                ) : (
+                                    <XCircle size={24} className="text-red-600" />
+                                )}
+                                <p className="text-xl font-bold">{modalMessage}</p>
+                            </div>
+                        </div>
+
+                        {/* Continue Button */}
                         <button
                             onClick={handleNextQuestion}
-                            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+                            className={`mt-4 w-full py-3 rounded-lg text-white font-bold shadow-md
+                                ${isCorrect ? "bg-green-500 hover:bg-green-600" : "bg-red-500 hover:bg-red-600"}`}
                         >
-                            {gameOver ? (language === "bm" ? "OK" : "OK") : language === "bm" ? "Teruskan" : "Continue"}
+                            {language === "bm" ? "Teruskan" : "Continue"}
                         </button>
                     </div>
-                </div>
+                </motion.div>
             )}
         </div>
     );
