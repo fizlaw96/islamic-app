@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // ✅ Redirect to dashboard with JavaScript refresh
+        return redirect(route('dashboard'))->with('reload', true);
     }
 }

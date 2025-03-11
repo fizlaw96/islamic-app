@@ -116,7 +116,10 @@ export default function AuthenticatedLayout({ children }) {
                     <Home size={24} />
                 </Link>
 
-                <Link href={route("journey")} className={`flex flex-col items-center ${isSpecial ? "mr-6 sm:mr-10" : ""}`}>
+                <Link
+                    href={auth?.user ? route("journey.loggedin") : route("journey")}
+                    className={`flex flex-col items-center ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
+                >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
                 </Link>
 

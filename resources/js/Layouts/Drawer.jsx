@@ -26,7 +26,11 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                                 alt="User Avatar"
                                 className="w-16 h-16 rounded-full border-2 border-white shadow-md"
                             />
-                            <p className="mt-2 font-bold text-lg">{auth.user.name}</p>
+                            <Link href={route("dashboard")}>
+                                <p className="mt-2 font-bold text-lg transition-all duration-200 transform hover:scale-105 hover:text-green-300">
+                                    {auth.user.name}
+                                </p>
+                            </Link>
                             <p className="text-sm opacity-75">{auth.user.email}</p>
                         </div>
 
@@ -77,16 +81,6 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                             </Link>
                         </li>
                     </>
-                )}
-
-                {/* ✅ User Dashboard Link */}
-                {auth?.user && (
-                    <li className="p-2 border-b flex items-center gap-2">
-                        <User size={20} />
-                        <Link href={route("dashboard")}>
-                            {translations[language]?.dashboard || "Go to Dashboard"}
-                        </Link>
-                    </li>
                 )}
 
                 {/* ✅ Other Navigation Links */}

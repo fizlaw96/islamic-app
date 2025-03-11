@@ -1,10 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { usePage, Link } from "@inertiajs/react";
-import Layout from "../../Layouts/Layout"; // ✅ Import Layout
+import Layout from "../../Layouts/Layout";
+import axios from "axios";
+
+// ✅ Function to get query parameters from URL
+const getQueryParam = (param) => {
+    return new URLSearchParams(window.location.search).get(param);
+};
 
 export default function LessonComplete() {
-    const { score, total } = usePage().props;
-    const percentage = Math.round((score / total) * 100);
+    // ✅ Extracting Data from URL
+    const lesson_id = getQueryParam("lesson_id");
+    const rawScore = parseInt(getQueryParam("score"), 10);
+    const total = parseInt(getQueryParam("total"), 10);
+
+    // ✅ Getting user data from Inertia
+    const { auth } = usePage().props;
+    const user_id = auth?.user?.id; // ✅ Get authenticated user ID
+
+    // ✅ Calculate percentage (convert raw score into percentage)
+    const percentage = total ? Math.round((rawScore / total) * 100) : 0;
+
+    // ✅ Language state (for BM/EN)
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
@@ -16,39 +33,42 @@ export default function LessonComplete() {
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
-    // ✅ Determine Image Based on Score
-    let imageSrc = "/assets/characters/congratz.png"; // Default: Good Score
-    if (percentage < 50) {
-        imageSrc = "/assets/characters/sad.png"; // Fail
-    } else if (percentage < 80) {
-        imageSrc = "/assets/characters/spirit.png"; // Average
-    }
+    // ✅ Send Score to Backend (Send percentage instead of raw score)
+    const sendScoreToBackend = async () => {
+        try {
+            console.log("🚀 Sending data to backend:", { user_id, lesson_id, score: percentage });
 
-    // ✅ BM/EN Messages
-    const messages = {
-        bm: {
-            title_good: "🎉 Anda Memang Hebat! 🎉",
-            title_avg: "💪 Teruskan Usaha! 💪",
-            title_fail: "😢 Cuba Lagi!",
-            score_text: "Anda mendapat",
-            back: "Kembali ke Perjalanan",
-        },
-        en: {
-            title_good: "🎉 You're Amazing! 🎉",
-            title_avg: "💪 Keep Going! 💪",
-            title_fail: "😢 Try Again!",
-            score_text: "You scored",
-            back: "Back to Journey",
-        },
+            await axios.get("/sanctum/csrf-cookie", { withCredentials: true });
+
+            const response = await axios.post(
+                "/api/lesson/complete",
+                { user_id, lesson_id, score: percentage }, // ✅ Send percentage instead of raw score
+                { withCredentials: true }
+            );
+
+            console.log("✅ Score saved successfully:", response.data);
+        } catch (error) {
+            console.error("❌ Error saving score:", error.response?.data || error.message);
+        }
     };
+
+    useEffect(() => {
+        if (user_id && lesson_id && rawScore !== null) {
+            sendScoreToBackend();
+        } else {
+            console.error("❌ Missing required data:", { user_id, lesson_id, rawScore });
+        }
+    }, [user_id, lesson_id, rawScore]);
+
+    // ✅ Determine Image Based on Score
+    let imageSrc = "/assets/characters/congratz.png";
+    if (percentage < 50) imageSrc = "/assets/characters/sad.png";
+    else if (percentage < 80) imageSrc = "/assets/characters/spirit.png";
 
     return (
         <Layout>
-            {/* ✅ Full-page Centered Container (No Scroll) */}
             <div className="mt-20 flex items-center justify-center text-white dark:text-black">
                 <div className="text-center">
-
-                    {/* ✅ Dynamic Score Image (Ensuring Same Size) */}
                     <div className="flex justify-center">
                         <img
                             src={imageSrc}
@@ -57,26 +77,20 @@ export default function LessonComplete() {
                         />
                     </div>
 
-                    {/* ✅ Responsive Heading */}
-                    <h1 className="text-3xl sm:text-4xl font-bold whitespace-nowrap overflow-hidden text-center mt-4">
-                        {percentage >= 80
-                            ? messages[language].title_good
-                            : percentage >= 50
-                            ? messages[language].title_avg
-                            : messages[language].title_fail}
+                    <h1 className="text-3xl sm:text-4xl font-bold text-center mt-4">
+                        {percentage >= 80 ? "🎉 You're Amazing! 🎉" : percentage >= 50 ? "💪 Keep Going! 💪" : "😢 Try Again!"}
                     </h1>
 
-                    {/* ✅ Score Percentage */}
                     <p className="text-lg sm:text-xl mt-2">
-                        {messages[language].score_text} <span className="font-bold">{percentage}%</span>.
+                        You scored <span className="font-bold">{percentage}%</span>.
                     </p>
 
-                    {/* ✅ Space Below the Text */}
                     <div className="mt-8">
-                        {/* ✅ Button - Lowered for better spacing */}
-                        <Link href="/journey" className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md
-                            hover:bg-blue-600 transition-all duration-200 text-lg w-full sm:w-auto">
-                            {messages[language].back}
+                        <Link
+                            href="/journey-loggedin"
+                            className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-200 text-lg w-full sm:w-auto"
+                        >
+                            Back to Journey
                         </Link>
                     </div>
                 </div>

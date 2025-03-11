@@ -1,43 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { Menu, Bell, Settings, Star, Home } from "lucide-react";
 import { motion } from "framer-motion";
 import moment from "moment-hijri";
 import Drawer from "./Drawer";
-
 import SpecialButton from "../UserComponents/SpecialButton";
 
 export default function Layout({ children }) {
+    const { auth } = usePage().props; // ✅ Get user data
     const [menuOpen, setMenuOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
-    const [isSpecial, setIsSpecial] = useState(false); // Track if the special button should be shown
+    const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
+    const [language, setLanguage] = useState("en"); // Default to EN
+    const [isSpecial, setIsSpecial] = useState(false); // Track if SpecialButton should be shown
 
     useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-        localStorage.setItem("darkMode", darkMode);
-    }, [darkMode]);
+        const storedLanguage = localStorage.getItem("language");
+        if (storedLanguage) setLanguage(storedLanguage);
 
-    useEffect(() => {
-        localStorage.setItem("language", language);
-    }, [language]);
-
-    useEffect(() => {
-        // Check if the SpecialButton should be displayed
+        // Check for Hijri month for special button
         const todayHijri = moment().iMonth() + 1; // Get Hijri month
         if ([9, 10, 12].includes(todayHijri)) {
             setIsSpecial(true);
         }
     }, []);
 
+    useEffect(() => {
+        document.documentElement.classList.toggle("dark", darkMode);
+        localStorage.setItem("darkMode", darkMode);
+    }, [darkMode]);
+
     const translations = {
         en: {
             appName: "Islamic App",
-
             adminSection: "Admin",
             adminIslamicContent: "Islamic Content",
             dashboard: "Go to Dashboard",
@@ -49,7 +43,6 @@ export default function Layout({ children }) {
             askQuestion: "Ask Question",
             donate: "Donate",
             logout: "Log Out",
-
             home: "Home",
             journey: "Journey",
             settings: "Settings",
@@ -57,7 +50,6 @@ export default function Layout({ children }) {
         },
         bm: {
             appName: "Aplikasi Islam",
-
             adminSection: "Pentadbir",
             adminIslamicContent: "Kandungan Islam",
             dashboard: "Pergi ke Papan Pemuka",
@@ -69,7 +61,6 @@ export default function Layout({ children }) {
             askQuestion: "Tanya Soalan",
             donate: "Derma",
             logout: "Log Keluar",
-
             home: "Laman Utama",
             journey: "Pengembaraan",
             settings: "Tetapan",
@@ -115,9 +106,9 @@ export default function Layout({ children }) {
                     <Home size={24} />
                 </Link>
 
-                {/* ✅ Journey Button (Adds Right Margin if SpecialButton Exists) */}
+                {/* ✅ Journey Button (Redirects based on auth) */}
                 <Link
-                    href={route("journey")}
+                    href={auth?.user ? route("journey.loggedin") : route("journey")}
                     className={`flex flex-col items-center ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
                 >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
@@ -130,7 +121,7 @@ export default function Layout({ children }) {
                     </div>
                 )}
 
-                {/* ✅ Settings Button (Adds Left Margin if SpecialButton Exists) */}
+                {/* ✅ Settings Button */}
                 <Link
                     href="/settings"
                     className={`flex flex-col items-center ${isSpecial ? "ml-10 sm:ml-10" : ""}`}

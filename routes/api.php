@@ -3,14 +3,18 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 use App\Http\Controllers\IslamicContentController;
 use App\Http\Controllers\ContentInteractionController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserProgressController;
+use App\Http\Controllers\UserJourneyController;
 
 use Inertia\Inertia;
+use App\Models\UserJourney;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -58,3 +62,9 @@ Route::post('/questions/{question_id}/answer', [QuestionController::class, 'subm
 
 Route::post('/user/progress', [UserProgressController::class, 'getProgress']);
 Route::post('/user/progress/update', [UserProgressController::class, 'updateProgress']);
+
+Route::get('/user-progress', [UserJourneyController::class, 'getUserProgress']);
+Route::post('/lesson/complete', [UserJourneyController::class, 'storeScore']);
+
+
+

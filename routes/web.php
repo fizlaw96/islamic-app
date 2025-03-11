@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IslamicContentController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\UserJourneyController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -57,15 +58,20 @@ Route::get('/special/{event}', function ($event) {
     return Inertia::render("SpecialButton/{$event}");
 })->name('special.event');
 
-Route::middleware(['role:admin'])->group(function () {
+// Login
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Admin/Dashboard'); // ✅ Correct path for Dashboard inside Admin folder
-    })->middleware(['auth', 'verified'])->name('dashboard');
+        return Inertia::render('Admin/Dashboard'); // Accessible to all authenticated users
+    })->name('dashboard');
+
+    Route::get('/journey-loggedin', [UserJourneyController::class, 'index'])->name('journey.loggedin');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
+Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin/islamic-contents', [IslamicContentController::class, 'index'])->name('admin.islamic-contents.index');
     Route::get('/islamic-contents/create', [IslamicContentController::class, 'create'])->name('admin.islamic-contents.create');
     Route::post('/islamic-contents', [IslamicContentController::class, 'store'])->name('admin.islamic-contents.store');

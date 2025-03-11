@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
 
 export default function LessonMain() {
-    const { lesson, questions } = usePage().props;
+    const { user, lesson, questions } = usePage().props;
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [lives, setLives] = useState(3);
     const [score, setScore] = useState(0);
@@ -53,7 +53,7 @@ export default function LessonMain() {
     useEffect(() => {
         if (finished) {
             setTimeout(() => {
-                window.location.href = `/lesson-complete?score=${score}&total=${questions.length}`;
+                window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}`;
             }, 1000);
         }
     }, [finished]);

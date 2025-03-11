@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { usePage } from "@inertiajs/react";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Dashboard() {
+    const { flash } = usePage().props; // ✅ Get flash messages
+
+    // ✅ Reload page if login just happened
+    useEffect(() => {
+        if (flash?.reload) {
+            window.location.reload();
+        }
+    }, [flash]);
 
     return (
         <AuthenticatedLayout
