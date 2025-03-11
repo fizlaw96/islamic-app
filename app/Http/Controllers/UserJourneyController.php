@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Lesson;
 use App\Models\UserJourney;
+use App\Models\User;
 
 class UserJourneyController extends Controller
 {
@@ -62,6 +65,42 @@ class UserJourneyController extends Controller
             'latestLessons' => $latestLessons,
             'nextLesson' => $nextLesson,
             'streak' => $streak
+        ]);
+    }
+
+    public function updateProfileImage(Request $request)
+    {
+        // Validate request
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        // Get user by user_id
+        $user = User::find($request->user_id);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        // Delete old image if exists
+        if ($user->profile_image) {
+            $oldImagePath = str_replace('/storage/', '', $user->profile_image);
+            Storage::disk('public')->delete($oldImagePath);
+        }
+
+        // Store new image
+        $file = $request->file('profile_image');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('profile_images', $fileName, 'public');
+
+        // Update user profile image path
+        $user->profile_image = "/storage/" . $filePath;
+        $user->save();
+
+        return response()->json([
+            'message' => 'Profile image updated successfully',
+            'profile_image' => $user->profile_image
         ]);
     }
 

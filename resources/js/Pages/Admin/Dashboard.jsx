@@ -1,10 +1,15 @@
 import { useEffect } from "react";
-import { usePage } from "@inertiajs/react";
+import { usePage, Link } from "@inertiajs/react";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
+import ProfileImage from "@/UserComponents/ProfileImage"; // Import ProfileImage component
+import { Flame, BookOpen, ChevronRight } from "lucide-react";
 
 export default function Dashboard() {
-    const { user, completedLessons, latestLessons, nextLesson, streak } = usePage().props;
+    const { user, completedLessons, latestLessons, nextLesson, streak, totalLessons } = usePage().props;
+
+    // Calculate lesson completion percentage
+    const progressPercentage = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
 
     return (
         <AuthenticatedLayout
@@ -20,37 +25,45 @@ export default function Dashboard() {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800 p-6 text-gray-900 dark:text-gray-100">
 
-                        {/* ✅ User Profile */}
-                        <div className="flex flex-col items-center text-center space-y-2">
-                            {/* Profile Image */}
-                            <img
-                                src={user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
-                                alt="User Avatar"
-                                className="w-16 h-16 rounded-full border-2 border-white shadow-md"
-                            />
+                        {/* ✅ User Profile Section with Profile Image Upload */}
+                        <ProfileImage user={user} />
 
-                            {/* Name & Subtitle */}
+                        {/* ✅ Streak Section */}
+                        <div className="mt-8 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg flex items-center gap-4">
+                            <Flame size={32} className="text-red-500" />
                             <div>
-                                <h1 className="text-2xl font-bold">{user.name}</h1>
-                                <p className="text-gray-500">Keep learning!</p>
+                                <h3 className="text-lg font-semibold">🔥 Streak: {streak} days</h3>
+                                <p className="text-gray-500 text-sm">Stay consistent! Don't break your streak.</p>
                             </div>
                         </div>
 
-                        {/* ✅ Streak */}
-                        <div className="mt-6">
-                            <h3 className="text-lg font-semibold">🔥 Streak: {streak} days</h3>
-                            <p className="text-gray-500">Keep it up! Don't break your streak.</p>
+                        {/* ✅ Progress Section */}
+                        <div className="mt-8">
+                            <h3 className="text-lg font-semibold">📚 Lesson Progress</h3>
+                            <p className="text-gray-500 text-sm">{completedLessons} out of {totalLessons} lessons completed</p>
+
+                            {/* Progress Bar */}
+                            <div className="mt-2 w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
+                                <div
+                                    className="h-4 rounded-full bg-green-500"
+                                    style={{ width: `${progressPercentage}%` }}
+                                ></div>
+                            </div>
                         </div>
 
-                        {/* ✅ Completed Lessons */}
-                        <div className="mt-6">
-                            <h3 className="text-lg font-semibold">📚 Completed Lessons: {completedLessons}</h3>
-                        </div>
-
-                        {/* ✅ Next Lesson */}
+                        {/* ✅ Continue Learning Section */}
                         {nextLesson && (
-                            <div className="mt-6">
-                                <h3 className="text-lg font-semibold">🎯 Next Lesson: {nextLesson.title}</h3>
+                            <div className="mt-8 bg-green-100 dark:bg-green-700 p-4 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <h3 className="text-lg font-semibold">🎯 Next Lesson</h3>
+                                    <p className="text-gray-500">{nextLesson.title}</p>
+                                </div>
+                                <Link
+                                    href={route("lesson.show", { id: nextLesson.id })}
+                                    className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 flex items-center gap-2"
+                                >
+                                    Continue <ChevronRight size={18} />
+                                </Link>
                             </div>
                         )}
                     </div>
