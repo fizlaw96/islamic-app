@@ -60,11 +60,8 @@ Route::get('/special/{event}', function ($event) {
 
 // Login
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Admin/Dashboard'); // Accessible to all authenticated users
-    })->name('dashboard');
-
-    Route::get('/journey-loggedin', [UserJourneyController::class, 'index'])->name('journey.loggedin');
+    Route::get('/dashboard', [UserJourneyController::class, 'dashboard'])->name('dashboard');
+    Route::get('/journey-user', [UserJourneyController::class, 'index'])->name('journey.loggedin');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

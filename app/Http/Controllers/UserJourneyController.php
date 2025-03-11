@@ -4,12 +4,67 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Lesson;
 use App\Models\UserJourney;
 
 class UserJourneyController extends Controller
 {
+    public function dashboard()
+    {
+        $user = Auth::user();
+
+        // ✅ Count completed lessons
+        $completedLessons = UserJourney::where('user_id', $user->id)
+            ->where('completed', true)
+            ->count();
+
+        // ✅ Fetch last 3 completed lessons
+        $latestLessons = UserJourney::where('user_id', $user->id)
+            ->with('lesson')
+            ->where('completed', true)
+            ->orderBy('updated_at', 'desc')
+            ->take(3)
+            ->get();
+
+        // ✅ Find the next lesson to unlock
+        $nextLesson = Lesson::whereNotIn('id', function ($query) use ($user) {
+            $query->select('lesson_id')->from('user_journeys')->where('user_id', $user->id);
+        })->first();
+
+        // ✅ Calculate Streak
+        $streak = 0;
+        $today = Carbon::today();
+        $dates = UserJourney::where('user_id', $user->id)
+            ->where('completed', true)
+            ->pluck('updated_at')
+            ->map(fn ($date) => Carbon::parse($date)->toDateString()) // Convert timestamps to (Y-m-d)
+            ->sortDesc();
+
+        foreach ($dates as $index => $date) {
+            if ($index === 0 && $date === $today->toDateString()) {
+                $streak = 1;
+            } elseif ($index > 0 && Carbon::parse($dates[$index - 1])->diffInDays($date) === 1) {
+                $streak++;
+            } else {
+                break;
+            }
+        }
+
+        return Inertia::render('Admin/Dashboard', [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'profile_image' => $user->profile_image ?? '/assets/avatars/avatar.png', // ✅ Default Avatar
+            ],
+            'completedLessons' => $completedLessons,
+            'latestLessons' => $latestLessons,
+            'nextLesson' => $nextLesson,
+            'streak' => $streak
+        ]);
+    }
+
     public function index()
     {
         if (!Auth::check()) {
