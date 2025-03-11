@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import Layout from "../Layouts/Layout";
 
 export default function JourneyLoggedIn() {
     const { user, lessons, progress } = usePage().props;
+
+    // Ensure we always display 5 lessons
+    const displayedLessons = lessons.slice(0, 5);
 
     const isLessonUnlocked = (lessonId) => {
         if (lessonId === 1) return true; // ✅ First lesson is always unlocked
@@ -13,46 +16,51 @@ export default function JourneyLoggedIn() {
 
     return (
         <Layout>
-            <div className="p-6 min-h-screen">
-                <h1 className="text-3xl font-bold text-center">
-                    📚 {user.name}'s Learning Journey
+            <div className="p-6 min-h-screen flex flex-col items-center">
+                <h1 className="text-2xl font-bold text-center mb-8">
+                    Perjalanan Pembelajaran Anda
                 </h1>
 
-                {/* <h1 className="text-3xl font-bold text-center">📚 Your Learning Journey</h1> */}
+                <div className="relative flex flex-col items-center space-y-6">
+                    {/* Vertical Line Behind Buttons */}
+                    <div className="absolute w-1 h-full bg-gray-600 dark:bg-gray-400 top-0"></div>
 
-                {lessons.length === 0 ? (
-                    <p className="text-center text-gray-500 dark:text-gray-300 mt-4">No lessons available yet.</p>
-                ) : (
-                    <div className="mt-6 space-y-4">
-                        {lessons.map((lesson, index) => (
-                            <motion.div
-                                key={lesson.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="p-4 bg-white dark:bg-gray-800 rounded-md shadow-md flex items-center justify-between"
-                            >
-                                <div>
-                                    <h2 className="text-xl font-semibold">{lesson.title}</h2>
-                                    <p className="text-gray-600 dark:text-gray-300">{lesson.description}</p>
+                    {displayedLessons.map((lesson, index) => (
+                        <motion.div
+                            key={lesson.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="relative flex flex-col items-center"
+                        >
+                            {/* Lesson Circle */}
+                            {isLessonUnlocked(lesson.id) ? (
+                                <Link
+                                    href={route("lesson.show", { id: lesson.id })}
+                                    className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-green-400 dark:bg-green-600 text-white text-2xl font-bold relative z-10"
+                                >
+                                    ⭐
+                                </Link>
+                            ) : (
+                                <div className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-gray-400 text-white text-2xl font-bold cursor-not-allowed relative z-10">
+                                    🔒
                                 </div>
+                            )}
 
-                                {isLessonUnlocked(lesson.id) ? (
-                                    <Link
-                                        href={route("lesson.show", { id: lesson.id })} // ✅ Pass only lesson_id
-                                        className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600"
-                                    >
-                                        Start Lesson
-                                    </Link>
-                                ) : (
-                                    <button className="px-4 py-2 bg-gray-400 text-white rounded-md cursor-not-allowed">
-                                        🔒 Locked
-                                    </button>
-                                )}
-                            </motion.div>
-                        ))}
+                            {/* Lesson Title */}
+                            <div className="mt-2 text-center">
+                                <h2 className="text-lg font-semibold">{lesson.title}</h2>
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    {/* Final Completion Badge (Trophy) */}
+                    <div className="relative flex flex-col items-center">
+                        <div className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-yellow-500 text-white text-2xl font-bold relative z-10">
+                            🏆
+                        </div>
                     </div>
-                )}
+                </div>
             </div>
         </Layout>
     );

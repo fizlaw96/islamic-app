@@ -34,12 +34,13 @@ export default function LessonMain() {
         setShowModal(true);
 
         if (correct) {
-            setScore(score + 1);
+            setScore((prevScore) => prevScore + 1);
             setModalMessage(language === "bm" ? "Jawapan Betul!" : "Correct Answer!");
         } else {
             if (lives - 1 === 0) {
                 setGameOver(true);
                 setFinished(true);
+                setModalMessage(language === "bm" ? "Permainan Tamat!" : "Game Over!");
             } else {
                 setLives(lives - 1);
                 const wrongMessages = language === "bm"
@@ -54,7 +55,7 @@ export default function LessonMain() {
         if (finished) {
             setTimeout(() => {
                 window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}`;
-            }, 1000);
+            }, 5000);
         }
     }, [finished]);
 
@@ -67,7 +68,7 @@ export default function LessonMain() {
         }
 
         if (currentQuestion + 1 < questions.length) {
-            setCurrentQuestion(currentQuestion + 1);
+            setCurrentQuestion((prev) => prev + 1);
         } else {
             setFinished(true);
         }
@@ -109,13 +110,13 @@ export default function LessonMain() {
                             </div>
                         </div>
 
-                        {/* Continue Button */}
+                        {/* ✅ Continue Button (Handles Last Question Properly) */}
                         <button
                             onClick={handleNextQuestion}
                             className={`mt-4 w-full py-3 rounded-lg text-white font-bold shadow-md
                                 ${isCorrect ? "bg-green-500 hover:bg-green-600" : "bg-red-500 hover:bg-red-600"}`}
                         >
-                            {language === "bm" ? "Teruskan" : "Continue"}
+                            {finished ? (language === "bm" ? "Lihat Keputusan" : "View Results") : (language === "bm" ? "Teruskan" : "Continue")}
                         </button>
                     </div>
                 </motion.div>
