@@ -39,14 +39,20 @@ export default function ListContentTopic({ topic, contents }) {
     return (
         <Layout>
             {/* Fixed Navbar BELOW Layout Navbar */}
-            <nav className={`fixed top-16 left-0 w-full p-4 shadow-md flex items-center z-40
-                ${darkMode ? "bg-gray-700 text-white" : "bg-gray-300 text-black"}`}>
-                <Link href="/">
+            <nav className={`fixed top-16 left-0 w-full p-4 shadow-md flex items-start z-40 gap-4
+                ${darkMode ? "bg-gray-700 text-white" : "bg-gray-300 text-black"}`}
+            >
+                {/* Home Button - Stays on one line */}
+                <Link href="/" className="shrink-0">
                     <button className={`p-2 rounded ${darkMode ? "bg-gray-500 text-white" : "bg-gray-400 text-black"}`}>
                         ← Home
                     </button>
                 </Link>
-                <h1 className="ml-4 text-lg font-bold">{language === "bm" ? topic.topic_bm : topic.topic_en}</h1>
+
+                {/* Topic Title - Can wrap to multiple lines */}
+                <h1 className="text-lg font-bold flex-1">
+                    {language === "bm" ? topic.topic_bm : topic.topic_en}
+                </h1>
             </nav>
 
             {/* Search Bar */}

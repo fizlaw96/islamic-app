@@ -22,15 +22,15 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                         {/* ✅ User Profile Info */}
                         <Link href={route("dashboard")} className="block">
                             <div className="flex items-center gap-4 text-white">
-                                {/* Profile Image */}
+                                {/* Profile Image - Improved Rendering */}
                                 <img
                                     src={auth.user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
                                     alt="User Avatar"
-                                    className="w-16 h-16 rounded-full border-2 border-white shadow-md transition-transform duration-200 hover:scale-105"
+                                    className="w-16 h-16 rounded-full border-2 border-white shadow-md object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                                 />
 
-                                {/* User Name */}
-                                <p className="font-bold text-lg hover:text-green-300 transition-colors duration-200">
+                                {/* User Name - Smoother Color Transition */}
+                                <p className="font-bold text-lg transition-colors duration-300 ease-in-out hover:text-green-300">
                                     {auth.user.name}
                                 </p>
                             </div>
