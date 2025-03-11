@@ -21,12 +21,15 @@ export default function Dashboard() {
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800 p-6 text-gray-900 dark:text-gray-100">
 
                         {/* ✅ User Profile */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex flex-col items-center text-center space-y-2">
+                            {/* Profile Image */}
                             <img
-                                src={user.profile_image}
+                                src={user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
                                 alt="User Avatar"
                                 className="w-16 h-16 rounded-full border-2 border-white shadow-md"
                             />
+
+                            {/* Name & Subtitle */}
                             <div>
                                 <h1 className="text-2xl font-bold">{user.name}</h1>
                                 <p className="text-gray-500">Keep learning!</p>
@@ -42,11 +45,6 @@ export default function Dashboard() {
                         {/* ✅ Completed Lessons */}
                         <div className="mt-6">
                             <h3 className="text-lg font-semibold">📚 Completed Lessons: {completedLessons}</h3>
-                            <ul className="list-disc ml-5 text-gray-500">
-                                {latestLessons.map(lesson => (
-                                    <li key={lesson.id}>{lesson.lesson.title}</li>
-                                ))}
-                            </ul>
                         </div>
 
                         {/* ✅ Next Lesson */}

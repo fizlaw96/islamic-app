@@ -87,7 +87,7 @@ export default function LessonComplete() {
 
                     <div className="mt-8">
                         <Link
-                            href="/journey-loggedin"
+                            href="/journey-user"
                             className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-200 text-lg w-full sm:w-auto"
                         >
                             Back to Journey

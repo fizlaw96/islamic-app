@@ -20,19 +20,21 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                 {auth?.user ? (
                     <>
                         {/* ✅ User Profile Info */}
-                        <div className="flex flex-col items-center text-white">
-                            <img
-                                src={auth.user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
-                                alt="User Avatar"
-                                className="w-16 h-16 rounded-full border-2 border-white shadow-md"
-                            />
-                            <Link href={route("dashboard")}>
-                                <p className="mt-2 font-bold text-lg transition-all duration-200 transform hover:scale-105 hover:text-green-300">
+                        <Link href={route("dashboard")} className="block">
+                            <div className="flex items-center gap-4 text-white">
+                                {/* Profile Image */}
+                                <img
+                                    src={auth.user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
+                                    alt="User Avatar"
+                                    className="w-16 h-16 rounded-full border-2 border-white shadow-md transition-transform duration-200 hover:scale-105"
+                                />
+
+                                {/* User Name */}
+                                <p className="font-bold text-lg hover:text-green-300 transition-colors duration-200">
                                     {auth.user.name}
                                 </p>
-                            </Link>
-                            <p className="text-sm opacity-75">{auth.user.email}</p>
-                        </div>
+                            </div>
+                        </Link>
 
                         {/* ✅ Logout Button */}
                         <div>
