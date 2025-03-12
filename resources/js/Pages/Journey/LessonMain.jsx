@@ -16,8 +16,10 @@ export default function LessonMain() {
     const [gameOver, setGameOver] = useState(false);
     const [finished, setFinished] = useState(false);
     const [isCorrect, setIsCorrect] = useState(null);
-    const [streak, setStreak] = useState(0); // ✅ New streak state
-    const [showStreakFire, setShowStreakFire] = useState(false); // ✅ Show fire effect
+    const [streak, setStreak] = useState(0);
+    const [showStreakFire, setShowStreakFire] = useState(false);
+    const [startTime, setStartTime] = useState(null); // ✅ Track lesson start time
+    const [elapsedTime, setElapsedTime] = useState(0); // ✅ Track elapsed time
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
@@ -31,22 +33,36 @@ export default function LessonMain() {
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
+    useEffect(() => {
+        setStartTime(Date.now()); // ✅ Set lesson start time when component mounts
+    }, []);
+
+    useEffect(() => {
+        if (startTime) {
+            const timer = setInterval(() => {
+                setElapsedTime(Math.floor((Date.now() - startTime) / 1000)); // ✅ Update elapsed time in seconds
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [startTime]);
+
     const handleAnswer = (correct) => {
         setIsCorrect(correct);
         setShowModal(true);
 
         if (correct) {
             setScore((prevScore) => prevScore + 1);
-            setStreak((prevStreak) => prevStreak + 1); // ✅ Increase streak
+            setStreak((prevStreak) => prevStreak + 1);
 
             if (streak + 1 >= 2) {
-                setShowStreakFire(true); // ✅ Show fire effect if streak is 2+
+                setShowStreakFire(true);
             }
 
             setModalMessage(language === "bm" ? "Jawapan Betul!" : "Correct Answer!");
         } else {
-            setStreak(0); // ✅ Reset streak on incorrect answer
-            setShowStreakFire(false); // ✅ Hide fire effect
+            setStreak(0);
+            setShowStreakFire(false);
             if (lives - 1 === 0) {
                 setGameOver(true);
                 setFinished(true);
@@ -64,7 +80,7 @@ export default function LessonMain() {
     useEffect(() => {
         if (finished) {
             setTimeout(() => {
-                window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}`;
+                window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}&time=${elapsedTime}`;
             }, 2000);
         }
     }, [finished]);
@@ -108,7 +124,7 @@ export default function LessonMain() {
                 <MCQBinaryQuestion question={questions[currentQuestion]} language={language} onAnswer={handleAnswer} />
             )}
 
-            {/* ✅ Modal Popup (Game Over / Next Question) */}
+            {/* ✅ Modal Popup */}
             {showModal && (
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -120,7 +136,6 @@ export default function LessonMain() {
                         className={`p-6 rounded-t-lg shadow-lg text-center max-w-sm w-full
                             ${isCorrect ? "bg-green-200 text-green-900" : "bg-red-200 text-red-900"}`}
                     >
-                        {/* Top Section with Icon and Message */}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 {isCorrect ? (
@@ -132,7 +147,6 @@ export default function LessonMain() {
                             </div>
                         </div>
 
-                        {/* ✅ Continue Button (Handles Last Question Properly) */}
                         <button
                             onClick={handleNextQuestion}
                             className={`mt-4 w-full py-3 rounded-lg text-white font-bold shadow-md

@@ -43,7 +43,13 @@ export default function JourneyLoggedIn() {
 
                 <div className="relative flex flex-col space-y-8 w-full max-w-md">
                     {/* Vertical Line Behind Buttons */}
-                    <div className="absolute left-8 top-0 w-1 h-full bg-gray-500 dark:bg-gray-400"></div>
+                    <div
+                        className="absolute left-8 top-0 w-1 h-full bg-gray-500 dark:bg-gray-400"
+                        style={{
+                            backgroundImage: "linear-gradient(135deg, transparent 25%, gray 25%, gray 50%, transparent 50%, transparent 75%, gray 75%)",
+                            backgroundSize: "8px 16px",
+                        }}
+                    ></div>
 
                     {displayedLessons.map((lesson, index) => (
                         <motion.div
