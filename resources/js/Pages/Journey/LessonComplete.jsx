@@ -21,7 +21,7 @@ export default function LessonComplete() {
     // ✅ Calculate percentage (convert raw score into percentage)
     const percentage = total ? Math.round((rawScore / total) * 100) : 0;
 
-    // ✅ Language state (for BM/EN)
+    // ✅ Language state (BM/EN)
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
@@ -32,6 +32,24 @@ export default function LessonComplete() {
         window.addEventListener("storage", handleStorageChange);
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
+
+    // ✅ BM/EN Translations
+    const translations = {
+        bm: {
+            amazing: "🎉 Anda Hebat! 🎉",
+            keepGoing: "💪 Teruskan Usaha! 💪",
+            tryAgain: "😢 Cuba Lagi!",
+            scored: "Anda mendapat",
+            backToJourney: "Kembali ke Perjalanan",
+        },
+        en: {
+            amazing: "🎉 You're Amazing! 🎉",
+            keepGoing: "💪 Keep Going! 💪",
+            tryAgain: "😢 Try Again!",
+            scored: "You scored",
+            backToJourney: "Back to Journey",
+        },
+    };
 
     // ✅ Send Score to Backend (Send percentage instead of raw score)
     const sendScoreToBackend = async () => {
@@ -78,11 +96,15 @@ export default function LessonComplete() {
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl font-bold text-center mt-4">
-                        {percentage >= 80 ? "🎉 You're Amazing! 🎉" : percentage >= 50 ? "💪 Keep Going! 💪" : "😢 Try Again!"}
+                        {percentage >= 80
+                            ? translations[language].amazing
+                            : percentage >= 50
+                            ? translations[language].keepGoing
+                            : translations[language].tryAgain}
                     </h1>
 
                     <p className="text-lg sm:text-xl mt-2">
-                        You scored <span className="font-bold">{percentage}%</span>.
+                        {translations[language].scored} <span className="font-bold">{percentage}%</span>.
                     </p>
 
                     <div className="mt-8">
@@ -90,7 +112,7 @@ export default function LessonComplete() {
                             href="/journey-user"
                             className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-200 text-lg w-full sm:w-auto"
                         >
-                            Back to Journey
+                            {translations[language].backToJourney}
                         </Link>
                     </div>
                 </div>

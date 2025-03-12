@@ -39,19 +39,29 @@ class UserJourneyController extends Controller
         // ✅ Calculate Streak
         $streak = 0;
         $today = Carbon::today();
+
+        // ✅ Get all completed lesson dates, sorted descending (latest first)
         $dates = UserJourney::where('user_id', $user->id)
             ->where('completed', true)
             ->pluck('updated_at')
             ->map(fn ($date) => Carbon::parse($date)->toDateString()) // Convert timestamps to (Y-m-d)
-            ->sortDesc();
+            ->unique() // Remove duplicate dates
+            ->sortDesc() // Sort newest to oldest
+            ->values();
 
-        foreach ($dates as $index => $date) {
-            if ($index === 0 && $date === $today->toDateString()) {
+        if ($dates->isNotEmpty()) {
+            // ✅ Start counting streak if latest completion is today or yesterday
+            if ($dates[0] === $today->toDateString() || Carbon::parse($dates[0])->diffInDays($today) === 1) {
                 $streak = 1;
-            } elseif ($index > 0 && Carbon::parse($dates[$index - 1])->diffInDays($date) === 1) {
-                $streak++;
-            } else {
-                break;
+
+                // ✅ Check previous days in a row
+                for ($i = 1; $i < $dates->count(); $i++) {
+                    if (Carbon::parse($dates[$i])->diffInDays(Carbon::parse($dates[$i - 1])) === 1) {
+                        $streak++;
+                    } else {
+                        break; // ✅ Streak breaks if there's a missing day
+                    }
+                }
             }
         }
 

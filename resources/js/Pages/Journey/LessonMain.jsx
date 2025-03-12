@@ -16,6 +16,8 @@ export default function LessonMain() {
     const [gameOver, setGameOver] = useState(false);
     const [finished, setFinished] = useState(false);
     const [isCorrect, setIsCorrect] = useState(null);
+    const [streak, setStreak] = useState(0); // ✅ New streak state
+    const [showStreakFire, setShowStreakFire] = useState(false); // ✅ Show fire effect
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
@@ -35,8 +37,16 @@ export default function LessonMain() {
 
         if (correct) {
             setScore((prevScore) => prevScore + 1);
+            setStreak((prevStreak) => prevStreak + 1); // ✅ Increase streak
+
+            if (streak + 1 >= 2) {
+                setShowStreakFire(true); // ✅ Show fire effect if streak is 2+
+            }
+
             setModalMessage(language === "bm" ? "Jawapan Betul!" : "Correct Answer!");
         } else {
+            setStreak(0); // ✅ Reset streak on incorrect answer
+            setShowStreakFire(false); // ✅ Hide fire effect
             if (lives - 1 === 0) {
                 setGameOver(true);
                 setFinished(true);
@@ -79,6 +89,18 @@ export default function LessonMain() {
             ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
 
             <LessonNav currentQuestion={currentQuestion + 1} totalQuestions={questions.length} lives={lives} />
+
+            {/* 🔥 Streak Fire Effect */}
+            {showStreakFire && (
+                <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1.2, opacity: 1 }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute top-10 text-3xl font-bold text-orange-500 animate-pulse"
+                >
+                    🔥 Streak {streak}!
+                </motion.div>
+            )}
 
             {questions[currentQuestion].question_type === "ordered" ? (
                 <OrderedQuestion question={questions[currentQuestion]} language={language} onAnswer={handleAnswer} />
