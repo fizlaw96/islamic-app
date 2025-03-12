@@ -18,13 +18,27 @@ export default function JourneyLoggedIn() {
         return () => window.removeEventListener("storage", handleStorageChange);
     }, []);
 
-    // Ensure we always display 5 lessons
-    const displayedLessons = lessons.slice(0, 5);
+    // ✅ Group lessons by level
+    const groupedLessons = lessons.reduce((acc, lesson) => {
+        acc[lesson.level] = acc[lesson.level] || [];
+        acc[lesson.level].push(lesson);
+        return acc;
+    }, {});
 
-    // State to toggle description visibility
+    // ✅ Get all available levels
+    const availableLevels = Object.keys(groupedLessons).sort((a, b) => a - b);
+
+    // ✅ State to control level selection
+    const [selectedLevel, setSelectedLevel] = useState(availableLevels[0] || 1);
+    const [showLevelModal, setShowLevelModal] = useState(false);
     const [openLessonId, setOpenLessonId] = useState(null);
 
-    // Function to toggle lesson descriptions
+    // ✅ Check if all Level 1 lessons are completed
+    const isLevel1Completed = groupedLessons[1]?.every(
+        (lesson) => progress[lesson.id]?.score >= 70
+    );
+
+    // ✅ Function to toggle lesson descriptions
     const toggleDescription = (lessonId) => {
         setOpenLessonId(openLessonId === lessonId ? null : lessonId);
     };
@@ -37,21 +51,34 @@ export default function JourneyLoggedIn() {
     return (
         <Layout>
             <div className="p-6 min-h-screen flex flex-col items-center">
-                <h1 className="text-2xl font-bold text-center mb-8">
+                {/* ✅ Title */}
+                <h1 className="text-2xl font-bold text-center mb-4">
                     {language === "bm" ? "Perjalanan Pembelajaran Anda" : "Your Learning Journey"}
                 </h1>
 
+                {/* ✅ Show Level Selection Button ONLY if Level 1 is fully completed */}
+                {isLevel1Completed && (
+                    <button
+                        onClick={() => setShowLevelModal(true)}
+                        className="mb-6 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition"
+                    >
+                        {language === "bm" ? "Pilih Tahap" : "Select Level"}
+                    </button>
+                )}
+
+                {/* ✅ Lessons Display */}
                 <div className="relative flex flex-col space-y-8 w-full max-w-md">
                     {/* Vertical Line Behind Buttons */}
                     <div
                         className="absolute left-8 top-0 w-1 h-full bg-gray-500 dark:bg-gray-400"
                         style={{
-                            backgroundImage: "linear-gradient(135deg, transparent 25%, gray 25%, gray 50%, transparent 50%, transparent 75%, gray 75%)",
+                            backgroundImage:
+                                "linear-gradient(135deg, transparent 25%, gray 25%, gray 50%, transparent 50%, transparent 75%, gray 75%)",
                             backgroundSize: "8px 16px",
                         }}
                     ></div>
 
-                    {displayedLessons.map((lesson, index) => (
+                    {groupedLessons[selectedLevel]?.map((lesson, index) => (
                         <motion.div
                             key={lesson.id}
                             initial={{ opacity: 0, x: -20 }}
@@ -108,7 +135,7 @@ export default function JourneyLoggedIn() {
                         </motion.div>
                     ))}
 
-                    {/* Final Completion Badge (Trophy) */}
+                    {/* ✅ Trophy for Level Completion */}
                     <div className="relative flex items-center space-x-4 mt-4">
                         <div className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-yellow-500 text-white text-2xl font-bold relative z-10">
                             🏆
@@ -116,6 +143,43 @@ export default function JourneyLoggedIn() {
                     </div>
                 </div>
             </div>
+
+            {/* ✅ Level Selection Modal */}
+            <AnimatePresence>
+                {showLevelModal && (
+                    <motion.div
+                        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <motion.div
+                            className="bg-white p-6 rounded-lg shadow-lg w-80 text-center"
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.8 }}
+                        >
+                            <h2 className="text-xl font-bold mb-4">
+                                {language === "bm" ? "Pilih Tahap" : "Select Level"}
+                            </h2>
+                            <div className="space-y-3">
+                                {availableLevels.map((level) => (
+                                    <button
+                                        key={level}
+                                        onClick={() => {
+                                            setSelectedLevel(level);
+                                            setShowLevelModal(false);
+                                        }}
+                                        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+                                    >
+                                        {language === "bm" ? `Tahap ${level}` : `Level ${level}`}
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </Layout>
     );
 }

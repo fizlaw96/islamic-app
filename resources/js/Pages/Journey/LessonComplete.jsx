@@ -140,7 +140,9 @@ export default function LessonComplete() {
                         transition={{ duration: 0.6 }}
                         className="flex flex-col items-center bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg"
                     >
-                        <h2 className="text-lg font-bold uppercase">{translations[language].good}</h2>
+                        <h2 className="text-lg font-bold uppercase border-b-2 border-gray-300 pb-2">
+                            {translations[language].good}
+                        </h2>
                         <div className="flex items-center space-x-2 mt-2">
                             <span className="text-3xl">🎯</span>
                             <span className="text-3xl font-bold">{animatedScore}%</span>
@@ -155,8 +157,10 @@ export default function LessonComplete() {
                             transition={{ duration: 0.6 }}
                             className="flex flex-col items-center bg-blue-500 text-white px-6 py-4 rounded-lg shadow-lg"
                         >
-                            <h2 className="text-lg font-bold uppercase">{translations[language].committed}</h2>
-                            <div className="flex items-center space-x-2 mt-2">
+                            <h2 className="text-lg font-bold uppercase border-b-2 border-gray-300 pb-2">
+                                {translations[language].committed}
+                            </h2>
+                            <div className="flex items-center pt-2">
                                 <span className="text-3xl">⏳</span>
                                 <span className="text-3xl font-bold">{formattedTime}</span>
                             </div>

@@ -121,8 +121,7 @@ class UserJourneyController extends Controller
         }
 
         $user = Auth::user();
-        $lessons = Lesson::all();
-
+        $lessons = Lesson::orderBy('level')->orderBy('id')->get(); // ✅ Order lessons by level
         $progress = UserJourney::where('user_id', $user->id)->get()->keyBy('lesson_id');
 
         return Inertia::render('JourneyLoggedIn', [
