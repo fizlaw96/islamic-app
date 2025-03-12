@@ -55,7 +55,7 @@ export default function LessonMain() {
         if (finished) {
             setTimeout(() => {
                 window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}`;
-            }, 5000);
+            }, 2000);
         }
     }, [finished]);
 

@@ -20,6 +20,11 @@ export default function ProfileImage({ user }) {
             });
 
             setProfileImage(response.data.profile_image); // ✅ Update UI with new image
+
+            // ✅ Reload page after successful upload
+            setTimeout(() => {
+                window.location.reload();
+            }, 500); // Small delay for smooth UI update
         } catch (error) {
             console.error("Error updating profile image:", error.response?.data || error.message);
         }
