@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, usePage } from "@inertiajs/react";
-import { Menu, Bell, Settings, Star, Home } from "lucide-react";
+import { Menu, Bell, Settings, Star, Home, User, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import moment from "moment-hijri";
 import Drawer from "./Drawer";
@@ -77,15 +77,27 @@ export default function Layout({ children }) {
                 transition={{ duration: 0.5 }}
                 className="flex items-center justify-between p-4 bg-green-600 dark:bg-green-800 text-white shadow-md fixed top-0 left-0 w-full z-50"
             >
+                {/* Menu Button */}
                 <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
                     <Menu size={24} />
                 </button>
+
+                {/* App Name */}
                 <h1 className="flex justify-center items-center">
-                    <img src="/assets/button/name.svg" alt="App Name" className="h-8 w-auto filter invert" />
+                    <img
+                        src="/assets/button/name.svg"
+                        alt="App Name"
+                        className="h-8 w-auto filter invert"
+                    />
                 </h1>
-                <button className="p-2">
-                    <Bell size={24} />
-                </button>
+
+                {/* Settings Button */}
+                <Link
+                    href="/settings"
+                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${isSpecial ? "ml-10 sm:ml-10" : ""}`}
+                >
+                    <Settings size={24} />
+                </Link>
             </motion.nav>
 
             {/* ✅ Sidebar Drawer */}
@@ -101,36 +113,42 @@ export default function Layout({ children }) {
                 transition={{ duration: 0.5 }}
                 className="sticky bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-3 flex items-center justify-between relative"
             >
-                {/* ✅ Home Button */}
-                <Link href="/" className="flex flex-col items-center ml-4 sm:ml-10">
-                    <Home size={24} />
+                {/* ✅ Dashboard (Login Redirect) */}
+                <Link
+                    href={auth?.user ? route("dashboard") : route("login")}
+                    className="flex flex-col items-center ml-4 sm:ml-10 transition-transform duration-200 ease-in-out hover:scale-110"
+                >
+                    <User size={24} />
                 </Link>
 
-                {/* ✅ Journey Button (Redirects based on auth) */}
+                {/* ✅ Journey (Login Redirect) */}
                 <Link
                     href={auth?.user ? route("journey.loggedin") : route("journey")}
-                    className={`flex flex-col items-center ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
+                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
                 >
                     <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
                 </Link>
 
-                {/* ✅ SpecialButton - Centered & Overflowing (Only Renders If Exists) */}
+                {/* ✅ Special Button (Only Renders If Exists) */}
                 {isSpecial && (
                     <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2 animate-shine">
                         <SpecialButton />
                     </div>
                 )}
 
-                {/* ✅ Settings Button */}
+                {/* ✅ Home (Replaced with Blog Icon) */}
                 <Link
-                    href="/settings"
-                    className={`flex flex-col items-center ${isSpecial ? "ml-10 sm:ml-10" : ""}`}
+                    href="/"
+                    className="flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110"
                 >
-                    <Settings size={24} />
+                    <FileText size={24} />
                 </Link>
 
-                {/* ✅ Favourite Button */}
-                <Link href="/favourite" className="flex flex-col items-center mr-4 sm:mr-10">
+                {/* ✅ Favourite */}
+                <Link
+                    href="/favourite"
+                    className="flex flex-col items-center mr-4 sm:mr-10 transition-transform duration-200 ease-in-out hover:scale-110"
+                >
                     <Star size={24} />
                 </Link>
             </motion.nav>

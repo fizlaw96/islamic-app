@@ -13,9 +13,9 @@ export default function Ramadhan() {
         <Layout>
             <div className="text-center p-6">
                 {/* ✅ Ramadhan Greeting */}
-                <h1 className="text-3xl font-bold text-green-700 dark:text-green-400">
-                    {language === "bm" ? "🌙 Selamat Menyambut Ramadhan! 🌙" : "🌙 Ramadhan Mubarak! 🌙"}
-                </h1>
+                <h1 className="text-3xl font-bold text-center text-green-700 dark:text-green-400">
+    {language === "bm" ? "Selamat Menyambut Ramadan! 🌙" : "Ramadan Mubarak! 🌙"}
+</h1>
                 <p className="mt-4 text-lg text-gray-700 dark:text-black">
                     {language === "bm"
                         ? "Bulan suci Ramadhan adalah waktu untuk berpuasa, solat, dan refleksi diri. Semoga ia membawa keberkatan dan kedamaian."
