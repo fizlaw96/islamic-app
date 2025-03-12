@@ -147,8 +147,8 @@ class LessonSeeder extends Seeder {
                 'question_id'    => $questionIds[$record['question_id']],
                 'option_text_bm' => $record['option_text_bm'],
                 'option_text_en' => $record['option_text_en'],
-                'is_correct'     => $record['is_correct'] ?? 0,
-                'order'          => (isset($record['order']) && trim($record['order']) !== '') ? (int)$record['order'] : null,
+                'is_correct'     => ($record['is_correct'] === "NULL" || $record['is_correct'] === "") ? null : $record['is_correct'],
+                'order'          => (isset($record['order']) && trim($record['order']) !== '' && $record['order'] !== "NULL") ? (int)$record['order'] : null,
                 'created_at'     => Carbon::now(),
                 'updated_at'     => Carbon::now(),
             ]);

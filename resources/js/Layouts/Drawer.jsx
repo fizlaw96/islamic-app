@@ -106,7 +106,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                 )}
                 <li className="p-2 border-b flex items-center gap-2">
                     <Heart size={20} className="text-red-500" />
-                    <Link href="/donate">{translations[language]?.donate || "Donate"}</Link>
+                    <Link href="/about">{translations[language]?.about || "About Us"}</Link>
                 </li>
             </ul>
             <br />

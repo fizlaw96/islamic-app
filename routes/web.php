@@ -23,6 +23,9 @@ Route::get('/history', function () {
     return Inertia::render('History');
 })->name('history');
 
+Route::get('/about', function () {
+    return Inertia::render('About'); // Loads the About.jsx page
+})->name('about');
 
 // Bottom Menu
 Route::get('/journey', function () {

@@ -49,7 +49,7 @@ export default function AuthenticatedLayout({ children }) {
             dailyReminder: "Daily Reminder",
             question: "Question",
             askQuestion: "Ask Question",
-            donate: "Donate",
+            about: "About Us",
             logout: "Log Out",
 
             home: "Home",
@@ -69,7 +69,7 @@ export default function AuthenticatedLayout({ children }) {
             dailyReminder: "Peringatan Harian",
             question: "Soalan",
             askQuestion: "Tanya Soalan",
-            donate: "Derma",
+            about: "Tentang Kami",
             logout: "Log Keluar",
 
             home: "Laman Utama",
