@@ -69,14 +69,7 @@ export default function JourneyLoggedIn() {
                 {/* ✅ Lessons Display */}
                 <div className="relative flex flex-col space-y-8 w-full max-w-md">
                     {/* Vertical Line Behind Buttons */}
-                    <div
-                        className="absolute left-8 top-0 w-1 h-full bg-gray-500 dark:bg-gray-400"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(135deg, transparent 25%, gray 25%, gray 50%, transparent 50%, transparent 75%, gray 75%)",
-                            backgroundSize: "8px 16px",
-                        }}
-                    ></div>
+                    <div className="absolute left-8 top-0 w-1 h-full bg-gray-500 dark:bg-gray-400 z-0"></div>
 
                     {groupedLessons[selectedLevel]?.map((lesson, index) => (
                         <motion.div
@@ -84,11 +77,11 @@ export default function JourneyLoggedIn() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="relative flex items-center space-x-4"
+                            className="relative flex items-center space-x-4 z-0" // ✅ Set z-0 to push behind layout
                         >
-                            {/* Lesson Circle with Proper Line Placement */}
-                            <div className="relative flex items-center">
-                                <div className="absolute w-1 h-full bg-gray-500 dark:bg-gray-400 left-1/2 transform -translate-x-1/2"></div>
+                            {/* Lesson Circle (Behind the layout) */}
+                            <div className="relative flex items-center z-0"> {/* ✅ Pushed behind using z-0 */}
+                                <div className="absolute w-1 h-full bg-gray-500 dark:bg-gray-400 left-1/2 transform -translate-x-1/2 z-0"></div>
                                 {isLessonUnlocked(lesson.id) ? (
                                     <Link
                                         href={route("lesson.show", { id: lesson.id })}
@@ -136,8 +129,8 @@ export default function JourneyLoggedIn() {
                     ))}
 
                     {/* ✅ Trophy for Level Completion */}
-                    <div className="relative flex items-center space-x-4 mt-4">
-                        <div className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-yellow-500 text-white text-2xl font-bold relative z-10">
+                    <div className="relative flex items-center space-x-4 mt-4 z-0"> {/* ✅ Push behind layout */}
+                        <div className="w-16 h-16 flex items-center justify-center rounded-full shadow-md bg-yellow-500 text-white text-2xl font-bold relative z-0">
                             🏆
                         </div>
                     </div>
