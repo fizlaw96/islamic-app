@@ -18,10 +18,13 @@ export default function LessonMain() {
     const [isCorrect, setIsCorrect] = useState(null);
     const [streak, setStreak] = useState(0);
     const [showStreakFire, setShowStreakFire] = useState(false);
-    const [startTime, setStartTime] = useState(null); // ✅ Track lesson start time
-    const [elapsedTime, setElapsedTime] = useState(0); // ✅ Track elapsed time
+    const [startTime, setStartTime] = useState(null);
+    const [elapsedTime, setElapsedTime] = useState(0);
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+
+    const correctSound = new Audio("/assets/mp3/correct.mp3");
+    const wrongSound = new Audio("/assets/mp3/wrong.mp3");
 
     useEffect(() => {
         const handleStorageChange = () => {
@@ -34,13 +37,13 @@ export default function LessonMain() {
     }, []);
 
     useEffect(() => {
-        setStartTime(Date.now()); // ✅ Set lesson start time when component mounts
+        setStartTime(Date.now());
     }, []);
 
     useEffect(() => {
         if (startTime) {
             const timer = setInterval(() => {
-                setElapsedTime(Math.floor((Date.now() - startTime) / 1000)); // ✅ Update elapsed time in seconds
+                setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
             }, 1000);
 
             return () => clearInterval(timer);
@@ -52,6 +55,7 @@ export default function LessonMain() {
         setShowModal(true);
 
         if (correct) {
+            correctSound.play(); // ✅ Play correct answer sound
             setScore((prevScore) => prevScore + 1);
             setStreak((prevStreak) => prevStreak + 1);
 
@@ -61,8 +65,10 @@ export default function LessonMain() {
 
             setModalMessage(language === "bm" ? "Jawapan Betul!" : "Correct Answer!");
         } else {
+            wrongSound.play(); // ❌ Play wrong answer sound
             setStreak(0);
             setShowStreakFire(false);
+
             if (lives - 1 === 0) {
                 setGameOver(true);
                 setFinished(true);

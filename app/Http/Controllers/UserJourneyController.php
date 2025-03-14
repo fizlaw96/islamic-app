@@ -18,49 +18,49 @@ class UserJourneyController extends Controller
     {
         $user = Auth::user();
 
-        // ✅ Count completed lessons
-        $completedLessons = UserJourney::where('user_id', $user->id)
-            ->where('completed', true)
-            ->count();
+        // ✅ Fetch all lessons count for progress calculation
+        $totalLessons = Lesson::count();
 
-        // ✅ Fetch last 3 completed lessons
-        $latestLessons = UserJourney::where('user_id', $user->id)
-            ->with('lesson')
+        // ✅ Fetch completed lesson IDs
+        $completedLessonIds = UserJourney::where('user_id', $user->id)
             ->where('completed', true)
+            ->pluck('lesson_id');
+
+        // ✅ Count completed lessons
+        $completedLessons = $completedLessonIds->count();
+
+        // ✅ Fetch last 3 completed lessons with lesson details, using `title_bm`
+        $latestLessons = UserJourney::where('user_id', $user->id)
+            ->where('completed', true)
+            ->with('lesson:id,title_bm') // ✅ Fix: Use `title_bm`
             ->orderBy('updated_at', 'desc')
             ->take(3)
             ->get();
 
         // ✅ Find the next lesson to unlock
-        $nextLesson = Lesson::whereNotIn('id', function ($query) use ($user) {
-            $query->select('lesson_id')->from('user_journeys')->where('user_id', $user->id);
-        })->first();
+        $nextLesson = Lesson::whereNotIn('id', $completedLessonIds)->first();
 
         // ✅ Calculate Streak
         $streak = 0;
         $today = Carbon::today();
 
-        // ✅ Get all completed lesson dates, sorted descending (latest first)
+        // ✅ Get unique completion dates sorted (latest first)
         $dates = UserJourney::where('user_id', $user->id)
             ->where('completed', true)
             ->pluck('updated_at')
-            ->map(fn ($date) => Carbon::parse($date)->toDateString()) // Convert timestamps to (Y-m-d)
-            ->unique() // Remove duplicate dates
-            ->sortDesc() // Sort newest to oldest
+            ->map(fn ($date) => Carbon::parse($date)->toDateString()) // Convert to (Y-m-d)
+            ->unique()
+            ->sortDesc()
             ->values();
 
-        if ($dates->isNotEmpty()) {
-            // ✅ Start counting streak if latest completion is today or yesterday
-            if ($dates[0] === $today->toDateString() || Carbon::parse($dates[0])->diffInDays($today) === 1) {
-                $streak = 1;
+        if ($dates->isNotEmpty() && ($dates[0] === $today->toDateString() || Carbon::parse($dates[0])->diffInDays($today) === 1)) {
+            $streak = 1;
 
-                // ✅ Check previous days in a row
-                for ($i = 1; $i < $dates->count(); $i++) {
-                    if (Carbon::parse($dates[$i])->diffInDays(Carbon::parse($dates[$i - 1])) === 1) {
-                        $streak++;
-                    } else {
-                        break; // ✅ Streak breaks if there's a missing day
-                    }
+            for ($i = 1; $i < $dates->count(); $i++) {
+                if (Carbon::parse($dates[$i])->diffInDays(Carbon::parse($dates[$i - 1])) === 1) {
+                    $streak++;
+                } else {
+                    break; // ✅ Streak breaks if there's a missing day
                 }
             }
         }
@@ -69,8 +69,10 @@ class UserJourneyController extends Controller
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,
-                'profile_image' => $user->profile_image ?? '/assets/avatars/avatar.png', // ✅ Default Avatar
+                'profile_image' => $user->profile_image ?? '/assets/avatars/avatar.png',
             ],
+            'totalLessons' => $totalLessons,
+            'completedLessonIds' => $completedLessonIds->toArray(), // ✅ Ensure array format
             'completedLessons' => $completedLessons,
             'latestLessons' => $latestLessons,
             'nextLesson' => $nextLesson,

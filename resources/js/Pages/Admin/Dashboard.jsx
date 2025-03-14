@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { usePage, Link } from "@inertiajs/react";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
@@ -6,10 +5,17 @@ import ProfileImage from "@/UserComponents/ProfileImage"; // Import ProfileImage
 import { Flame, BookOpen, ChevronRight } from "lucide-react";
 
 export default function Dashboard() {
-    const { user, completedLessons, latestLessons, nextLesson, streak, totalLessons } = usePage().props;
+    const {
+        user,
+        completedLessons = 0,
+        latestLessons = [],
+        nextLesson = null,
+        streak = 0,
+        totalLessons = 1 // Avoid division by zero
+    } = usePage().props;
 
-    // Calculate lesson completion percentage
-    const progressPercentage = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+    // ✅ Calculate lesson completion percentage safely
+    const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 
     return (
         <AuthenticatedLayout
@@ -25,7 +31,7 @@ export default function Dashboard() {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800 p-6 text-gray-900 dark:text-gray-100">
 
-                        {/* ✅ User Profile Section with Profile Image Upload */}
+                        {/* ✅ User Profile Section */}
                         <ProfileImage user={user} />
 
                         {/* ✅ Streak Section */}
@@ -42,10 +48,10 @@ export default function Dashboard() {
                             <h3 className="text-lg font-semibold">📚 Lesson Progress</h3>
                             <p className="text-gray-500 text-sm">{completedLessons} out of {totalLessons} lessons completed</p>
 
-                            {/* Progress Bar */}
+                            {/* ✅ Progress Bar */}
                             <div className="mt-2 w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
                                 <div
-                                    className="h-4 rounded-full bg-green-500"
+                                    className="h-4 rounded-full bg-green-500 transition-all duration-300"
                                     style={{ width: `${progressPercentage}%` }}
                                 ></div>
                             </div>
