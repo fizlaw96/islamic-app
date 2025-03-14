@@ -91,10 +91,6 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                     <Link href="/history">{translations[language]?.history || "History"}</Link>
                 </li>
                 <li className="p-2 border-b flex items-center gap-2">
-                    <CalendarCheck size={20} />
-                    <Link href="/daily-reminder">{translations[language]?.dailyReminder || "Daily Reminder"}</Link>
-                </li>
-                <li className="p-2 border-b flex items-center gap-2">
                     <HelpCircle size={20} />
                     <Link href="/question">{translations[language]?.question || "Question"}</Link>
                 </li>

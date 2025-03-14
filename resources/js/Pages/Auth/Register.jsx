@@ -32,7 +32,7 @@ export default function Register() {
         <Layout>
             <Head title={language === "bm" ? "Daftar" : "Register"} />
 
-            <div className="flex flex-col items-center justify-center mt-20">
+            <div className="flex flex-col items-center justify-center mt-20 relative z-0 overflow-y-auto">
                 <div className="w-full max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
                         {language === "bm" ? "🕌 Daftar Akaun" : "🕌 Create an Account"}
@@ -71,7 +71,7 @@ export default function Register() {
                         </div>
 
                         <div className="mt-6 flex items-center justify-center">
-                            <PrimaryButton className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md font-bold transition-all duration-200">
+                            <PrimaryButton type="submit" className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow-md font-bold transition-all duration-200">
                                 {language === "bm" ? "Daftar" : "Register"}
                             </PrimaryButton>
                         </div>

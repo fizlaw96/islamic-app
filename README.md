@@ -11,3 +11,7 @@ npm install moment-hijri
 npm install axios
 
 composer require league/csv
+
+php artisan migrate:refresh
+php artisan db:seed
+php artisan db:seed --class=LessonSeeder
