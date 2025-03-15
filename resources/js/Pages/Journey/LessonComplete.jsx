@@ -169,7 +169,7 @@ export default function LessonComplete() {
                 </div>
 
                 {/* ✅ Message Based on Score */}
-                <h1 className="text-3xl sm:text-4xl font-bold text-center mt-4">
+                <h1 className="text-3xl sm:text-4xl font-bold text-center mt-4 text-black">
                     {percentage >= 80
                         ? translations[language].amazing
                         : percentage >= 50
