@@ -89,24 +89,20 @@ class UserJourneyController extends Controller
         ]);
 
         // Get user by user_id
-        $user = User::find($request->user_id);
+        $user = User::findOrFail($request->user_id);
 
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
-
-        // Delete old image if exists
-        if ($user->profile_image) {
-            $oldImagePath = str_replace('/storage/', '', $user->profile_image);
+        // ✅ Delete old image if exists and is not the default avatar
+        if ($user->profile_image && strpos($user->profile_image, 'default_avatar.png') === false) {
+            $oldImagePath = str_replace('/storage/', '', $user->profile_image); // ✅ Remove /storage/ from path
             Storage::disk('public')->delete($oldImagePath);
         }
 
-        // Store new image
+        // ✅ Store new image
         $file = $request->file('profile_image');
         $fileName = time() . '_' . $file->getClientOriginalName();
         $filePath = $file->storeAs('profile_images', $fileName, 'public');
 
-        // Update user profile image path
+        // ✅ Update user profile image path correctly
         $user->profile_image = "/storage/" . $filePath;
         $user->save();
 
