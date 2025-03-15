@@ -8,6 +8,7 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
 
     const [correctOrder, setCorrectOrder] = useState([]);
     const [userOrder, setUserOrder] = useState([]);
+    const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
         const sortedOrder = [...question.options].sort((a, b) => a.order - b.order);
@@ -15,14 +16,12 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
         setUserOrder(shuffleArray(sortedOrder));
     }, [question]);
 
-    // ✅ Prevent scrolling when dragging starts
     const handleDragStart = () => {
         document.body.style.overflow = "hidden";
     };
 
-    // ✅ Restore scrolling when dragging ends
     const handleDragEnd = (result) => {
-        document.body.style.overflow = "auto"; // Restore scroll
+        document.body.style.overflow = "auto";
         if (!result.destination) return;
 
         const reorderedItems = Array.from(userOrder);
@@ -33,6 +32,8 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
     };
 
     const handleSubmit = () => {
+        setSubmitted(true); // Disable button after submission
+
         const isCorrect = userOrder.every((option, index) => option.id === correctOrder[index].id);
         onAnswer(isCorrect);
     };
@@ -75,7 +76,12 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
 
             <button
                 onClick={handleSubmit}
-                className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+                disabled={submitted}
+                className={`mt-4 px-4 py-2 rounded-lg transition-all duration-200 ${
+                    submitted
+                        ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
+                        : "bg-green-500 text-white hover:bg-green-600"
+                }`}
             >
                 {language === "bm" ? "Jawab" : "Answer"}
             </button>
