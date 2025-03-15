@@ -4,13 +4,11 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [shuffledOptions, setShuffledOptions] = useState([]);
 
-    // Shuffle options whenever the question changes
     useEffect(() => {
         setShuffledOptions(shuffleArray([...question.options]));
-        setSelectedOption(null); // Reset selected option when question changes
+        setSelectedOption(null);
     }, [question]);
 
-    // Function to shuffle options randomly
     const shuffleArray = (array) => {
         return array.sort(() => Math.random() - 0.5);
     };
@@ -21,8 +19,8 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
     };
 
     return (
-        <div className="max-w-2xl w-full bg-white p-6 rounded-lg shadow-lg text-center">
-            <p className="text-lg mb-4">
+        <div className="max-w-2xl w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center text-black dark:text-black transition-all duration-200">
+            <p className="text-lg mb-4 text-white">
                 {language === "bm" ? question.question_text_bm : question.question_text_en}
             </p>
 
@@ -31,8 +29,10 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
                     <button
                         key={idx}
                         onClick={() => setSelectedOption(option)}
-                        className={`p-3 border rounded-lg ${
-                            selectedOption === option ? "bg-blue-500 text-white" : "bg-gray-200"
+                        className={`p-3 border rounded-lg transition-all duration-200 ${
+                            selectedOption === option
+                                ? "bg-blue-500 text-white dark:bg-blue-600"
+                                : "bg-gray-200 dark:bg-gray-700 dark:text-white"
                         }`}
                     >
                         {language === "bm" ? option.option_text_bm : option.option_text_en}
@@ -42,9 +42,11 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
 
             <button
                 onClick={handleSubmit}
-                disabled={!selectedOption} // Reset on question change
-                className={`mt-4 px-4 py-2 rounded-lg ${
-                    selectedOption ? "bg-green-500 text-white" : "bg-gray-400 cursor-not-allowed"
+                disabled={!selectedOption}
+                className={`mt-4 px-4 py-2 rounded-lg transition-all duration-200 ${
+                    selectedOption
+                        ? "bg-green-500 text-white dark:bg-green-600"
+                        : "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
                 }`}
             >
                 {language === "bm" ? "Jawab" : "Answer"}

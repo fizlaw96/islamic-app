@@ -13,7 +13,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
             initial={{ x: -250 }}
             animate={{ x: menuOpen ? 0 : -270 }}
             transition={{ duration: 0.3 }}
-            className="fixed left-0 top-16 w-64 h-screen bg-white dark:bg-green-800 shadow-md p-4 z-50 flex flex-col justify-between"
+            className="fixed left-0 top-16 w-64 h-screen bg-white dark:bg-green-800 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
         >
             {/* ✅ User Profile or Login/Register Section */}
             <div className="pt-3 space-y-2">
@@ -67,44 +67,46 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                 )}
             </div>
 
-            {/* ✅ Navigation Links */}
-            <ul className="space-y-2 text-white flex-1">
-                {/* ✅ Admin Section */}
-                {auth?.user?.role === "admin" && (
-                    <>
-                        <hr className="border-gray-400 my-2" />
-                        <span className="text-gray-300 text-sm font-semibold uppercase tracking-wide block px-2">
-                            📌 {translations[language]?.adminSection || "Admin"}
-                        </span>
-                        <li className="p-2 border-b flex items-center gap-2">
-                            <FileText size={20} />
-                            <Link href={route("admin.islamic-contents.index")}>
-                                {translations[language]?.adminIslamicContent || "Islamic Content"}
-                            </Link>
-                        </li>
-                    </>
-                )}
+            <div className="flex flex-col flex-1 overflow-y-auto">
+                {/* ✅ Navigation Links */}
+                <ul className="space-y-2 text-white flex-1">
+                    {/* ✅ Admin Section */}
+                    {auth?.user?.role === "admin" && (
+                        <>
+                            <hr className="border-gray-400 my-2" />
+                            <span className="text-gray-300 text-sm font-semibold uppercase tracking-wide block px-2">
+                                📌 {translations[language]?.adminSection || "Admin"}
+                            </span>
+                            <li className="p-2 border-b flex items-center gap-2">
+                                <FileText size={20} />
+                                <Link href={route("admin.islamic-contents.index")}>
+                                    {translations[language]?.adminIslamicContent || "Islamic Content"}
+                                </Link>
+                            </li>
+                        </>
+                    )}
 
-                {/* ✅ Other Navigation Links */}
-                <li className="p-2 border-b flex items-center gap-2">
-                    <Book size={20} />
-                    <Link href="/history">{translations[language]?.history || "History"}</Link>
-                </li>
-                <li className="p-2 border-b flex items-center gap-2">
-                    <HelpCircle size={20} />
-                    <Link href="/question">{translations[language]?.question || "Question"}</Link>
-                </li>
-                {auth?.user && (
+                    {/* ✅ Other Navigation Links */}
                     <li className="p-2 border-b flex items-center gap-2">
-                        <MessageSquare size={20} />
-                        <Link href="/ask-question">{translations[language]?.askQuestion || "Ask Question"}</Link>
+                        <Book size={20} />
+                        <Link href="/history">{translations[language]?.history || "History"}</Link>
                     </li>
-                )}
-                <li className="p-2 border-b flex items-center gap-2">
-                    <Heart size={20} className="text-red-500" />
-                    <Link href="/about">{translations[language]?.about || "About Us"}</Link>
-                </li>
-            </ul>
+                    <li className="p-2 border-b flex items-center gap-2">
+                        <HelpCircle size={20} />
+                        <Link href="/question">{translations[language]?.question || "Question"}</Link>
+                    </li>
+                    {/* {auth?.user && (
+                        <li className="p-2 border-b flex items-center gap-2">
+                            <MessageSquare size={20} />
+                            <Link href="/ask-question">{translations[language]?.askQuestion || "Ask Question"}</Link>
+                        </li>
+                    )} */}
+                    <li className="p-2 border-b flex items-center gap-2">
+                        <Heart size={20} className="text-red-500" />
+                        <Link href="/about">{translations[language]?.about || "About Us"}</Link>
+                    </li>
+                </ul>
+            </div>
             <br />
         </motion.div>
     );

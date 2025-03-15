@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function OrderedQuestion({ question, language, onAnswer }) {
-    // ✅ Function to shuffle array randomly
     const shuffleArray = (array) => {
         return [...array].sort(() => Math.random() - 0.5);
     };
 
-    // ✅ State for correct order and user-selected order
     const [correctOrder, setCorrectOrder] = useState([]);
     const [userOrder, setUserOrder] = useState([]);
 
-    // ✅ Reinitialize when `question` changes
     useEffect(() => {
         const sortedOrder = [...question.options].sort((a, b) => a.order - b.order);
         setCorrectOrder(sortedOrder);
         setUserOrder(shuffleArray(sortedOrder));
-    }, [question]); // Runs every time `question` changes
+    }, [question]);
 
+    // ✅ Prevent scrolling when dragging starts
+    const handleDragStart = () => {
+        document.body.style.overflow = "hidden";
+    };
+
+    // ✅ Restore scrolling when dragging ends
     const handleDragEnd = (result) => {
+        document.body.style.overflow = "auto"; // Restore scroll
         if (!result.destination) return;
 
         const reorderedItems = Array.from(userOrder);
@@ -29,19 +33,17 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
     };
 
     const handleSubmit = () => {
-        // ✅ Check if the user order matches the correct order
         const isCorrect = userOrder.every((option, index) => option.id === correctOrder[index].id);
-
         onAnswer(isCorrect);
     };
 
     return (
-        <div className="max-w-2xl w-full bg-white p-6 rounded-lg shadow-lg text-center">
-            <p className="text-lg mb-4">
+        <div className="max-w-2xl w-full bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <p className="text-lg mb-4 text-white">
                 {language === "bm" ? question.question_text_bm : question.question_text_en}
             </p>
 
-            <DragDropContext onDragEnd={handleDragEnd}>
+            <DragDropContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                 <Droppable droppableId="ordered-options">
                     {(provided) => (
                         <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-2">
@@ -65,7 +67,6 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
                 </Droppable>
             </DragDropContext>
 
-            {/* ✅ Instruction Message for Users */}
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
                 {language === "bm"
                     ? "Seret dan susun jawapan dalam urutan yang betul."

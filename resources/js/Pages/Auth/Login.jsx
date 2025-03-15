@@ -14,7 +14,6 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
-    // Language State
     const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
 
     useEffect(() => {
@@ -31,10 +30,8 @@ export default function Login({ status, canResetPassword }) {
     return (
         <Layout>
             <Head title={language === "bm" ? "Masuk" : "Login"} />
-
-            <div className="flex flex-col items-center justify-center mt-20">
-                <div className="w-full max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
-
+            <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6">
+                <div className="w-full sm:max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     {/* ✅ Title */}
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
                         {language === "bm" ? "🕌 Selamat Datang" : "🕌 Welcome"}
@@ -42,42 +39,23 @@ export default function Login({ status, canResetPassword }) {
 
                     {/* 🔴 Show server error message if login fails */}
                     {status && (
-                        <div className="mt-4 text-center text-sm font-medium text-red-600 bg-red-100 p-2 rounded-lg" aria-live="polite">
+                        <div className="mt-4 text-center text-sm font-medium text-red-600 bg-red-100 p-2 rounded-lg">
                             {status}
                         </div>
                     )}
 
-                    <form onSubmit={submit} className="mt-4">
+                    <form onSubmit={submit}>
                         {/* 📩 Email Input */}
                         <div>
                             <InputLabel htmlFor="email" value={language === "bm" ? "Alamat Email" : "Email Address"} className="text-green-700 dark:text-white" />
-                            <TextInput
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={data.email}
-                                className="mt-1 block w-full"
-                                autoComplete="username"
-                                isFocused={true}
-                                onChange={(e) => setData("email", e.target.value)}
-                            />
-                            {/* 🔴 Show email error if exists */}
+                            <TextInput id="email" type="email" name="email" value={data.email} className="mt-1 block w-full" autoComplete="username" isFocused={true} onChange={(e) => setData("email", e.target.value)} />
                             {errors.email && <InputError message={errors.email} className="mt-2" />}
                         </div>
 
                         {/* 🔑 Password Input */}
                         <div className="mt-4">
                             <InputLabel htmlFor="password" value={language === "bm" ? "Kata Laluan" : "Password"} className="text-green-700 dark:text-white" />
-                            <TextInput
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={data.password}
-                                className="mt-1 block w-full"
-                                autoComplete="current-password"
-                                onChange={(e) => setData("password", e.target.value)}
-                            />
-                            {/* 🔴 Show password error if exists */}
+                            <TextInput id="password" type="password" name="password" value={data.password} className="mt-1 block w-full" autoComplete="current-password" onChange={(e) => setData("password", e.target.value)} />
                             {errors.password && <InputError message={errors.password} className="mt-2" />}
                         </div>
 
@@ -88,15 +66,22 @@ export default function Login({ status, canResetPassword }) {
                         </div>
 
                         {/* 🔗 Forgot Password & Login Button */}
-                        <div className="mt-6 flex justify-between items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            {/* ✅ Forgot Password Link */}
                             {canResetPassword && (
-                                <Link href={route("password.request")} className="text-sm text-green-700 dark:text-gray-300 underline hover:text-green-900">
+                                <Link
+                                    href={route("password.request")}
+                                    className="text-sm text-green-700 dark:text-gray-300 underline hover:text-green-900"
+                                >
                                     {language === "bm" ? "Lupa kata laluan?" : "Forgot your password?"}
                                 </Link>
                             )}
 
                             {/* ✅ Login Button */}
-                            <PrimaryButton className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md shadow-md font-bold" disabled={processing}>
+                            <PrimaryButton
+                                className="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded-md shadow-md font-semibold text-sm"
+                                disabled={processing}
+                            >
                                 {processing ? (language === "bm" ? "Memproses..." : "Processing...") : language === "bm" ? "Masuk" : "Login"}
                             </PrimaryButton>
                         </div>

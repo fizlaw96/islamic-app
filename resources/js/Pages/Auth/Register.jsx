@@ -32,8 +32,8 @@ export default function Register() {
         <Layout>
             <Head title={language === "bm" ? "Daftar" : "Register"} />
 
-            <div className="flex flex-col items-center justify-center mt-20 relative z-0 overflow-y-auto">
-                <div className="w-full max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
+            <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6">
+                <div className="w-full sm:max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
                         {language === "bm" ? "🕌 Daftar Akaun" : "🕌 Create an Account"}
                     </h2>
@@ -65,7 +65,7 @@ export default function Register() {
 
                         <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-300">
                             {language === "bm" ? "Sudah mempunyai akaun?" : "Already have an account?"}{" "}
-                            <Link href="/login" className="text-green-100 font-bold hover:underline">
+                            <Link href="/login" className="text-grey-900 font-bold hover:underline">
                                 {language === "bm" ? "Log masuk di sini" : "Login here"}
                             </Link>
                         </div>

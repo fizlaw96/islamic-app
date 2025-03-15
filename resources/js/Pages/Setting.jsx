@@ -29,45 +29,36 @@ export default function Setting() {
         localStorage.setItem("darkMode", newDarkMode);
         document.documentElement.classList.toggle("dark", newDarkMode);
 
-        // Reload the page to apply changes globally
         setTimeout(() => {
             window.location.reload();
-        }, 100); // Small delay to ensure the setting is saved before reload
+        }, 100);
     };
 
     const changeLanguage = (e) => {
         const selectedLanguage = e.target.value;
         setLanguage(selectedLanguage);
         localStorage.setItem("language", selectedLanguage);
-        window.dispatchEvent(new Event("storage")); // Notify all components
+        window.dispatchEvent(new Event("storage"));
     };
 
     const increaseFontSize = () => setFontSize((prev) => Math.min(prev + 2, 24));
     const decreaseFontSize = () => setFontSize((prev) => Math.max(prev - 2, 12));
 
     const translations = {
-        en: {
-            darkMode: "Dark Mode",
-            language: "Language",
-            fontSize: "Font Size",
-        },
-        bm: {
-            darkMode: "Mod Gelap",
-            language: "Bahasa",
-            fontSize: "Saiz Font",
-        },
+        en: { darkMode: "Dark Mode", language: "Language", fontSize: "Font Size" },
+        bm: { darkMode: "Mod Gelap", language: "Bahasa", fontSize: "Saiz Font" },
     };
 
     return (
         <Layout>
-            <div className="w-full max-w-lg mx-auto p-6">
-                <h1 className="text-2xl font-bold mb-4">
+            <div className="w-full max-w-xl mx-auto p-4 sm:p-6">
+                <h1 className="text-2xl font-bold mb-6 text-center">
                     {language === "bm" ? "Tetapan" : "Setting"}
                 </h1>
 
-                {/* Dark Mode Toggle */}
-                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
-                    <span>{translations[language].darkMode}</span>
+                {/* ✅ Dark Mode Toggle */}
+                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-black dark:text-white">
+                    <span className="break-words">{translations[language].darkMode}</span>
                     <button
                         onClick={toggleDarkMode}
                         className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
@@ -76,9 +67,9 @@ export default function Setting() {
                     </button>
                 </div>
 
-                {/* Language Selection */}
-                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
-                    <span>{translations[language].language}</span>
+                {/* ✅ Language Selection */}
+                <div className="flex items-center justify-between mb-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-black dark:text-white">
+                    <span className="break-words">{translations[language].language}</span>
                     <select
                         value={language}
                         onChange={changeLanguage}
@@ -89,33 +80,35 @@ export default function Setting() {
                     </select>
                 </div>
 
-                {/* Font Size Control */}
-                <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-white">
-                    <span>{translations[language].fontSize}</span>
-                    <div className="flex items-center gap-3">
-                        {/* Decrease Font Size */}
+                {/* ✅ Font Size Control */}
+                <div className="p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg text-black dark:text-white">
+                    <span className="break-words">{translations[language].fontSize}</span>
+                    <div className="flex flex-wrap items-center gap-3 mt-3">
+                        {/* ✅ Decrease Font Size */}
                         <button
                             onClick={decreaseFontSize}
-                            className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
+                            className="p-2 min-w-[40px] bg-gray-200 dark:bg-gray-700 rounded-lg text-lg"
                         >
                             A-
                         </button>
 
-                        {/* Display Current Font Size */}
-                        <span className="text-lg font-semibold">{fontSize}px</span>
+                        {/* ✅ Display Current Font Size */}
+                        <span className="text-lg font-semibold min-w-[50px] text-center">
+                            {fontSize}px
+                        </span>
 
-                        {/* Increase Font Size */}
+                        {/* ✅ Increase Font Size */}
                         <button
                             onClick={increaseFontSize}
-                            className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
+                            className="p-2 min-w-[40px] bg-gray-200 dark:bg-gray-700 rounded-lg text-lg"
                         >
                             A+
                         </button>
 
-                        {/* ✅ Reset Font Size Button */}
+                        {/* ✅ Reset Font Size */}
                         <button
-                            onClick={() => setFontSize(16)} // Set font size back to 16px
-                            className="p-2 bg-red-500 text-white rounded-lg"
+                            onClick={() => setFontSize(16)}
+                            className="p-2 bg-red-500 text-white rounded-lg min-w-[60px] text-sm"
                         >
                             Reset
                         </button>
