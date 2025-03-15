@@ -116,14 +116,18 @@ export default function IslamicContent() {
 
             {/* ✅ Show Banner If Available */}
             {content.banner ? (
-                <div
-                    className="relative w-full h-64 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${content.banner.startsWith("storage") ? "/storage/" + content.banner.replace("storage/", "") : content.banner})` }}
-                >
-                    {/* Dark Overlay */}
+                <div className="relative w-full h-64">
+                    {/* ✅ Banner Image */}
+                    <img
+                        src={content.banner.startsWith("storage") ? `/storage/${content.banner.replace("storage/", "")}` : content.banner}
+                        alt="Banner"
+                        className="w-full h-full object-cover rounded-lg"
+                    />
+
+                    {/* ✅ Dark Overlay */}
                     <div className="absolute inset-0 bg-black opacity-50"></div>
 
-                    {/* Title at Bottom Center of Banner */}
+                    {/* ✅ Title at Bottom Center of Banner */}
                     <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 text-center">
                         <h1 className="text-2xl md:text-3xl font-bold text-white">
                             {language === "bm" ? content.title_bm : content.title_en}
