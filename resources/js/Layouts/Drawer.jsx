@@ -13,7 +13,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
             initial={{ x: -250 }}
             animate={{ x: menuOpen ? 0 : -270 }}
             transition={{ duration: 0.3 }}
-            className="fixed left-0 top-16 w-64 h-screen bg-white dark:bg-green-800 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
+            className="fixed left-0 top-16 w-64 h-screen bg-green-800 dark:bg-green-800 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
         >
             {/* ✅ User Profile or Login/Register Section */}
             <div className="pt-3 space-y-2">
@@ -69,7 +69,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
 
             <div className="flex flex-col flex-1 overflow-y-auto">
                 {/* ✅ Navigation Links */}
-                <ul className="space-y-2 text-white flex-1">
+                <ul className="space-y-2 flex-1">
                     {/* ✅ Admin Section */}
                     {auth?.user?.role === "admin" && (
                         <>
@@ -87,21 +87,21 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                     )}
 
                     {/* ✅ Other Navigation Links */}
-                    <li className="p-2 border-b flex items-center gap-2">
+                    <li className="p-2 border-b flex items-center gap-2 text-black">
                         <Book size={20} />
                         <Link href="/history">{translations[language]?.history || "History"}</Link>
                     </li>
-                    <li className="p-2 border-b flex items-center gap-2">
+                    <li className="p-2 border-b flex items-center gap-2 text-black">
                         <HelpCircle size={20} />
                         <Link href="/question">{translations[language]?.question || "Question"}</Link>
                     </li>
                     {/* {auth?.user && (
-                        <li className="p-2 border-b flex items-center gap-2">
+                        <li className="p-2 border-b flex items-center gap-2 text-black">
                             <MessageSquare size={20} />
                             <Link href="/ask-question">{translations[language]?.askQuestion || "Ask Question"}</Link>
                         </li>
                     )} */}
-                    <li className="p-2 border-b flex items-center gap-2">
+                    <li className="p-2 border-b flex items-center gap-2 text-black">
                         <Heart size={20} className="text-red-500" />
                         <Link href="/about">{translations[language]?.about || "About Us"}</Link>
                     </li>

@@ -30,7 +30,7 @@ export default function Login({ status, canResetPassword }) {
     return (
         <Layout>
             <Head title={language === "bm" ? "Masuk" : "Login"} />
-            <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6">
+            <div className="flex items-center justify-center min-h-screen px-4 sm:px-6">
                 <div className="w-full sm:max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     {/* ✅ Title */}
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
@@ -47,14 +47,14 @@ export default function Login({ status, canResetPassword }) {
                     <form onSubmit={submit}>
                         {/* 📩 Email Input */}
                         <div>
-                            <InputLabel htmlFor="email" value={language === "bm" ? "Alamat Email" : "Email Address"} className="text-green-700 dark:text-white" />
+                            <InputLabel htmlFor="email" value={language === "bm" ? "Alamat Email" : "Email Address"} className="text-green-700 dark:text-black" />
                             <TextInput id="email" type="email" name="email" value={data.email} className="mt-1 block w-full" autoComplete="username" isFocused={true} onChange={(e) => setData("email", e.target.value)} />
                             {errors.email && <InputError message={errors.email} className="mt-2" />}
                         </div>
 
                         {/* 🔑 Password Input */}
                         <div className="mt-4">
-                            <InputLabel htmlFor="password" value={language === "bm" ? "Kata Laluan" : "Password"} className="text-green-700 dark:text-white" />
+                            <InputLabel htmlFor="password" value={language === "bm" ? "Kata Laluan" : "Password"} className="text-green-700 dark:text-black" />
                             <TextInput id="password" type="password" name="password" value={data.password} className="mt-1 block w-full" autoComplete="current-password" onChange={(e) => setData("password", e.target.value)} />
                             {errors.password && <InputError message={errors.password} className="mt-2" />}
                         </div>
