@@ -7,7 +7,7 @@ export default function Setting() {
         localStorage.getItem("darkMode") === "true"
     );
     const [language, setLanguage] = useState(
-        localStorage.getItem("language") || "en"
+        localStorage.getItem("language") || "bm"
     );
     const [fontSize, setFontSize] = useState(
         parseInt(localStorage.getItem("fontSize")) || 16
