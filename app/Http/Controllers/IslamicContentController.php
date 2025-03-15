@@ -111,7 +111,7 @@ class IslamicContentController extends Controller
     public function updateMedia(Request $request, $id)
     {
         $request->validate([
-            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048',
             'media'  => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:10000',
         ]);
 
