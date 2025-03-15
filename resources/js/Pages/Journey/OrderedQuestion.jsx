@@ -8,13 +8,16 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
 
     const [correctOrder, setCorrectOrder] = useState([]);
     const [userOrder, setUserOrder] = useState([]);
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(false); // ✅ Track button state
 
     useEffect(() => {
+        // ✅ Reset button when new question loads
+        setSubmitted(false);
+
         const sortedOrder = [...question.options].sort((a, b) => a.order - b.order);
         setCorrectOrder(sortedOrder);
         setUserOrder(shuffleArray(sortedOrder));
-    }, [question]);
+    }, [question]); // Runs every time `question` changes
 
     const handleDragStart = () => {
         document.body.style.overflow = "hidden";
@@ -32,7 +35,7 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
     };
 
     const handleSubmit = () => {
-        setSubmitted(true); // Disable button after submission
+        setSubmitted(true); // ✅ Disable button after answering
 
         const isCorrect = userOrder.every((option, index) => option.id === correctOrder[index].id);
         onAnswer(isCorrect);
