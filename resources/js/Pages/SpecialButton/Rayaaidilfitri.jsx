@@ -45,7 +45,7 @@ export default function RayaAidilfitri() {
                     {translations[language].title}
                 </h1>
                 <p className="mt-4 text-lg dark:text-black">{translations[language].message}</p>
-                <img src="/assets/button/raya.jpg" alt="Raya Aidilfitri" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
+                <img src="/storage/assets/button/raya.jpg" alt="Raya Aidilfitri" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
 
                 {/* 💰 Duit Raya QR Code */}
                 <div className="mt-6">

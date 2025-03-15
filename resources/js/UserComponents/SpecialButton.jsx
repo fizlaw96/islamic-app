@@ -13,21 +13,21 @@ export default function SpecialButton() {
         const hijriMonth = todayHijri.iMonth() + 1; // Hijri month (1-12)
 
         let specialEvent = "Special Day";
-        let specialImage = "/assets/button/special.png"; // Default
+        let specialImage = "/storage/assets/button/special.png"; // Default
         let specialStatus = false;
 
         // ✅ Show Special Event for the Whole Month with Correct Image
         if (hijriMonth === 10) {
             specialEvent = "Raya Aidilfitri";
-            specialImage = "/assets/button/raya.jpg";
+            specialImage = "/storage/assets/button/raya.jpg";
             specialStatus = true;
         } else if (hijriMonth === 12) {
             specialEvent = "Raya Aidiladha";
-            specialImage = "/assets/button/haji.jpg";
+            specialImage = "/storage/assets/button/haji.jpg";
             specialStatus = true;
         } else if (hijriMonth === 9) {
             specialEvent = "Ramadhan";
-            specialImage = "/assets/button/ramadan.jpg";
+            specialImage = "/storage/assets/button/ramadan.jpg";
             specialStatus = true;
         }
 

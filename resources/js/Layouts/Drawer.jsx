@@ -24,7 +24,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                             <div className="flex items-center gap-4 text-white">
                                 {/* Profile Image - Improved Rendering */}
                                 <img
-                                    src={auth.user.profile_image || "/assets/avatars/avatar.png"} // Use profile image or default
+                                    src={auth.user.profile_image || "/storage/assets/avatars/avatar.png"} // Use profile image or default
                                     alt="User Avatar"
                                     className="w-16 h-16 rounded-full border-2 border-white shadow-md object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                                 />

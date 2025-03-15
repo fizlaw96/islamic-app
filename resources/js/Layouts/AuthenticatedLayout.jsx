@@ -96,7 +96,7 @@ export default function AuthenticatedLayout({ children }) {
                 {/* App Name */}
                 <h1 className="flex justify-center items-center">
                     <img
-                        src="/assets/button/name.svg"
+                        src="/storage/assets/button/name.svg"
                         alt="App Name"
                         className="h-8 w-auto filter invert"
                     />
@@ -137,7 +137,7 @@ export default function AuthenticatedLayout({ children }) {
                     href={auth?.user ? route("journey.loggedin") : route("journey")}
                     className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
                 >
-                    <img src="/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
+                    <img src="/storage/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
                 </Link>
 
                 {/* ✅ Special Button (Only Renders If Exists) */}

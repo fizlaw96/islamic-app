@@ -29,7 +29,7 @@ export default function Ramadhan() {
                     <p className="mt-2 font-bold text-right">— Surah Al-Baqarah (2:183)</p>
                 </div>
 
-                <img src="/assets/button/ramadan.jpg" alt="Ramadhan" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
+                <img src="/storage/assets/button/ramadan.jpg" alt="Ramadhan" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
 
                 {/* ✅ Toggle Sections for Ramadhan Topics */}
                 <div className="mt-8 space-y-4">

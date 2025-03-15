@@ -23,8 +23,8 @@ export default function LessonMain() {
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
-    const correctSound = new Audio("/assets/mp3/correct.mp3");
-    const wrongSound = new Audio("/assets/mp3/wrong.mp3");
+    const correctSound = new Audio("/storage/assets/mp3/correct.mp3");
+    const wrongSound = new Audio("/storage/assets/mp3/wrong.mp3");
 
     useEffect(() => {
         const handleStorageChange = () => {

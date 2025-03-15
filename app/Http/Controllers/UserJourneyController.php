@@ -69,7 +69,7 @@ class UserJourneyController extends Controller
             'user' => [
                 'id' => $user->id,
                 'name' => $user->name,
-                'profile_image' => $user->profile_image ?? '/assets/avatars/avatar.png',
+                'profile_image' => $user->profile_image ?? 'storage/assets/avatars/avatar.png',
             ],
             'totalLessons' => $totalLessons,
             'completedLessonIds' => $completedLessonIds->toArray(), // ✅ Ensure array format

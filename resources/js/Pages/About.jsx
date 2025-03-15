@@ -62,7 +62,7 @@ const About = () => {
 
                         {/* Icon: Bigger & Rounded */}
                         <img
-                            src="/assets/button/logo.jpg"
+                            src="/storage/assets/button/logo.jpg"
                             alt="Tafheem Icon"
                             className="h-20 w-20 rounded-full shadow-lg border-4 border-white ml-4"
                         />

@@ -20,7 +20,7 @@ export default function RayaAidiladha() {
                         ? "Aidiladha mengingatkan kita tentang pengorbanan dan keikhlasan dalam beribadah kepada Allah. Semoga perayaan ini mempererat ukhuwah kita."
                         : "Eid al-Adha reminds us of sacrifice and sincerity in worshiping Allah. May this celebration strengthen our bonds."}
                 </p>
-                <img src="/assets/button/haji.jpg" alt="Raya Aidiladha" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
+                <img src="/storage/assets/button/haji.jpg" alt="Raya Aidiladha" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
 
                 {/* ✅ Toggle Sections for More Information */}
                 <div className="mt-8 space-y-4">

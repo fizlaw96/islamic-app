@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function ProfileImage({ user }) {
-    const [profileImage, setProfileImage] = useState(user.profile_image || "/assets/avatars/avatar.png");
+    const [profileImage, setProfileImage] = useState(user.profile_image || "/storage/assets/avatars/avatar.png");
 
     // Handle file selection and send user_id
     const handleFileChange = async (event) => {

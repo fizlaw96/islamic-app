@@ -110,9 +110,9 @@ export default function LessonComplete() {
     };
 
     // ✅ Determine Image Based on Score
-    let imageSrc = "/assets/characters/congratz.png";
-    if (percentage < 50) imageSrc = "/assets/characters/sad.png";
-    else if (percentage < 80) imageSrc = "/assets/characters/spirit.png";
+    let imageSrc = "/storage/assets/characters/congratz.png";
+    if (percentage < 50) imageSrc = "/storage/assets/characters/sad.png";
+    else if (percentage < 80) imageSrc = "/storage/assets/characters/spirit.png";
 
     return (
         <Layout>
