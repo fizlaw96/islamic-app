@@ -116,7 +116,10 @@ export default function IslamicContent() {
 
             {/* ✅ Show Banner If Available */}
             {content.banner ? (
-                <div className="relative w-full h-64 bg-cover bg-center" style={{ backgroundImage: `url(/${content.banner})` }}>
+                <div
+                    className="relative w-full h-64 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${content.banner.startsWith("storage") ? "/" + content.banner : "/storage/" + content.banner})` }}
+                >
                     {/* Dark Overlay */}
                     <div className="absolute inset-0 bg-black opacity-50"></div>
 
