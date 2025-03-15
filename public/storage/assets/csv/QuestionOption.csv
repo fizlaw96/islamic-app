@@ -1,0 +1,821 @@
+option_id,question_id,option_text_bm,option_text_en,is_correct,order
+1,1,Keamanan dan kepatuhan,Peace and submission,1,NULL
+2,1,Perang dan kekerasan,War and violence,0,NULL
+3,1,Kebebasan mutlak,Absolute freedom,0,NULL
+4,1,Hanya kepercayaan tanpa amal,Only belief without action,0,NULL
+5,2,3,3,0,NULL
+6,2,5,5,1,NULL
+7,2,6,6,0,NULL
+8,2,7,7,0,NULL
+9,3,Solat,Prayer,0,NULL
+10,3,Zakat,Charity,0,NULL
+11,3,Syahadah,Shahada,1,NULL
+12,3,Haji,Hajj,0,NULL
+13,4,Nabi Adam,Prophet Adam,0,NULL
+14,4,Nabi Musa,Prophet Moses,0,NULL
+15,4,Nabi Isa,Prophet Jesus,0,NULL
+16,4,Nabi Muhammad,Prophet Muhammad,1,NULL
+17,5,3,3,0,NULL
+18,5,5,5,0,NULL
+19,5,6,6,1,NULL
+20,5,7,7,0,NULL
+21,6,Al-Quran,Al-Quran,1,NULL
+22,6,Injil,Bible,0,NULL
+23,6,Zabur,Psalms,0,NULL
+24,6,Taurat,Torah,0,NULL
+25,7,3 kali,3 times,0,NULL
+26,7,5 kali,5 times,1,NULL
+27,7,4 kali,4 times,0,NULL
+28,7,7 kali,7 times,0,NULL
+29,8,Ramadan,Ramadan,1,NULL
+30,8,Syawal,Syawal,0,NULL
+31,8,Zulhijjah,Zulhijjah,0,NULL
+32,8,Rejab,Rejab,0,NULL
+33,9,Kaabah,Kaaba,1,NULL
+34,9,Baitulmaqdis,Jerusalem,1,NULL
+35,9,Madinah,Medina,0,NULL
+36,9,Makkah,Mecca,0,NULL
+37,10,Tiada kehidupan selepas mati,There is no life after death,0,NULL
+38,10,"Tiada tuhan melainkan Allah, Muhammad pesuruh Allah","There is no god but Allah, and Muhammad is His messenger",1,NULL
+39,10,Semua agama adalah sama,All religions are the same,0,NULL
+40,10,Islam adalah untuk bangsa Arab sahaja,Islam is only for Arabs,0,NULL
+41,11,Aidilfitri dan Aidiladha,Eid al-Fitr and Eid al-Adha,1,NULL
+42,11,Ramadan dan Haji,Ramadan and Hajj,0,NULL
+43,11,Maulidur Rasul dan Ashura,Mawlid al-Nabi and Ashura,0,NULL
+44,11,Israk Mikraj,Isra and Miraj,0,NULL
+45,12,Penghulu segala hari,The leader of all days,1,NULL
+46,12,Hari Raya,Eid,0,NULL
+47,12,Hari Kemerdekaan,Independence Day,0,NULL
+48,12,Hari kebesaran Islam,A special Islamic celebration,0,NULL
+49,13,Al-Fatihah,Al-Fatihah,1,NULL
+50,13,Al-Baqarah,Al-Baqarah,0,NULL
+51,13,Al-Ikhlas,Al-Ikhlas,0,NULL
+52,13,Al-Kahfi,Al-Kahfi,0,NULL
+53,14,Iman kepada Allah,Faith in Allah,1,1
+54,14,Iman kepada Malaikat,Faith in Angels,1,2
+55,14,Iman kepada Kitab-Kitab Allah,Faith in the Books of Allah,1,3
+56,14,Iman kepada Rasul-Rasul Allah,Faith in the Messengers of Allah,1,4
+57,14,Iman kepada Hari Kiamat,Faith in the Day of Judgment,1,5
+58,14,Iman kepada Takdir (Qada' dan Qadar),Faith in Divine Predestination,1,6
+59,15,Syahadah,Shahada,1,1
+60,15,Solat,Prayer,1,2
+61,15,Puasa,Charity,1,3
+62,15,Zakat,Fasting,1,4
+63,15,Haji,Hajj,1,5
+64,16,Mekah,Makkah,1,NULL
+65,16,Madinah,Madinah,0,NULL
+66,16,Taif,Taif,0,NULL
+67,16,Palestin,Palestine,0,NULL
+68,17,Aminah binti Wahab,Aminah binti Wahab,1,NULL
+69,17,Khadijah binti Khuwailid,Khadijah binti Khuwailid,0,NULL
+70,17,Fatimah binti Asad,Fatimah binti Asad,0,NULL
+71,17,Aisyah binti Abu Bakar,Aisha binti Abu Bakar,0,NULL
+72,18,38 tahun,38 years,0,NULL
+73,18,30 tahun,30 years,0,NULL
+74,18,40 tahun,40 years,1,NULL
+75,18,42 tahun,42 years,0,NULL
+76,19,Gua Hira,Cave Hira,1,NULL
+77,19,Gua Thur,Cave Thur,0,NULL
+78,19,Gua Tsur,Cave Tsur,0,NULL
+79,19,Gua Nur,Cave Nur,0,NULL
+80,20,Aisyah binti Abu Bakar,Aisha binti Abu Bakar,0,NULL
+81,20,Hafsah binti Umar,Hafsah binti Umar,0,NULL
+82,20,Khadijah binti Khuwailid,Khadijah binti Khuwailid,1,NULL
+83,20,Ummu Salamah,Ummu Salama,0,NULL
+84,21,Abdullah,Abdullah,1,NULL
+85,21,Abu Talib,Abu Talib,0,NULL
+86,21,Abdul Muttalib,Abdul Muttalib,0,NULL
+87,21,Hamzah,Hamzah,0,NULL
+88,22,571 Masihi,571 AD,1,NULL
+89,22,632 Masihi,632 AD,0,NULL
+90,22,610 Masihi,610 AD,0,NULL
+91,22,599 Masihi,599 AD,0,NULL
+92,23,Quraisy,Quraysh,1,NULL
+93,23,Bani Israil,Bani Israel,0,NULL
+94,23,Bani Hashim,Banu Hashim,0,NULL
+95,23,Bani Aus,Banu Aus,0,NULL
+96,24,Abu Talib,Abu Talib,1,NULL
+97,24,Hamzah,Hamzah,0,NULL
+98,24,Abbas,Abbas,0,NULL
+99,24,Abu Lahab,Abu Lahab,0,NULL
+100,25,Peniaga,Merchant,1,NULL
+101,25,Petani,Farmer,0,NULL
+102,25,Tukang besi,Blacksmith,0,NULL
+103,25,Nelayan,Fisherman,0,NULL
+104,26,Fatimah,Fatimah,1,NULL
+105,26,Ruqayyah,Ruqayyah,0,NULL
+106,26,Umm Kulthum,Umm Kulthum,0,NULL
+107,26,Zainab,Zainab,0,NULL
+108,27,Penindasan oleh kaum Quraisy,Persecution by Quraysh,1,NULL
+109,27,Peluang perniagaan,Trade opportunities,0,NULL
+110,27,Jemputan dari pemimpin Rom,Invitation from Roman leaders,0,NULL
+111,27,Bencana alam di Makkah,Natural disaster in Makkah,0,NULL
+112,28,Madinah,Medina,1,NULL
+113,28,Makkah,Mecca,0,NULL
+114,28,Taif,Ta'if,0,NULL
+115,28,Kufah,Kufa,0,NULL
+116,29,Kelahiran Nabi Muhammad SAW,Birth of Prophet Muhammad SAW,1,1
+117,29,Perkahwinan dengan Khadijah,Marriage with Khadijah,1,2
+118,29,Wahyu pertama,First revelation,1,3
+119,29,Hijrah ke Madinah,Migration to Madinah,1,4
+120,29,Wafatnya Nabi Muhammad SAW,Death of Prophet Muhammad SAW,1,5
+121,30,Perang Badar,Battle of Badr,1,1
+122,30,Perang Uhud,Battle of Uhud,1,2
+123,30,Perang Khandaq,Battle of the Trench,1,3
+124,30,Perang Khaibar,Battle of Khaybar,1,4
+125,30,Pembukaan Kota Mekah,Conquest of Makkah,1,5
+126,31,Bahasa Arab,Arabic,1,NULL
+127,31,Bahasa Ibrani,Hebrew,0,NULL
+128,31,Bahasa Latin,Latin,0,NULL
+129,31,Bahasa Yunani,Greek,0,NULL
+130,32,Malaikat Jibrail,Angel Jibril (Gabriel),1,NULL
+131,32,Malaikat Mikail,Angel Mikail (Michael),0,NULL
+132,32,Malaikat Israfil,Angel Israfil,0,NULL
+133,32,Malaikat Izrail,Angel Izrail,0,NULL
+134,33,Al-Baqarah,Al-Baqarah,1,NULL
+135,33,Al-Fatihah,Al-Fatihah,0,NULL
+136,33,An-Nisa,An-Nisa,0,NULL
+137,33,Yasin,Yasin,0,NULL
+138,34,30 Juzuk,30 Sections,1,NULL
+139,34,114 Juzuk,114 Sections,0,NULL
+140,34,99 Juzuk,99 Sections,0,NULL
+141,34,33 Juzuk,33 Sections,0,NULL
+142,35,"اِقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ","اِقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",1,NULL
+143,35,"بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ","بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ",0,NULL
+144,35,"ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ","ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ",0,NULL
+145,35,"إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ ٱلْقَدْرِ","إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ ٱلْقَدْرِ",0,NULL
+146,36,Yasin,Yasin,1,NULL
+147,36,Al-Fatihah,Al-Fatihah,0,NULL
+148,36,Al-Baqarah,Al-Baqarah,0,NULL
+149,36,Al-Kahfi,Al-Kahfi,0,NULL
+150,37,114 Surah,114 Surah,1,NULL
+151,37,99 Surah,99 Surah,0,NULL
+152,37,30 Surah,30 Surah,0,NULL
+153,37,120 Surah,120 Surah,0,NULL
+154,38,Al-Baqarah,Al-Baqarah,1,NULL
+155,38,Al-Fatihah,Al-Fatihah,0,NULL
+156,38,An-Nisa,An-Nisa,0,NULL
+157,38,Al-Kahfi,Al-Kahfi,0,NULL
+158,39,Al-Kawthar,Al-Kawthar,1,NULL
+159,39,Al-Asr,Al-Asr,0,NULL
+160,39,Al-Ikhlas,Al-Ikhlas,0,NULL
+161,39,Al-Falaq,Al-Falaq,0,NULL
+162,40,Abu Bakar As-Siddiq,Abu Bakar As-Siddiq,1,NULL
+163,40,Umar bin Khattab,Umar bin Khattab,0,NULL
+164,40,Uthman bin Affan,Uthman bin Affan,0,NULL
+165,40,Ali bin Abi Talib,Ali bin Abi Talib,0,NULL
+166,41,Gua Hira,Cave Hira,1,NULL
+167,41,Gua Thawr,Cave Thawr,0,NULL
+168,41,Masjidil Haram,Masjid Al-Haram,0,NULL
+169,41,Madinah,Medina,0,NULL
+170,42,"Kata-kata, perbuatan, dan persetujuan Nabi Muhammad SAW","The words, actions, and approvals of Prophet Muhammad ?",1,NULL
+171,42,Kitab yang diturunkan sebelum Al-Quran,A book revealed before the Quran,0,NULL
+172,42,Syair Arab zaman Jahiliyah,Poetry from the Jahiliyyah era,0,NULL
+173,42,Doa-doa dalam Islam,Supplications in Islam,0,NULL
+174,43,Imam Bukhari,Imam Bukhari,1,NULL
+175,43,Imam Muslim,Imam Muslim,0,NULL
+176,43,Imam Abu Daud,Imam Abu Dawood,0,NULL
+177,43,Imam Tirmizi,Imam Tirmidhi,0,NULL
+178,44,Malaikat Jibrail datang kepada Nabi Muhammad SAW di Gua Hira.,Angel Jibril came to Prophet Muhammad ? in Cave Hira.,1,1
+179,44,"Jibrail menyuruh Nabi membaca dengan wahyu pertama, ""Iqra'!""","Jibril commanded the Prophet to read with the first revelation, ""Iqra'!""",1,2
+180,44,Nabi Muhammad SAW pulang ke rumah dalam keadaan ketakutan.,Prophet Muhammad ? returned home in fear,1,3
+181,44,Khadijah menenangkan Nabi dan membawanya berjumpa Waraqah bin Naufal.,Khadijah calmed the Prophet and took him to meet Waraqah bin Naufal.,1,4
+182,45,Al-Quran dihafal dan ditulis di pelbagai medium seperti kulit dan batu.,The Quran was memorized and written on various materials like leather and stone.,1,1
+183,45,Khalifah Abu Bakar As-Siddiq mengarahkan pengumpulan ayat-ayat Al-Quran selepas Perang Yamamah.,Caliph Abu Bakr As-Siddiq ordered the collection of Quranic verses after the Battle of Yamamah.,1,2
+184,45,Khalifah Uthman bin Affan menyalin dan menyebarkan satu mushaf rasmi ke seluruh wilayah Islam.,Caliph Uthman bin Affan copied and distributed an official Mushaf across Islamic regions.,1,3
+185,45,"Hari ini, Al-Quran dicetak dan disebarkan dalam pelbagai bahasa di seluruh dunia.","Today, the Quran is printed and distributed in various languages worldwide.",1,4
+186,46,Dibenarkan oleh syarak,Permissible in Islamic law,1,NULL
+187,46,Perkara yang dilarang,Forbidden things,0,NULL
+188,46,Tidak mempunyai hukum,Neutral with no ruling,0,NULL
+189,46,Wajib dilakukan,Mandatory to do,0,NULL
+190,47,Dilarang oleh syarak,Forbidden by Islamic law,1,NULL
+191,47,Dibenarkan dengan syarat,Allowed with conditions,0,NULL
+192,47,Sesuatu yang digalakkan,Something encouraged,0,NULL
+193,47,Sunat dilakukan,Recommended to do,0,NULL
+194,48,Dicampur dengan bahan haram,Mixed with haram substances,1,NULL
+195,48,Dimakan dengan tangan kiri,Eaten with the left hand,0,NULL
+196,48,Dibeli daripada bukan Muslim,Bought from non-Muslims,0,NULL
+197,48,Tidak disukai oleh seseorang,Disliked by someone,0,NULL
+198,49,Riba (faedah),Usury (interest),1,NULL
+199,49,Keuntungan daripada perniagaan halal,Profits from halal business,0,NULL
+200,49,Menjual produk yang bermanfaat,Selling beneficial products,0,NULL
+201,49,Berkongsi keuntungan dengan adil,Fair profit-sharing,0,NULL
+202,50,Menjual arak dan judi,Selling alcohol and gambling,1,NULL
+203,50,Bekerja sebagai petani,Working as a farmer,0,NULL
+204,50,Mengajar di sekolah bukan Islam,Teaching in a non-Muslim school,0,NULL
+205,50,Bekerja di syarikat antarabangsa,Working in an international company,0,NULL
+206,51,Ia menindas dan menzalimi orang lain,It oppresses and harms others,1,NULL
+207,51,Ia menguntungkan perniagaan,It benefits businesses,0,NULL
+208,51,Ia meningkatkan ekonomi negara,It improves the country's economy,0,NULL
+209,51,Ia memudahkan pinjaman,It makes borrowing easier,0,NULL
+210,52,Harus jika makanan itu disediakan secara bersih,Allowed if the food is prepared cleanly,1,NULL
+211,52,Haram dalam semua keadaan,Forbidden in all cases,0,NULL
+212,52,Hanya dibolehkan jika dimakan di rumah,Allowed only if eaten at home,0,NULL
+213,52,Wajib mengelakkannya,Obligatory to avoid it,0,NULL
+214,53,Dibenarkan dengan syarat tidak berlebihan,Allowed under strict conditions and not excessively,1,NULL
+215,53,Haram dalam semua keadaan,Forbidden in all situations,0,NULL
+216,53,Hanya boleh makan jika doktor membenarkan,Allowed only if approved by a doctor,0,NULL
+217,53,Tidak perlu kerana ada alternatif lain,Unnecessary because alternatives exist,0,NULL
+218,54,HALAL,HALAL,0,NULL
+219,54,HARAM,HARAM,1,NULL
+220,55,HALAL,HALAL,1,NULL
+221,55,HARAM,HARAM,0,NULL
+222,56,HALAL,HALAL,0,NULL
+223,56,HARAM,HARAM,1,NULL
+224,57,HALAL,HALAL,1,NULL
+225,57,HARAM,HARAM,0,NULL
+226,58,HALAL,HALAL,0,NULL
+227,58,HARAM,HARAM,1,NULL
+228,59,HALAL,HALAL,0,NULL
+229,59,HARAM,HARAM,1,NULL
+230,60,Menyebut nama Allah sebelum penyembelihan.,Reciting the name of Allah before slaughtering,1,1
+231,60,"Memotong saluran pernafasan, esofagus, dan saluran darah utama.","Cutting the respiratory tract, esophagus, and major blood vessels.",1,2
+232,60,Menunggu darah mengalir sepenuhnya sebelum memproses daging.,Allowing the blood to drain completely before processing the meat.,1,3
+233,60,Membersihkan daging dan menyimpannya mengikut syariat Islam.,Cleaning the meat and storing it according to Islamic guidelines.,1,4
+234,61,Perangai dan tingkah laku seseorang,A persons character and behavior,1,NULL
+235,61,Ilmu berkaitan fiqh,Knowledge related to Islamic jurisprudence,0,NULL
+236,61,Hubungan dengan manusia sahaja,Relationship with humans only,0,NULL
+237,61,Amalan ibadah yang khusus,Specific acts of worship,0,NULL
+238,62,Nabi Muhammad SAW,Prophet Muhammad ?,1,NULL
+239,62,Abu Lahab,Abu Lahab,0,NULL
+240,62,Firaun,Pharaoh,0,NULL
+241,62,Qarun,Qarun,0,NULL
+242,63,Jujur dan amanah,Honest and trustworthy,1,NULL
+243,63,Sombong dan angkuh,Arrogant and boastful,0,NULL
+244,63,Pemarah dan pendendam,Short-tempered and vengeful,0,NULL
+245,63,Pentingkan diri sendiri,Self-centered,0,NULL
+246,64,Berkata dengan lemah lembut dan jujur,Speak kindly and honestly,1,NULL
+247,64,Menjerit dan menggunakan kata-kata kasar,Shouting and using harsh words,0,NULL
+248,64,Memotong percakapan orang lain,Interrupting others' conversations,0,NULL
+249,64,Menghina pendapat orang lain,Insulting other people's opinions,0,NULL
+250,65,Menghormati dan membantu mereka,Respect and help them,1,NULL
+251,65,Tidak perlu mengambil tahu tentang mereka,Do not care about them,0,NULL
+252,65,Boleh menyakiti mereka jika perlu,Can harm them if necessary,0,NULL
+253,65,Tidak wajib berbuat baik kepada mereka,Not required to be good to them,0,NULL
+254,66,Membaca doa sebelum makan dan berkongsi dengan orang lain,Recite a prayer before eating and share with others,1,NULL
+255,66,Makan dengan gelojoh dan tidak bersyukur,Eat hastily and be ungrateful,0,NULL
+256,66,Membazir makanan dan tidak menghargainya,Waste food and not appreciate it,0,NULL
+257,66,Makan dengan tangan kiri dan bercakap ketika makanan di mulut,Eat with the left hand and talk while chewing,0,NULL
+258,67,Mengawal diri dan beristighfar,Control oneself and seek forgiveness,1,NULL
+259,67,Melepaskan kemarahan tanpa kawalan,Release anger without restraint,0,NULL
+260,67,Membalas dengan lebih marah,Respond with more anger,0,NULL
+261,67,Menghina orang lain untuk melepaskan tekanan,Insult others to release stress,0,NULL
+262,68,Ikhlas dan berjanji untuk tidak mengulanginya,Be sincere and promise not to repeat it,1,NULL
+263,68,Hanya berkata maaf tanpa penyesalan,Just say sorry without regret,0,NULL
+264,68,Tidak perlu meminta maaf jika tidak ketahuan,No need to apologize if no one finds out,0,NULL
+265,68,Membalas dengan kemarahan jika tidak diterima,Respond with anger if not forgiven,0,NULL
+266,69,Menghormati dan berbakti kepada mereka,Respect and be dutiful to them,1,NULL
+267,69,Hanya mendengar kata-kata mereka jika bersetuju,Only listen to them if you agree,0,NULL
+268,69,Boleh meninggikan suara jika marah,Can raise your voice when angry,0,NULL
+269,69,Tidak perlu menjaga mereka ketika tua,No need to care for them when they are old,0,NULL
+270,70,Bersabar dan berdoa kepada Allah,Be patient and pray to Allah,1,NULL
+271,70,Membalas dengan hinaan yang lebih teruk,Respond with worse insults,0,NULL
+272,70,Menyebarkan keburukan mereka kepada orang lain,Spread their faults to others,0,NULL
+273,70,Berhenti berkomunikasi dengan semua orang,Stop communicating with everyone,0,NULL
+274,71,BETUL,TRUE,0,NULL
+275,71,SALAH,FALSE,1,NULL
+276,72,BETUL,TRUE,1,NULL
+277,72,SALAH,FALSE,0,NULL
+278,73,BETUL,TRUE,0,NULL
+279,73,SALAH,FALSE,1,NULL
+280,74,BETUL,TRUE,0,NULL
+281,74,SALAH,FALSE,1,NULL
+282,75,BETUL,TRUE,1,NULL
+283,75,SALAH,FALSE,0,NULL
+284,76,Hormat dan bercakap dengan lemah lembut,Respect and speak kindly,1,NULL
+285,76,Berkasar jika tidak bersetuju,Be rude if you disagree,0,NULL
+286,76,Bercakap dengan suara yang kuat dan tegas,Speak loudly and firmly,0,NULL
+287,76,Tidak perlu menjaga kata-kata,No need to be mindful of words,0,NULL
+288,77,Mengucapkan "السَّلَامُ عَلَيْكُمْ" dengan ikhlas,Sincerely say "السَّلَامُ عَلَيْكُمْ",1,NULL
+289,77,Hanya mengangguk kepala tanpa berkata apa-apa,Just nod without speaking,0,NULL
+290,77,Mengangkat tangan sahaja tanpa ucapan,Raise the hand without speaking,0,NULL
+291,77,Memberi salam hanya kepada orang yang dikenali,Only greet people you know,0,NULL
+292,78,Membantu mereka dengan sedekah dan menghormati mereka,Help them with charity and respect,1,NULL
+293,78,Tidak bergaul dengan mereka kerana mereka miskin,Avoid them because they are poor,0,NULL
+294,78,Menghina mereka kerana kekurangan harta,Insult them for their lack of wealth,0,NULL
+295,78,Hanya membantu jika ada orang melihat,Only help if others are watching,0,NULL
+296,79,Berbuat baik dan menghormati mereka,Be kind and respectful towards them,1,NULL
+297,79,Tidak perlu berhubung dengan mereka,Avoid interacting with them,0,NULL
+298,79,Menunjukkan kebencian kepada mereka,Show hatred towards them,0,NULL
+299,79,Hanya bercakap dengan mereka apabila perlu,Only speak to them when necessary,0,NULL
+300,80,Berdebat dengan adab dan tanpa menghina,Debate with manners and without insults,1,NULL
+301,80,Meninggikan suara supaya pendapat kita diterima,Raise our voice so our opinion is accepted,0,NULL
+302,80,Menghina pendapat orang lain jika salah,Insult others' opinions if they are wrong,0,NULL
+303,80,Tidak perlu mendengar pandangan orang lain,No need to listen to others' views,0,NULL
+304,81,Mengucapkan salam atau kata-kata yang baik,Say salam or kind words,1,NULL
+305,81,Terus berlalu tanpa berkata apa-apa,Walk away without saying anything,0,NULL
+306,81,Mengabaikan mereka tanpa sebarang penghormatan,Ignore them without any respect,0,NULL
+307,81,Memarahi mereka sebelum pergi,Scold them before leaving,0,NULL
+308,82,Menerima dengan hati terbuka jika ia membina,Accept it with an open heart if it is constructive,1,NULL
+309,82,Marah dan menyerang balik orang yang mengkritik,Get angry and attack the critic,0,NULL
+310,82,Tidak mengambil peduli apa yang orang lain kata,Ignore all feedback,0,NULL
+311,82,Memutuskan hubungan dengan orang yang mengkritik kita,Cut ties with the critic,0,NULL
+312,83,Berbincang dengan hikmah dan adab,Discuss with wisdom and etiquette,1,NULL
+313,83,Menjerit dan memaksa pendapat kita diterima,Shout and force others to accept our view,0,NULL
+314,83,Menghina orang yang tidak bersetuju dengan kita,Insult those who disagree,0,NULL
+315,83,Memutuskan hubungan dengan mereka yang berbeza pandangan,Cut ties with those who have different views,0,NULL
+316,84,Mengucapkan "يَرْحَمُكَ اللَّهُ" jika dia seorang Muslim,Say "يَرْحَمُكَ اللَّهُ" if they are Muslim,1,NULL
+317,84,Mengabaikan mereka kerana ia bukan perkara penting,Ignore them because it is not important,0,NULL
+318,84,Menjauhkan diri kerana takut terkena jangkitan,Distance yourself due to fear of infection,0,NULL
+319,84,Marah kerana bunyi bersin mengganggu,Get angry because the sneeze is annoying,0,NULL
+320,85,Memberi hadiah dengan ikhlas tanpa mengharap balasan,Give gifts sincerely without expecting anything in return,1,NULL
+321,85,Hanya memberi hadiah kepada orang yang kaya,Only give gifts to wealthy people,0,NULL
+322,85,Menyebut-nyebut hadiah yang telah diberikan,Brag about the gifts given,0,NULL
+323,85,Memberi hadiah hanya jika orang lain memberi terlebih dahulu,Only give a gift if the other person gives first,0,NULL
+324,86,BETUL,TRUE,0,NULL
+325,86,SALAH,FALSE,1,NULL
+326,87,BETUL,TRUE,1,NULL
+327,87,SALAH,FALSE,0,NULL
+328,88,BETUL,TRUE,0,NULL
+329,88,SALAH,FALSE,1,NULL
+330,89,BETUL,TRUE,0,NULL
+331,89,SALAH,FALSE,1,NULL
+332,90,BETUL,TRUE,1,NULL
+333,90,SALAH,FALSE,0,NULL
+334,91,Roh akan memasuki alam Barzakh,The soul enters the realm of Barzakh,1,NULL
+335,91,Kehidupan terus berulang seperti biasa,Life continues as usual,0,NULL
+336,91,Roh akan hilang dan tidak wujud lagi,The soul disappears and ceases to exist,0,NULL
+337,91,Seseorang boleh memilih untuk hidup semula,A person can choose to be reborn,0,NULL
+338,92,Alam Barzakh,Barzakh Realm,1,NULL
+339,92,Alam Dunia,Worldly Life,0,NULL
+340,92,Alam Syurga,Paradise Realm,0,NULL
+341,92,Alam Neraka,Hell Realm,0,NULL
+342,93,Hari Kiamat,The Day of Judgment,1,NULL
+343,93,Hari Raya,Festival Day,0,NULL
+344,93,Hari Kelahiran,Birth Day,0,NULL
+345,93,Hari Pembalasan,Day of Revenge,0,NULL
+346,94,8 Tingkatan,8 Levels,1,NULL
+347,94,3 Tingkatan,3 Levels,0,NULL
+348,94,10 Tingkatan,10 Levels,0,NULL
+349,94,7 Tingkatan,7 Levels,0,NULL
+350,95,Jahannam,Jahannam,1,NULL
+351,95,Saqar,Saqar,0,NULL
+352,95,Hutamah,Hutamah,0,NULL
+353,95,Lazha,Lazha,0,NULL
+354,96,Mereka akan dihisab atas segala amalan mereka,They will be judged for all their deeds,1,NULL
+355,96,Mereka akan kembali hidup di dunia,They will return to live in the world,0,NULL
+356,96,Mereka boleh memilih untuk masuk ke syurga atau neraka,They can choose to enter Paradise or Hell,0,NULL
+357,96,Semua manusia akan terus masuk ke syurga tanpa hisab,All humans will enter Paradise without judgment,0,NULL
+358,97,Semua manusia akan melaluinya untuk menuju ke syurga atau neraka,Everyone must cross it to reach Paradise or Hell,1,NULL
+359,97,Hanya orang yang berdosa perlu melaluinya,Only sinners must cross it,0,NULL
+360,97,Ia hanya boleh dilalui oleh para nabi,Only prophets can cross it,0,NULL
+361,97,Orang yang kaya tidak perlu melaluinya,Wealthy people do not need to cross it,0,NULL
+362,98,Mizan,Mizan,1,NULL
+363,98,Sirat,Sirat,0,NULL
+364,98,Barzakh,Barzakh,0,NULL
+365,98,Mahsyar,Mahsyar,0,NULL
+366,99,Al-Kawthar,Al-Kawthar,1,NULL
+367,99,Zamzam,Zamzam,0,NULL
+368,99,Al-Salsabil,Al-Salsabil,0,NULL
+369,99,Al-Firdaus,Al-Firdaus,0,NULL
+370,100,Ar-Rayyan,Ar-Rayyan,1,NULL
+371,100,As-Sirat,As-Sirat,0,NULL
+372,100,Al-Firdaus,Al-Firdaus,0,NULL
+373,100,Al-Kauthar,Al-Kauthar,0,NULL
+374,101,Beriman kepada Allah dan beramal soleh,Believe in Allah and perform righteous deeds,1,NULL
+375,101,Kaya dan berjaya dalam kehidupan dunia,Be rich and successful in worldly life,0,NULL
+376,101,Tidak pernah sakit semasa hidup,Never fall sick in life,0,NULL
+377,101,Dilahirkan dalam keluarga Muslim,Be born into a Muslim family,0,NULL
+378,102,Kenikmatan yang tidak pernah dilihat atau dirasakan di dunia,Pleasures never seen or felt in the world,1,NULL
+379,102,Hanya makanan dan minuman yang lazat,Only delicious food and drinks,0,NULL
+380,102,Hanya kehidupan yang panjang,Only a long life,0,NULL
+381,102,Hanya pakaian dan istana emas,Only golden clothes and palaces,0,NULL
+382,103,Diletakkan bara api di bawah tapak kaki sehingga mendidih otak,A burning coal placed under the feet causing the brain to boil,1,NULL
+383,103,Diberikan pakaian daripada api,Being clothed in fire,0,NULL
+384,103,Dipaksa minum air panas mendidih,Being forced to drink boiling water,0,NULL
+385,103,Dihumban ke dalam lautan api,Being thrown into a sea of fire,0,NULL
+386,104,Bertaubat dengan ikhlas kepada Allah,Sincerely repent to Allah,1,NULL
+387,104,Membantu orang kaya menjadi lebih kaya,Help rich people become richer,0,NULL
+388,104,Mengumpul banyak harta tanpa menggunakannya,Accumulate wealth without using it,0,NULL
+389,104,Tidak bercakap dengan orang lain sepanjang hidup,Never talk to anyone in life,0,NULL
+390,105,Roh keluar dari jasad pada saat kematian.,The soul leaves the body at the moment of death.,1,1
+391,105,Roh memasuki alam Barzakh untuk menunggu Hari Kiamat.,The soul enters Barzakh to wait for Judgment Day.,1,2
+392,105,Hari Kiamat berlaku dan manusia dibangkitkan untuk dihisab.,"Judgment Day occurs, and all humans are resurrected for judgment.",1,3
+393,105,Amalan ditimbang di Mizan dan keputusan diberikan sama ada ke syurga atau neraka.,"Deeds are weighed on the Mizan, and the final judgment is given for Paradise or Hell.",1,4
+394,105,"Penghuni syurga menikmati kenikmatan abadi, sementara penghuni neraka mengalami azab.","The people of Paradise enjoy eternal bliss, while those in Hell suffer punishment.",1,5
+395,106,Cahaya,Light,1,NULL
+396,106,Tanah,Earth,0,NULL
+397,106,Api,Fire,0,NULL
+398,106,Air,Water,0,NULL
+399,107,10 malaikat,10 angels,1,NULL
+400,107,7 malaikat,7 angels,0,NULL
+401,107,12 malaikat,12 angels,0,NULL
+402,107,99 malaikat,99 angels,0,NULL
+403,108,Malaikat tidak mempunyai nafsu dan tidak melakukan dosa,Angels have no desires and do not sin,1,NULL
+404,108,Malaikat lebih kuat daripada manusia tetapi mempunyai nafsu,Angels are stronger than humans but have desires,0,NULL
+405,108,Malaikat boleh memilih untuk taat atau ingkar kepada Allah,Angels can choose to obey or disobey Allah,0,NULL
+406,108,Malaikat mempunyai umur yang terhad seperti manusia,Angels have limited lifespans like humans,0,NULL
+407,109,"Dua, tiga, atau empat","Two, three, or four",1,NULL
+408,109,Hanya dua,Only two,0,NULL
+409,109,Tujuh,Seven,0,NULL
+410,109,Tidak mempunyai sayap,They have no wings,0,NULL
+411,110,Jibril,Jibril,1,NULL
+412,110,Mikail,Mikail,0,NULL
+413,110,Israfil,Israfil,0,NULL
+414,110,Raqib,Raqib,0,NULL
+415,111,Amalan baik manusia,Good deeds of humans,1,NULL
+416,111,Amalan buruk manusia,Bad deeds of humans,0,NULL
+417,111,Hanya amalan solat,Only prayer deeds,0,NULL
+418,111,Hanya amalan puasa,Only fasting deeds,0,NULL
+419,112,Menyoal manusia di dalam kubur,Questioning humans in the grave,1,NULL
+420,112,Menimbang amalan manusia,Weighing human deeds,0,NULL
+421,112,Membantu manusia masuk ke syurga,Helping humans enter Paradise,0,NULL
+422,112,Memberi rezeki kepada manusia,Providing sustenance to humans,0,NULL
+423,113,Ridwan,Ridwan,1,NULL
+424,113,Malik,Malik,0,NULL
+425,113,Jibril,Jibril,0,NULL
+426,113,Israfil,Israfil,0,NULL
+427,114,Menurunkan hujan dan mengatur rezeki,Bringing rain and distributing sustenance,1,NULL
+428,114,Mengambil nyawa manusia,Taking human souls,0,NULL
+429,114,Menyoal manusia di kubur,Questioning humans in the grave,0,NULL
+430,114,Menjaga pintu neraka,Guarding the gates of Hell,0,NULL
+431,115,Izrail,Izrail,1,NULL
+432,115,Jibril,Jibril,0,NULL
+433,115,Malik,Malik,0,NULL
+434,115,Mikail,Mikail,0,NULL
+435,116,Israfil,Israfil,1,NULL
+436,116,Izrail,Izrail,0,NULL
+437,116,Mikail,Mikail,0,NULL
+438,116,Malik,Malik,0,NULL
+439,117,Mereka akan terus hidup dan menjalankan tugas mereka,They will continue living and performing their duties,1,NULL
+440,117,Mereka akan dihitung seperti manusia,They will be judged like humans,0,NULL
+441,117,Mereka akan berubah menjadi manusia,They will turn into humans,0,NULL
+442,117,Mereka akan hilang kewujudannya,They will cease to exist,0,NULL
+443,118,BETUL,TRUE,1,NULL
+444,118,SALAH,FALSE,0,NULL
+445,119,BETUL,TRUE,0,NULL
+446,119,SALAH,FALSE,1,NULL
+447,120,BETUL,TRUE,1,NULL
+448,120,SALAH,FALSE,0,NULL
+449,121,Allah SWT,Allah SWT,1,NULL
+450,121,Malaikat Mikail,Angel Mikail,0,NULL
+451,121,Nabi Muhammad SAW,Prophet Muhammad ?,0,NULL
+452,121,Kerajaan dan pemimpin,Government and leaders,0,NULL
+453,122,Rezeki yang memberi manfaat dan ketenangan kepada pemiliknya,Sustenance that brings benefit and peace to its owner,1,NULL
+454,122,Rezeki yang banyak tanpa kira halal atau haram,"A large amount of sustenance, regardless of halal or haram",0,NULL
+455,122,Rezeki yang tidak berkurang walaupun dibelanjakan secara boros,Sustenance that does not decrease even if spent wastefully,0,NULL
+456,122,Rezeki yang hanya diperoleh oleh orang kaya,Sustenance that only the rich receive,0,NULL
+457,123,Bekerja dengan jujur dan mengikut syariat Islam,Work honestly and follow Islamic principles,1,NULL
+458,123,Mengambil keuntungan sebanyak mungkin tanpa peduli halal haram,"Gain as much profit as possible, regardless of halal or haram",0,NULL
+459,123,Hanya berdoa tanpa berusaha,Only pray without making any effort,0,NULL
+460,123,Menipu dalam perniagaan untuk keuntungan besar,Cheat in business to gain bigger profits,0,NULL
+461,124,Bersedekah dan bersyukur kepada Allah,Giving charity and being grateful to Allah,1,NULL
+462,124,Mengumpul harta sebanyak mungkin tanpa menggunakannya,Accumulating as much wealth as possible without using it,0,NULL
+463,124,Berhenti kerja dan hanya berdoa setiap hari,Quitting work and only praying every day,0,NULL
+464,124,Tidak berkongsi rezeki dengan orang lain,Not sharing sustenance with others,0,NULL
+465,125,Meletakkan sesuatu pada tempatnya dan memberi hak kepada yang berhak,Placing things in their rightful place and giving rights to whom they belong,1,NULL
+466,125,Semua orang mesti menerima jumlah kekayaan yang sama,Everyone must receive the same amount of wealth,0,NULL
+467,125,Orang kaya mesti memberikan semua harta mereka kepada orang miskin,Rich people must give away all their wealth to the poor,0,NULL
+468,125,"Keadilan hanya untuk orang Islam, bukan untuk semua manusia","Justice is only for Muslims, not for all humanity",0,NULL
+469,126,"Berusaha, berdoa, dan bertawakal kepada Allah","Work hard, pray, and rely on Allah",1,NULL
+470,126,Berhenti bekerja dan menunggu rezeki datang sendiri,Quit working and wait for sustenance to come,0,NULL
+471,126,Menipu atau mencuri jika terdesak,Cheat or steal if desperate,0,NULL
+472,126,Menyalahkan orang lain atas kesempitan hidup,Blame others for financial difficulties,0,NULL
+473,127,Mencukupi walaupun sedikit dan membawa ketenangan,Sufficient even in small amounts and brings peace,1,NULL
+474,127,Meningkat dengan cepat tanpa mengira halal atau haram,Grows quickly regardless of halal or haram,0,NULL
+475,127,Semakin banyak harta semakin jauh dari Allah,"The more wealth, the further from Allah",0,NULL
+476,127,Hanya orang kaya yang mempunyai keberkatan,Only wealthy people have blessings,0,NULL
+477,128,Harta tidak diberkati dan mendatangkan kesusahan hidup,Wealth is not blessed and brings hardship in life,1,NULL
+478,128,Rezeki bertambah dengan cara yang halal,Sustenance increases in a lawful manner,0,NULL
+479,128,Allah SWT akan memberikan keberkatan lebih banyak,Allah SWT will provide even more blessings,0,NULL
+480,128,Kehidupan akan sentiasa bahagia dan tenang,Life will always be happy and peaceful,0,NULL
+481,129,Semua individu bertanggungjawab untuk mencari nafkah secara halal,Every individual is responsible for earning a halal livelihood,1,NULL
+482,129,Islam menggalakkan penindasan golongan miskin oleh orang kaya,Islam encourages the oppression of the poor by the rich,0,NULL
+483,129,Keuntungan dalam perniagaan mesti diutamakan daripada keadilan,Profit in business must be prioritized over justice,0,NULL
+484,129,Seseorang boleh mengambil harta orang lain selagi tidak ketahuan,One can take others' wealth as long as they are not caught,0,NULL
+485,130,Zakat dan sedekah,Zakat and charity,1,NULL
+486,130,Memberikan pinjaman riba kepada yang miskin,Giving usurious loans to the poor,0,NULL
+487,130,Tidak perlu membantu kerana rezeki adalah urusan peribadi,No need to help because sustenance is personal,0,NULL
+488,130,Menyimpan semua harta untuk diri sendiri,Hoarding all wealth for oneself,0,NULL
+489,131,BETUL,TRUE,1,NULL
+490,131,SALAH,FALSE,0,NULL
+491,132,BETUL,TRUE,1,NULL
+492,132,SALAH,FALSE,0,NULL
+493,133,BETUL,TRUE,0,NULL
+494,133,SALAH,FALSE,1,NULL
+495,134,BETUL,TRUE,0,NULL
+496,134,SALAH,FALSE,1,NULL
+497,135,BETUL,TRUE,1,NULL
+498,135,SALAH,FALSE,0,NULL
+499,136,اِقْرَأْ (Bacalah),اِقْرَأْ (Read),1,NULL
+500,136,سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى,سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى,0,NULL
+501,136,الٓمّٓ,الٓمّٓ,0,NULL
+502,136,وَالضُّحَى,وَالضُّحَى,0,NULL
+503,137,Ulama,Scholars,1,NULL
+504,137,Pemimpin negara,National leaders,0,NULL
+505,137,Peniaga berjaya,Successful businessmen,0,NULL
+506,137,Orang kaya,Wealthy individuals,0,NULL
+507,138,Mendekatkan diri kepada Allah dan meningkatkan keimanan,Bringing oneself closer to Allah and increasing faith,1,NULL
+508,138,Menjadi lebih kaya dan berjaya dalam dunia,Becoming richer and more successful in life,0,NULL
+509,138,Supaya mendapat kedudukan tinggi dalam masyarakat,To gain a high status in society,0,NULL
+510,138,Supaya tidak perlu lagi bekerja keras,So that one no longer needs to work hard,0,NULL
+511,139,Semua manusia tanpa mengira status,All humans regardless of status,1,NULL
+512,139,Hanya kepada lelaki sahaja,Only for men,0,NULL
+513,139,Hanya kepada pemimpin negara,Only for national leaders,0,NULL
+514,139,Hanya kepada mereka yang miskin,Only for the poor,0,NULL
+515,140,Rendah hati dan sentiasa ingin belajar,Humble and always willing to learn,1,NULL
+516,140,Hanya belajar apabila perlu sahaja,Only learn when necessary,0,NULL
+517,140,Tidak berkongsi ilmu dengan orang lain,Not sharing knowledge with others,0,NULL
+518,140,Berhenti belajar setelah cukup ilmu dunia,Stop learning once worldly knowledge is sufficient,0,NULL
+519,141,Supaya ilmu dapat diwariskan kepada generasi akan datang,So that knowledge can be passed to future generations,1,NULL
+520,141,Hanya untuk menunjukkan kepandaian seseorang,Only to showcase someone's intelligence,0,NULL
+521,141,Tidak penting kerana ilmu hanya dalam ingatan sudah mencukupi,Not important because remembering knowledge is enough,0,NULL
+522,141,Untuk mendapatkan lebih banyak keuntungan kewangan,To gain more financial profit,0,NULL
+523,142,"رَبِّ زِدْنِي عِلْمًا (Ya Allah tambahkanlah ilmuku)","رَبِّ زِدْنِي عِلْمًا (O Allah increase me in knowledge)",1,NULL
+524,142,"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا (Ya Allah kurniakan aku ilmu yang bermanfaat)","اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا (O Allah grant me beneficial knowledge)",0,NULL
+525,142,Kedua-duanya betul,Both are correct,0,NULL
+526,142,Tidak ada doa khusus mengenai ilmu dalam Islam,There is no specific supplication about knowledge in Islam,0,NULL
+527,143,Ilmu agama dan ilmu duniawi,Religious and worldly knowledge,1,NULL
+528,143,Hanya ilmu agama sahaja,Only religious knowledge,0,NULL
+529,143,Hanya ilmu duniawi seperti sains dan teknologi,Only worldly knowledge such as science and technology,0,NULL
+530,143,Hanya ilmu yang menguntungkan secara kewangan,Only knowledge that is financially beneficial,0,NULL
+531,144,Mendidik mereka dengan ilmu agama dan akhlak yang baik,Teaching them religious knowledge and good morals,1,NULL
+532,144,Membiarkan mereka belajar sendiri tanpa bimbingan,Letting them learn on their own without guidance,0,NULL
+533,144,Hanya mengajar mereka ilmu duniawi seperti perniagaan,Only teaching them worldly knowledge such as business,0,NULL
+534,144,Tidak perlu mendidik anak-anak kerana sekolah sudah mencukupi,No need to educate children because schools are enough,0,NULL
+535,145,Menyampaikan ilmu dengan amanah dan ikhlas,Teaching with sincerity and honesty,1,NULL
+536,145,Hanya menyampaikan ilmu tanpa peduli jika pelajar memahami,Just delivering knowledge without caring if students understand,0,NULL
+537,145,Mengajar hanya untuk mendapat gaji dan pangkat,Teaching only for salary and rank,0,NULL
+538,145,Menjadi lebih berkuasa daripada pelajar,Becoming more powerful than students,0,NULL
+539,146,BETUL,TRUE,1,NULL
+540,146,SALAH,FALSE,0,NULL
+541,147,BETUL,TRUE,1,NULL
+542,147,SALAH,FALSE,0,NULL
+543,148,BETUL,TRUE,1,NULL
+544,148,SALAH,FALSE,0,NULL
+545,149,BETUL,TRUE,1,NULL
+546,149,SALAH,FALSE,0,NULL
+547,150,BETUL,TRUE,0,NULL
+548,150,SALAH,FALSE,1,NULL
+549,150,BETUL,TRUE,0,NULL
+550,150,SALAH,FALSE,1,NULL
+551,151,6,6,1,NULL
+552,151,5,5,0,NULL
+553,151,7,7,0,NULL
+554,151,4,4,0,NULL
+555,152,Sunat,Sunnah,1,NULL
+556,152,Wajib,Obligatory,0,NULL
+557,152,Makruh,Discouraged,0,NULL
+558,152,Haram,Forbidden,0,NULL
+559,153,3 kali,3 times,1,NULL
+560,153,2 kali,2 times,0,NULL
+561,153,1 kali,1 times,0,NULL
+562,153,4 kali,4 times,0,NULL
+563,154,Wajib,Obligatory,1,NULL
+564,154,Sunat,Sunnah,0,NULL
+565,154,Makruh,Discouraged,0,NULL
+566,154,Haram,Forbidden,0,NULL
+567,155,Bersiwak atau menggosok gigi,Using a miswak or brushing teeth,1,NULL
+568,155,Makan terlebih dahulu,Eating first,0,NULL
+569,155,Minum air sebelum wudhu,Drinking water before wudhu,0,NULL
+570,155,Tidak bercakap dengan sesiapa,Not speaking to anyone,0,NULL
+571,156,Membaca doa selepas wudhu,Reciting the supplication after wudhu,1,NULL
+572,156,Mengeringkan anggota wudhu dengan kain,Drying the wudhu parts with a cloth,0,NULL
+573,156,Teruskan dengan aktiviti lain tanpa membaca doa,Continue with other activities without reciting the supplication,0,NULL
+574,156,Berjalan tanpa menyentuh apa-apa supaya wudhu kekal lama,Walk without touching anything to keep wudhu longer,0,NULL
+575,157,Membersihkan diri secara fizikal dan rohani sebelum ibadah,Purifying oneself physically and spiritually before worship,1,NULL
+576,157,Menyegarkan badan sebelum bekerja,Refreshing the body before working,0,NULL
+577,157,Supaya sentiasa dalam keadaan basah untuk menghindari panas,Keeping oneself wet to avoid hea,0,NULL
+578,157,Hanya untuk menunjukkan kebersihan kepada orang lain,Only to show cleanliness to others,0,NULL
+579,158,Mengulangi basuhan pada bahagian yang tidak terkena air,Repeat washing the dry part,1,NULL
+580,158,Membatalkan wudhu dan mengambil semula dari awal,Cancel the wudhu and restart from the beginning,0,NULL
+581,158,"Tidak mengapa, asalkan anggota lain sudah dibasuh",Its okay as long as other parts are washed,0,NULL
+582,158,Teruskan solat tanpa perlu membasuh semula,Proceed to pray without rewashing,0,NULL
+583,159,"Ya, sunat dilakukan selepas menyapu kepala","Yes, it is sunnah after wiping the head",1,NULL
+584,159,"Tidak, ia tidak termasuk dalam wudhu","No, it is not part of wudhu",0,NULL
+585,159,"Ya, tetapi hanya bahagian luar telinga","Yes, but only the outer part of the ears",0,NULL
+586,159,Tidak perlu dilakukan kecuali dalam keadaan tertentu,Not necessary unless in certain situations,0,NULL
+587,160,Tidur yang tidak tetap kedudukan punggung,Sleeping while not firmly seated,1,NULL
+588,160,Berjalan dalam keadaan basah selepas wudhu,Walking while wet after wudhu,0,NULL
+589,160,Tertinggal doa selepas wudhu,Forgetting the supplication after wudhu,0,NULL
+590,160,Memegang sesuatu dengan tangan basah selepas wudhu,Holding something with wet hands after wudhu,0,NULL
+591,161,Kekal dalam keadaan wudhu selagi tiada kepastian batal,Assume wudhu is still valid unless certain it is broken,1,NULL
+592,161,Teruskan solat tanpa ragu-ragu,Continue praying without doubting,0,NULL
+593,161,Mengambil wudhu semula walaupun tidak pasti,Redo wudhu even if unsure,0,NULL
+594,161,Bertanya kepada orang lain sama ada wudhunya batal atau tidak,Ask someone else if their wudhu is invalid,0,NULL
+595,162,Makruh tetapi tidak membatalkan wudhu,Discouraged (makruh) but does not invalidate wudhu,1,NULL
+596,162,Haram dan membatalkan wudhu,Forbidden and invalidates wudhu,0,NULL
+597,162,Wajib jika bercakap dengan niat baik,Obligatory if speaking with good intention,0,NULL
+598,162,Sunat untuk membaca zikir sambil bercakap,Recommended to recite dhikr while talking,0,NULL
+599,163,Mengelakkan pembaziran dan mengikut sunnah Nabi SAW,Avoiding waste and following the Sunnah of the Prophet ?,1,NULL
+600,163,Supaya tidak perlu mengambil wudhu terlalu lama,So that wudhu does not take too long,0,NULL
+601,163,Tidak menyebabkan pakaian menjadi basah,To avoid getting clothes wet,0,NULL
+602,163,Tidak perlu mengulangi wudhu jika air habis,No need to repeat wudhu if water runs out,0,NULL
+603,164,أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ,أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ,1,NULL
+604,164,اللَّهُمَّ اجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ,اللَّهُمَّ اجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ,0,NULL
+605,164,رَبِّ زِدْنِي عِلْمًا,رَبِّ زِدْنِي عِلْمًا,0,NULL
+606,164,بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ,بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ,0,NULL
+607,165,Niat wudhu,Intention for wudhu,1,1
+608,165,Membasuh muka,Washing the face,1,2
+609,165,Membasuh kedua tangan hingga ke siku,Washing both hands up to the elbows,1,3
+610,165,Menyapu sebahagian kepala,Wiping part of the head,1,4
+611,165,Membasuh kedua kaki hingga ke buku lali,Washing both feet up to the ankles,1,5
+612,165,Tertib,Following the correct order without skipping any step,1,6
+613,166,Wajib dalam keadaan tertentu,Obligatory in certain conditions,1,NULL
+614,166,Sunat setiap hari,Recommended daily,0,NULL
+615,166,Harus bila mahu sahaja,Permissible anytime,0,NULL
+616,166,Makruh sebelum tidur,Discouraged before sleeping,0,NULL
+617,167,Haid dan nifas bagi wanita,Menstruation and postnatal bleeding for women,1,NULL
+618,167,Berpeluh selepas bersenam,Sweating after exercise,0,NULL
+619,167,Tidur yang lama,Sleeping for a long time,0,NULL
+620,167,Makan makanan berbau kuat,Eating strong-smelling food,0,NULL
+621,168,نَوَيْتُ الْغُسْلَ لِرَفْعِ الْحَدَثِ الْأَكْبَرِ لِلَّهِ تَعَالَى,نَوَيْتُ الْغُسْلَ لِرَفْعِ الْحَدَثِ الْأَكْبَرِ لِلَّهِ تَعَالَى,1,NULL
+622,168,اللَّهُمَّ اجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ,اللَّهُمَّ اجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ,0,NULL
+623,168,أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ,أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ,0,NULL
+624,168,بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ,بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ,0,NULL
+625,169,Seluruh tubuh tanpa terkecuali,The entire body without exception,1,NULL
+626,169,Hanya bahagian hadapan badan,Only the front part of the body,0,NULL
+627,169,Hanya rambut dan wajah,Only the hair and face,0,NULL
+628,169,"Hanya tangan, kaki, dan muka","Only the hands, feet, and face",0,NULL
+629,170,Secepat mungkin selepas darah berhenti,As soon as the bleeding stops,1,NULL
+630,170,Sebelum tidur pada hari terakhir haid,Before sleeping on the last day of menstruation,0,NULL
+631,170,Selepas waktu Subuh keesokan harinya,After Fajr the next morning,0,NULL
+632,170,"Tidak ada waktu tertentu, boleh bila-bila masa","No specific time, can be anytime",0,NULL
+633,171,Berwudhu sebelum mandi,Performing wudhu before ghusl,1,NULL
+634,171,Menggunakan sabun wangi,Using scented soap,0,NULL
+635,171,Makan sebelum mandi,Eating before bathing,0,NULL
+636,171,Memotong kuku sebelum mandi,Cutting nails before bathing,0,NULL
+637,172,"Tidak wajib, cukup sekadar air mutlak","Not obligatory, pure water is sufficient",1,NULL
+638,172,"Ya, wajib bagi memastikan badan bersih","Yes, obligatory to ensure cleanliness",0,NULL
+639,172,Wajib jika badan berbau atau kotor,Obligatory if the body smells or is dirty,0,NULL
+640,172,Sunat tetapi tidak diwajibkan,Recommended but not required,0,NULL
+641,173,Solat tidak sah dan berdosa,The prayer is invalid and it is sinful,1,NULL
+642,173,Solat tetap sah kerana niat sudah baik,The prayer is still valid because of good intention,0,NULL
+643,173,Dimaafkan jika tidak sengaja terlupa,Forgiven if done unintentionally,0,NULL
+644,173,Tidak mengapa jika hanya satu kali sahaja,Not a problem if it happens only once,0,NULL
+645,174,Membersihkan diri secara fizikal dan spiritual,Purifies the body physically and spiritually,1,NULL
+646,174,Hanya untuk menjaga kebersihan,Only for maintaining cleanliness,0,NULL
+647,174,Supaya wangi sebelum solat,To smell good before prayer,0,NULL
+648,174,Sekadar adat yang boleh diabaikan,Just a cultural practice that can be ignored,0,NULL
+649,175,Mengulangi mandi wajib semula,Repeat the ghusl entirely,1,NULL
+650,175,Hanya membasuh rambut yang tertinggal,Only wash the unwashed hair,0,NULL
+651,175,"Tidak mengapa, mandi wajib masih sah","No problem, ghusl is still valid",0,NULL
+652,175,Mengambil wudhu sahaja sudah mencukupi,Performing wudhu alone is sufficient,0,NULL
+653,176,BETUL,TRUE,1,NULL
+654,176,SALAH,FALSE,0,NULL
+655,177,BETUL,TRUE,1,NULL
+656,177,SALAH,FALSE,0,NULL
+657,178,BETUL,TRUE,0,NULL
+658,178,SALAH,FALSE,1,NULL
+659,179,BETUL,TRUE,0,NULL
+660,179,SALAH,FALSE,1,NULL
+661,180,Berniat untuk mandi wajib,Making an intention for ghusl,1,1
+662,180,Menghilangkan najis yang ada di badan,Removing any impurities from the body,1,2
+663,180,Meratakan air ke seluruh tubuh tanpa tertinggal bahagian,Ensuring water reaches the entire body without missing any part,1,3
+664,181,Surah Al-Fatihah,Surah Al-Fatihah,1,NULL
+665,181,Surah Al-Ikhlas,Surah Al-Ikhlas,0,NULL
+666,181,Tasyahhud awal,Tasyahhud awal,0,NULL
+667,181,Doa qunut,Doa qunut,0,NULL
+668,182,"Tidak, niat dilakukan dalam hati","No, the intention is made in the heart",1,NULL
+669,182,"Ya, niat mesti dibaca dengan suara kuat","Yes, the intention must be recited loudly",0,NULL
+670,182,"Ya, tetapi hanya bagi solat berjemaah","Yes, but only for congregational prayers",0,NULL
+671,182,Tidak perlu niat dalam solat,No intention is needed for prayer,0,NULL
+672,183,Berbicara dengan sengaja,Speaking deliberately,1,NULL
+673,183,Menggerakkan jari,Moving the fingers,0,NULL
+674,183,Bernafas dengan kuat,Breathing heavily,0,NULL
+675,183,Bersin ketika solat,Sneezing during prayer,0,NULL
+676,184,17 rakaat,17 rakahs,1,NULL
+677,184,15 rakaat,15 rakahs,0,NULL
+678,184,12 rakaat,12 rakahs,0,NULL
+679,184,20 rakaat,20 rakahs,0,NULL
+680,185,Sunat Muakkad,Highly recommended sunnah,1,NULL
+681,185,Wajib dalam semua keadaan,Obligatory in all situations,0,NULL
+682,185,Makruh jika dilakukan setiap hari,Discouraged if done daily,0,NULL
+683,185,Tidak perlu dilakukan jika sibuk,Not necessary if busy,0,NULL
+684,186,Bangun dan menambah rakaat selepas imam memberi salam,Stand up and complete the missed rakah after the imam finishes,1,NULL
+685,186,Ikut imam tanpa perlu menggantikan rakaat yang tertinggal,Follow the imam without making up the missed rakah,0,NULL
+686,186,Mengulang seluruh solat dari awal,Repeat the entire prayer from the beginning,0,NULL
+687,186,Duduk sahaja dan tidak perlu solat,Sit down and skip the prayer,0,NULL
+688,187,Doa qunut,Qunut supplication,1,NULL
+689,187,Surah Al-Fatihah,Surah Al-Fatihah,0,NULL
+690,187,Surah Al-Ikhlas,Surah Al-Ikhlas,0,NULL
+691,187,Doa iftitah,Opening supplication,0,NULL
+692,188,Berdosa besar dan wajib bertaubat,Major sin and requires repentance,1,NULL
+693,188,Tidak mengapa jika dilakukan sekali sahaja,No issue if done only once,0,NULL
+694,188,Boleh digantikan dengan puasa,Can be compensated by fasting,0,NULL
+695,188,Hanya makruh dan tidak berdosa,Only discouraged and not sinful,0,NULL
+696,189,Menjadi cara berkomunikasi dengan Allah,A means of communicating with Allah,1,NULL
+697,189,Supaya tidak duduk terlalu lama,To avoid sitting too long,0,NULL
+698,189,Untuk bersenam setiap hari,To exercise daily,0,NULL
+699,189,Hanya sebagai adat dalam masyarakat,Just a cultural practice,0,NULL
+700,190,BETUL,TRUE,1,NULL
+701,190,SALAH,FALSE,0,NULL
+702,191,BETUL,TRUE,0,NULL
+703,191,SALAH,FALSE,1,NULL
+704,192,BETUL,TRUE,1,NULL
+705,192,SALAH,FALSE,0,NULL
+706,193,BETUL,TRUE,0,NULL
+707,193,SALAH,FALSE,1,NULL
+708,194,BETUL,TRUE,1,NULL
+709,194,SALAH,FALSE,0,NULL
+710,195,Niat solat,Intention for prayer,1,1
+711,195,Takbiratul ihram,Saying "Allahu Akbar" at the start of prayer,1,2
+712,195,Berdiri tegak (jika mampu),Standing upright if able,1,3
+713,195,Membaca Surah Al-Fatihah,Reciting Surah Al-Fatihah,1,4
+714,195,Rukuk dan membaca tasbih,Bowing and reciting tasbih,1,5
+715,195,I'tidal (berdiri selepas rukuk),Standing up straight after bowing,1,6
+716,195,Sujud kedua,Performing the second prostration,1,7
+717,195,Duduk antara dua sujud,Sitting between two prostrations,1,8
+718,195,Duduk Tasyahhud akhir,Sitting the final tashahhud,1,9
+719,195,Baca Tasyahhud akhir,Reciting the final tashahhud,1,10
+720,195,Baca selawat ke atas Nabi SAW,sending salutations upon the Prophet ?,1,11
+721,195,Memberi salam,Giving the final salutation to end the prayer),1,12
+722,195,Tertib,Following the correct order without skipping any step,1,13
+723,196,Solat Hajat,Hajat Prayer,1,NULL
+724,196,Solat Tahajjud,Tahajjud Prayer,0,NULL
+725,196,Solat Witir,Witir Prayer,0,NULL
+726,196,Solat Qada,Makeup Prayer,0,NULL
+727,197,Qada sebaik sahaja bangun,Make it up as soon as they wake up,1,NULL
+728,197,Boleh digantikan dengan solat sunat sahaja,Can be replaced with a voluntary prayer,0,NULL
+729,197,Hanya perlu beristighfar tanpa qada,Only need to seek forgiveness without making it up,0,NULL
+730,197,Tidak wajib qada jika tidur lebih daripada 8 jam,Not obligatory to make it up if they slept for more than 8 hours,0,NULL
+731,198,Selepas solat Subuh hingga matahari terbit & selepas Asar hingga Maghrib,After Fajr until sunrise & after Asr until Maghrib,1,NULL
+732,198,Sepanjang malam selepas solat Isyak,Throughout the night after Isha,0,NULL
+733,198,Antara Maghrib dan Isyak,Between Maghrib and Isha,0,NULL
+734,198,Selepas solat fardu dan sebelum solat sunat Witir,After obligatory prayer and before Witir prayer,0,NULL
+735,199,Solat Tarawih,Tarawih Prayer,1,NULL
+736,199,Solat Witir,Witir Prayer,0,NULL
+737,199,Solat Dhuha,Dhuha Prayer,0,NULL
+738,199,Solat Istikharah,Istikharah Prayer,0,NULL
+739,200,Doa lebih mudah dikabulkan oleh Allah,Supplications are more likely to be accepted by Allah,1,NULL
+740,200,Menggantikan solat Isyak jika tertinggal,Can replace Isha prayer if missed,0,NULL
+741,200,Hanya disunatkan di bulan Ramadan,Only recommended in Ramadan,0,NULL
+742,200,Wajib dilakukan setiap malam bagi Muslim,Mandatory for every Muslim,0,NULL
+743,201,Selepas matahari naik hingga sebelum waktu Zuhur,After sunrise until before Dhuhr,1,NULL
+744,201,Sebelum waktu Subuh,Before Fajr,0,NULL
+745,201,Selepas Maghrib hingga Isyak,After Maghrib until Isha,0,NULL
+746,201,Tengah malam selepas Tahajjud,Midnight after Tahajjud,0,NULL
+747,202,2 rakaat,2 rakaat,1,NULL
+748,202,4 rakaat,4 rakaat,0,NULL
+749,202,6 rakaat,6 rakaat,0,NULL
+750,202,8 rakaat,8 rakaat,0,NULL
+751,203,Solat Istikharah,Istikharah Prayer,1,NULL
+752,203,Solat Dhuha,Dhuha Prayer,0,NULL
+753,203,Solat Tarawih,Tarawih Prayer,0,NULL
+754,203,Solat Witir,Witir Prayer,0,NULL
+755,204,Solat dalam keadaan duduk atau berbaring mengikut kemampuan,Pray while sitting or lying down according to their ability,1,NULL
+756,204,Tidak perlu solat sehingga sembuh,Do not need to pray until they recover,0,NULL
+757,204,Menggantikan solat dengan membaca Al-Quran,Replace prayer by reciting the Quran,0,NULL
+758,204,Hanya wajib qada selepas sembuh,Only required to make up the prayer after recovery,0,NULL
+759,205,Solat fardu yang tertinggal,Missed obligatory prayers,1,NULL
+760,205,Solat sunat Tahajjud,Tahajjud Prayer,0,NULL
+761,205,Solat sunat Istikharah,Istikharah Prayer,0,NULL
+762,205,Solat Tarawih,Tarawih Prayer,0,NULL
+763,206,BETUL,TRUE,1,NULL
+764,206,SALAH,FALSE,0,NULL
+765,207,BETUL,TRUE,0,NULL
+766,207,SALAH,FALSE,1,NULL
+767,208,BETUL,TRUE,0,NULL
+768,208,SALAH,FALSE,1,NULL
+769,209,BETUL,TRUE,0,NULL
+770,209,SALAH,FALSE,1,NULL
+771,210,BETUL,TRUE,1,NULL
+772,210,SALAH,FALSE,0,NULL
+773,211,"Islam, baligh, berakal, mampu berpuasa","Being Muslim, mature, sane, and physically able to fast",1,NULL
+774,211,Wajib bagi semua manusia termasuk bukan Islam,"Obligatory for all people, including non-Muslims",0,NULL
+775,211,Hanya bagi orang yang sudah berkahwin,Only for married people,0,NULL
+776,211,Tidak perlu jika tinggal di negara yang siangnya panjang,Not required for those living in countries with long daylight,0,NULL
+777,212,Makan dan minum dengan sengaja,Eating and drinking intentionally,1,NULL
+778,212,Tidur pada waktu siang,Sleeping during the day,0,NULL
+779,212,Bersetubuh selepas berbuka,Having intercourse after breaking fast,0,NULL
+780,212,Mandi pada waktu siang,Taking a shower during the day,0,NULL
+781,213,Puasa masih sah dan diteruskan,The fast remains valid and continues,1,NULL
+782,213,Puasa batal dan perlu qada,The fast is invalid and must be made up,0,NULL
+783,213,Perlu membayar fidyah,Must pay fidyah,0,NULL
+784,213,Wajib membatalkan puasa segera,Must break the fast immediately,0,NULL
+785,214,Mendapat keberkatan dalam puasa,Brings blessings in fasting,1,NULL
+786,214,Meningkatkan tenaga sepanjang hari,Increases energy throughout the day,0,NULL
+787,214,Mengurangkan rasa lapar dan dahaga,Reduces hunger and thirst,0,NULL
+788,214,Semua di atas,All of the above,0,NULL
+789,215,Tidak berpuasa dan menggantikannya selepas Ramadan,Not fast and make it up after Ramadan,1,NULL
+790,215,Wajib berpuasa walaupun sakit,Must fast even when sick,0,NULL
+791,215,Tidak perlu berpuasa dan tidak perlu menggantikannya,No need to fast and no need to make it up,0,NULL
+792,215,Membayar zakat fitrah sebagai ganti,Pay zakat fitrah as compensation,0,NULL
+793,216,Lailatul Qadar,Laylatul Qadr,1,NULL
+794,216,Malam Nisfu Syaaban,Nisfu Sha'ban night,0,NULL
+795,216,Malam Jumaat,Friday night,0,NULL
+796,216,Malam Isra Mikraj,Night of Isra and Miraj,0,NULL
+797,217,"Memperbanyakkan bacaan Al-Quran, zikir, dan doa","Increasing recitation of the Quran, remembrance of Allah, and supplications",1,NULL
+798,217,Tidur sepanjang hari untuk mengurangkan lapar,Sleeping all day to reduce hunger,0,NULL
+799,217,Berbuka dengan makanan berat terlebih dahulu,Breaking fast with heavy meals first,0,NULL
+800,217,Mengurangkan ibadah kerana berpuasa sudah mencukupi,Reducing worship because fasting is already sufficient,0,NULL
+801,218,Membayar fidyah,Paying fidyah,1,NULL
+802,218,Mengqada puasa selepas Ramadan,Making up the fast after Ramadan,0,NULL
+803,218,Membayar zakat fitrah,Paying zakat fitrah,0,NULL
+804,218,Tidak perlu melakukan apa-apa,No need to do anything,0,NULL
+805,219,Diampunkan dosa-dosa yang lalu,Past sins are forgiven,1,NULL
+806,219,Boleh makan banyak selepas berbuka,Can eat a lot after breaking fast,0,NULL
+807,219,Menggantikan solat yang tertinggal,Can replace missed prayers,0,NULL
+808,219,Tidak perlu bersahur jika niat sudah dibuat malam sebelumnya,No need for suhoor if the intention was made the night before,0,NULL
+809,220,BETUL,TRUE,1,NULL
+810,220,SALAH,FALSE,0,NULL
+811,221,BETUL,TRUE,1,NULL
+812,221,SALAH,FALSE,0,NULL
+813,222,BETUL,TRUE,0,NULL
+814,222,SALAH,FALSE,1,NULL
+815,223,BETUL,TRUE,1,NULL
+816,223,SALAH,FALSE,0,NULL
+817,224,BETUL,TRUE,1,NULL
+818,224,SALAH,FALSE,0,NULL
+819,225,BETUL,TRUE,0,NULL
+820,225,SALAH,FALSE,1,NULL

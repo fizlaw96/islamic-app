@@ -1,0 +1,226 @@
+question_id,lesson_id,question_type,question_text_bm,question_text_en,level
+1,1,mcq,Apakah maksud Islam?,What is the meaning of Islam?,1
+2,1,mcq,Berapakah jumlah rukun Islam?,How many pillars of Islam are there?,1
+3,1,mcq,Apakah rukun Islam pertama?,What is the first pillar of Islam?,1
+4,1,mcq,Siapakah nabi terakhir dalam Islam?,Who is the last prophet in Islam?,1
+5,1,mcq,Berapakah jumlah rukun Iman?,How many pillars of faith (Iman) are there?,1
+6,1,mcq,Apakah kitab suci dalam Islam?,What is the holy book in Islam?,1
+7,1,mcq,Solat wajib dilakukan berapa kali sehari?,How many times is obligatory prayer performed daily?,1
+8,1,mcq,Puasa wajib dilakukan pada bulan apa?,In which month is fasting obligatory?,1
+9,1,mcq,Ke arah mana umat Islam menghadap ketika solat?,In which direction do Muslims face when praying?,1
+10,1,mcq,Apakah maksud Syahadah?,What is the meaning of the Shahada?,1
+11,1,mcq,Apa perayaan yang diraikan kebanyakkan orang Islam,What are the Major Islamic Festivals?,1
+12,1,mcq,Hari Jumaat dikenali sebagai apa dalam Islam?,What is Friday known as in Islam,1
+13,1,mcq,Apakah surah pertama dalam Al-Quran?,What is the first surah in the Quran?,1
+14,1,ordered,Susunan Rukun Iman,Arrange Pillar of Faith,1
+15,1,ordered,Susun rukun Islam mengikut urutan yang betul.,Arrange the pillars of Islam in the correct order.,1
+16,2,mcq,Di kota manakah Nabi Muhammad SAW dilahirkan?,In which city was Prophet Muhammad SAW born?,1
+17,2,mcq,Siapakah ibu kepada Nabi Muhammad SAW?,Who was the mother of Prophet Muhammad SAW?,1
+18,2,mcq,Pada usia berapa Nabi Muhammad SAW menerima wahyu pertama?,At what age did Prophet Muhammad SAW receive the first revelation?,1
+19,2,mcq,Apakah nama gua tempat Nabi Muhammad SAW menerima wahyu pertama?,What is the name of the cave where Prophet Muhammad SAW received the first revelation?,1
+20,2,mcq,Siapakah isteri pertama Nabi Muhammad SAW?,Who was the first wife of Prophet Muhammad SAW?,1
+21,2,mcq,Apakah nama bapa Nabi Muhammad SAW?,What was the name of Prophet Muhammad SAW? father?,1
+22,2,mcq,Tahun apakah dikenali sebagai Tahun Gajah dalam sejarah Islam?,Which year is known as the Year of the Elephant in Islamic history?,1
+23,2,mcq,Apakah nama suku kaum Nabi Muhammad SAW?,What was the tribe of Prophet Muhammad SAW?,1
+24,2,mcq,Apakah nama bapa saudara Nabi Muhammad SAW yang selalu melindunginya?,Which uncle of Prophet Muhammad ? always protected him?,1
+25,2,mcq,Apakah pekerjaan Nabi Muhammad SAW sebelum menjadi Rasul?,What was Prophet Muhammad's ? occupation before becoming a prophet?,1
+26,2,mcq,Siapakah anak perempuan Nabi Muhammad SAW yang paling terkenal?,Who is the most well-known daughter of Prophet Muhammad ??,1
+27,2,mcq,Apakah peristiwa yang menyebabkan Nabi Muhammad SAW berhijrah ke Madinah?,What event caused Prophet Muhammad ? to migrate to Madinah?,1
+28,2,mcq,Apakah nama kota yang menjadi tempat Hijrah Nabi Muhammad SAW?,What is the name of the city where Prophet Muhammad ? migrated to?,1
+29,2,ordered,Susun peristiwa berikut dalam kehidupan Nabi Muhammad SAW mengikut urutan yang betul.,Arrange the following events in the life of Prophet Muhammad SAW in the correct order.,1
+30,2,ordered,Susun peperangan yang berlaku semasa zaman Nabi Muhammad SAW mengikut urutan yang betul.,Arrange the battles that occurred during the time of Prophet Muhammad SAW in the correct order.,1
+31,3,mcq,Dalam bahasa apa Al-Quran diturunkan?,In what language was the Quran revealed?,1
+32,3,mcq,Siapakah yang menyampaikan wahyu kepada Nabi Muhammad SAW?,Who delivered the revelation to Prophet Muhammad ??,1
+33,3,mcq,Apakah nama surah terpanjang dalam Al-Quran?,What is the longest surah in the Quran?,1
+34,3,mcq,Berapakah jumlah juzuk dalam Al-Quran?,How many sections (Juz) are in the Quran?,1
+35,3,mcq,Apakah ayat pertama yang diturunkan dalam Al-Quran?,What is the first revealed verse in the Quran?,1
+36,3,mcq,Apakah surah yang dikenali sebagai "Hati Al-Quran"?,What surah is known as the "Heart of the Quran"?,1
+37,3,mcq,Berapa jumlah surah dalam Al-Quran?,How many surahs are in the Quran?,1
+38,3,mcq,Apakah surah yang mengandungi ayat Kursi?,Which surah contains Ayat Kursi?,1
+39,3,mcq,Apakah surah yang paling pendek dalam Al-Quran?,What is the shortest surah in the Quran?,1
+40,3,mcq,Siapakah khalifah pertama yang mengumpulkan Al-Quran dalam bentuk mushaf?,Who was the first caliph to compile the Quran into a book?,1
+41,3,mcq,Di manakah wahyu pertama diturunkan kepada Nabi Muhammad SAW?,Where was the first revelation given to Prophet Muhammad ??,1
+42,3,mcq,Apakah Hadis?, What is Hadith?,1
+43,3,mcq,Siapakah yang menghimpunkan Hadis dalam Sahih Bukhari?,Who compiled Hadith in Sahih Bukhari?,1
+44,3,ordered,Susun peristiwa berikut mengikut urutan ketika Nabi Muhammad SAW menerima wahyu pertama.,Arrange the following events in order when Prophet Muhammad ? received the first revelation.,1
+45,3,ordered,Susun peristiwa berikut mengikut urutan bagaimana Al-Quran dikumpulkan dalam bentuk mushaf.,Arrange the following events in order of how the Quran was compiled into a book (Mushaf).,1
+46,4,mcq,Apakah maksud halal dalam Islam?,What does halal mean in Islam?,1
+47,4,mcq,Apakah maksud haram dalam Islam?,What does haram mean in Islam?,1
+48,4,mcq,Apakah yang menyebabkan sesuatu makanan halal menjadi haram?,What can cause halal food to become haram?,1
+49,4,mcq,"Dalam perniagaan Islam, apakah yang dianggap sebagai haram?","In Islamic business, what is considered haram?",1
+50,4,mcq,Apakah jenis pekerjaan yang dilarang dalam Islam?,Which type of job is prohibited in Islam?,1
+51,4,mcq,Mengapa riba (faedah) diharamkan dalam Islam?,Why is usury (interest) forbidden in Islam?,1
+52,4,mcq,Apakah hukum membeli makanan halal daripada restoran yang juga menjual makanan haram?,What is the ruling on buying halal food from a restaurant that also sells haram food?,1
+53,4,mcq,"Dalam situasi kecemasan, bolehkah seseorang Muslim makan daging babi untuk terus hidup?","In an emergency situation, can a Muslim eat pork to survive?",1
+54,4,binary,Alkohol dalam jumlah kecil dibenarkan dalam makanan dan minuman halal.,Small amounts of alcohol are allowed in halal food and drinks.,1
+55,4,binary,Semua makanan laut dianggap,All seafood is considered,1
+56,4,binary,Semua jenis daging haiwan yang disembelih oleh bukan Muslim,All types of meat slaughtered by non-Muslims are,1
+57,4,binary,Daging ayam boleh dianggap halal jika disembelih dengan menyebut nama Allah dan mengikut kaedah Islam,Chicken meat is considered halal if slaughtered while mentioning Allah's name and following Islamic guidelines,1
+58,4,binary,Menggunakan kosmetik yang mengandungi bahan haram adalah dibenarkan jika tidak diserap oleh kulit.,Using cosmetics that contain haram ingredients is allowed if they are not absorbed by the skin.,1
+59,4,binary,Forex trading dalam bentuk spekulasi adalah,Forex trading based on speculation is,1
+60,4,ordered,Urutan Penyembelihan Halal,Halal Slaughter Process Order,1
+61,5,mcq,Apakah maksud akhlak dalam Islam?,What does morality (akhlaq) mean in Islam?,1
+62,5,mcq,Siapakah contoh terbaik akhlak mulia dalam Islam?,Who is the best example of good morality in Islam?,1
+63,5,mcq,Apakah sifat yang patut ada dalam diri seorang Muslim?,What qualities should a Muslim have?,1
+64,5,mcq,Apakah adab yang perlu diamalkan ketika bercakap dengan orang lain?,What etiquette should be practiced when speaking to others?,1
+65,5,mcq,Bagaimana Islam mengajar kita untuk bersikap terhadap jiran?,How does Islam teach us to treat our neighbors?,1
+66,5,mcq,Apakah adab yang perlu diamalkan ketika makan?,What etiquette should be practiced while eating?,1
+67,5,mcq,Bagaimana Islam mengajar kita untuk bertindak apabila berhadapan dengan kemarahan?,How does Islam teach us to act when facing anger?,1
+68,5,mcq,Bagaimana cara terbaik untuk meminta maaf dalam Islam?,What is the best way to apologize in Islam?,1
+69,5,mcq,Apakah adab terhadap ibu bapa dalam Islam?,What is the proper etiquette towards parents in Islam?,1
+70,5,mcq,Bagaimana Islam mengajarkan kita untuk menghadapi orang yang menghina kita?,How does Islam teach us to deal with people who insult us?,1
+71,5,binary,Mengumpat seseorang itu dibenarkan jika apa yang dikatakan adalah benar.,Backbiting (ghibah) is allowed if what is said is true.,1
+72,5,binary,Memberi salam adalah salah satu cara menyebarkan kasih sayang dalam Islam.,Giving greetings (salam) is a way to spread love in Islam.,1
+73,5,binary,Islam menggalakkan kita untuk bersabar dalam menghadapi cabaran dan ujian hidup.,Islam encourages patience when facing life's challenges and tests.,1
+74,5,binary,Sifat pemurah hanya perlu diamalkan jika kita mempunyai banyak harta.,Generosity should only be practiced if we have a lot of wealth.,1
+75,5,binary,Islam mengajar kita untuk berkata benar dalam semua keadaan.,Islam teaches us to always speak the truth in all situations.,1
+76,6,mcq,Apakah adab utama dalam pergaulan menurut Islam?,What is the main etiquette in social interactions according to Islam?,1
+77,6,mcq,Apakah cara terbaik untuk memberi salam dalam Islam?,What is the best way to greet others in Islam?,1
+78,6,mcq,Bagaimana Islam mengajar kita untuk bersikap terhadap orang miskin?,How does Islam teach us to treat the poor?,1
+79,6,mcq,Apakah adab apabila berinteraksi dengan bukan Muslim dalam Islam?,What is the etiquette when interacting with non-Muslims in Islam?,1
+80,6,mcq,Bagaimana Islam mengajar kita untuk bertindak apabila berdebat dengan orang lain?,How does Islam teach us to behave when debating with others?,1
+81,6,mcq,Apakah cara terbaik untuk memutuskan perbualan dengan seseorang dalam Islam?,What is the best way to end a conversation in Islam?,1
+82,6,mcq,Bagaimana Islam mengajar kita untuk bertindak apabila menerima kritikan?,How does Islam teach us to react to criticism?,1
+83,6,mcq,Bagaimana cara Islam mengajarkan kita untuk menangani perbezaan pendapat?,How does Islam teach us to handle differences in opinion?,1
+84,6,mcq,Apakah yang perlu dilakukan jika ada orang bersin di hadapan kita?,What should be done if someone sneezes in front of us?,1
+85,6,mcq,Apakah adab dalam memberi hadiah dalam Islam?,What is the etiquette of giving gifts in Islam?,1
+86,6,binary,Seorang Muslim boleh bercakap kasar kepada ibu bapa jika mereka melakukan kesalahan.,A Muslim can speak harshly to their parents if they make a mistake.,1
+87,6,binary,Islam mengajar kita supaya sentiasa menghormati orang yang lebih tua.,Islam teaches us to always respect elders.,1
+88,6,binary,Kita hanya perlu menjaga hubungan dengan jiran jika mereka Muslim.,We only need to maintain good relations with neighbors if they are Muslim.,1
+89,6,binary,Islam mengajar bahawa menjaga hubungan silaturahim hanya perlu dilakukan dengan keluarga terdekat sahaja.,Islam teaches that maintaining family ties (silaturahim) is only necessary with close relatives.,1
+90,6,binary,Senyuman kepada orang lain dianggap sebagai satu bentuk sedekah dalam Islam.,Smiling at others is considered a form of charity in Islam.,1
+91,7,mcq,Wealthy people do not need to cross it,What happens to humans after death according to Islam?,1
+92,7,mcq,Apakah nama alam yang menunggu manusia selepas mati sebelum Hari Kiamat?,What is the name of the realm where souls wait after death before Judgment Day?,1
+93,7,mcq,Apakah nama hari di mana semua manusia akan dihisab atas amalan mereka?,What is the name of the day when all humans will be judged for their deeds?,1
+94,7,mcq,Syurga mempunyai berapa tingkatan menurut Islam?,How many levels of Paradise are there according to Islam?,1
+95,7,mcq,Apakah nama neraka yang paling dahsyat?,What is the name of the worst level of Hell?,1
+96,7,mcq,Apakah yang akan berlaku selepas manusia dibangkitkan pada Hari Kiamat?,What will happen after humans are resurrected on the Day of Judgment?,1
+97,7,mcq,Apakah yang berlaku di Titian Sirat?,What happens at the Sirat Bridge?,1
+98,7,mcq,Apakah nama timbangan amalan manusia pada Hari Kiamat?,What is the name of the scale that weighs human deeds on Judgment Day?,1
+99,7,mcq,Apakah nama telaga yang akan diberikan kepada Nabi Muhammad SAW pada Hari Kiamat?,What is the name of the pond granted to Prophet Muhammad ? on Judgment Day?,1
+100,7,mcq,Apakah nama pintu syurga yang dikhaskan untuk orang yang berpuasa?,What is the name of the gate of Paradise reserved for those who fast?,1
+101,7,mcq,Apakah syarat utama untuk masuk ke dalam syurga?,What is the main requirement to enter Paradise?,1
+102,7,mcq,Apakah ganjaran bagi penghuni syurga?,What rewards do the inhabitants of Paradise receive?,1
+103,7,mcq,Apakah azab yang paling ringan di dalam neraka?,What is the lightest punishment in Hell?,1
+104,7,mcq,Apakah amalan yang dapat memadamkan dosa dan menyelamatkan seseorang dari neraka?,What deed can erase sins and save a person from Hell?,1
+105,7,ordered,Susun langkah-langkah perjalanan roh selepas kematian menurut Islam.,Arrange the stages of the soul's journey after death according to Islam.,1
+106,8,mcq,Apakah bahan asal penciptaan malaikat menurut Islam?,What were angels created from according to Islam?,1
+107,8,mcq,Berapakah jumlah malaikat yang wajib diketahui dalam Islam?,How many angels must be known in Islam?,1
+108,8,mcq,Apakah yang membezakan malaikat dengan manusia?,What differentiates angels from humans?,1
+109,8,mcq,Berapa jumlah sayap yang disebut dalam Al-Quran bahawa malaikat boleh miliki?,How many wings do angels have according to the Quran?,1
+110,8,mcq,Malaikat mana yang menyampaikan wahyu terakhir kepada Nabi Muhammad SAW?,Which angel delivered the final revelation to Prophet Muhammad ??,1
+111,8,mcq,Malaikat Raqib dan Atid mencatat amalan manusia. Apa yang dicatat oleh Malaikat Raqib?,Angels Raqib and Atid record human deeds. What does Angel Raqib record?,1
+112,8,mcq,Malaikat Munkar dan Nakir mempunyai tugas untuk?,What is the duty of Angels Munkar and Nakir?,1
+113,8,mcq,Malaikat yang bertanggungjawab mengawal syurga ialah?,Which angel is responsible for guarding Paradise?,1
+114,8,mcq,Malaikat Mikail bertanggungjawab menguruskan apa?,What is Angel Mikail responsible for?,1
+115,8,mcq,Malaikat yang mengambil nyawa manusia disebut sebagai?,Which angel is responsible for taking human souls?,1
+116,8,mcq,Siapakah malaikat yang meniup sangkakala pada Hari Kiamat?,Which angel blows the trumpet on Judgment Day?,1
+117,8,mcq,Apakah yang berlaku kepada malaikat pada Hari Kiamat?,What happens to angels on the Day of Judgment?,1
+118,8,binary,Malaikat tidak mempunyai nafsu dan tidak melakukan dosa.,Angels do not have desires and do not commit sins.,1
+119,8,binary,Malaikat akan kekal hidup dan tidak akan mati.,Angels will live forever and never die.,1
+120,8,binary,Malaikat boleh berubah bentuk menjadi manusia dengan izin Allah.,Angels can take the form of humans with Allah's permission.,1
+121,9,mcq,Siapakah yang memberi rezeki kepada semua makhluk menurut Islam?,Who provides sustenance to all creatures according to Islam?,1
+122,9,mcq,Apakah maksud keberkatan dalam rezeki?,What does "blessings in sustenance" mean?,1
+123,9,mcq,Apakah cara terbaik untuk mendapatkan rezeki yang halal?,What is the best way to earn halal sustenance?,1
+124,9,mcq,Apakah amalan yang boleh menambah keberkatan dalam rezeki?,What practices can increase blessings in sustenance?,1
+125,9,mcq,Apakah makna keadilan dalam Islam?,What is the meaning of justice in Islam?,1
+126,9,mcq,Bagaimana Islam mengajar kita untuk menghadapi kesempitan rezeki?,How does Islam teach us to face financial hardships?,1
+127,9,mcq,Apakah tanda-tanda keberkatan dalam rezeki seseorang?,What are the signs of blessings in one's sustenance?,1
+128,9,mcq,Apakah kesan mengambil riba dalam mencari rezeki?,What is the effect of engaging in usury (riba) to earn sustenance?,1
+129,9,mcq,Apakah konsep utama dalam Islam mengenai keadilan dalam ekonomi?,What is the main concept in Islam regarding economic justice?,1
+130,9,mcq,Islam mengajar bahawa orang kaya wajib membantu golongan miskin melalui apa?,Islam teaches that the wealthy are obligated to help the poor through what?,1
+131,9,binary,"Allah SWT menentukan rezeki setiap makhluk, tetapi manusia perlu berusaha untuk mencarinya.","Allah SWT determines the sustenance of every creature, but humans must strive to seek it.",1
+132,9,binary,Zakat adalah satu kewajipan bagi setiap Muslim yang mampu dan merupakan salah satu cara membersihkan harta.,Zakat is an obligation for every capable Muslim and a way to purify wealth.,1
+133,9,binary,"Keberkatan dalam rezeki bermaksud semakin banyak harta yang kita ada, semakin berkat kehidupan kita.","Blessings in sustenance mean that the more wealth we have, the more blessed our life is.",1
+134,9,binary,Mencari rezeki dengan cara yang haram boleh membawa keberkatan jika digunakan untuk tujuan baik.,Earning sustenance through unlawful means can bring blessings if used for good purposes.,1
+135,9,binary,Orang yang beriman dan bertakwa kepada Allah SWT akan mendapat rezeki yang cukup walaupun sedikit.,A person who has faith and piety in Allah SWT will have sufficient sustenance even if it is little.,1
+136,10,mcq,Apakah wahyu pertama yang diturunkan kepada Nabi Muhammad SAW?,What was the first revelation given to Prophet Muhammad ??,1
+137,10,mcq,"Dalam Islam, siapakah yang disebut sebagai pewaris para nabi?","In Islam, who are referred to as the inheritors of the prophets?",1
+138,10,mcq,Apakah faedah utama menuntut ilmu dalam Islam?,What is the main benefit of seeking knowledge in Islam?,1
+139,10,mcq,Islam menekankan kepentingan ilmu kepada siapa?,Islam emphasizes the importance of knowledge for whom?,1
+140,10,mcq,Apakah sikap yang perlu ada dalam menuntut ilmu?,What attitude should one have in seeking knowledge?,1
+141,10,mcq,Apakah kepentingan menulis dan merekod ilmu dalam Islam?,What is the importance of writing and recording knowledge in Islam?,1
+142,10,mcq,Apakah doa yang sering dibaca oleh Nabi Muhammad SAW berkaitan ilmu?,What is the supplication often recited by Prophet Muhammad ? regarding knowledge?,1
+143,10,mcq,Islam menggalakkan umatnya untuk menuntut ilmu dalam bidang apa?,Islam encourages its followers to seek knowledge in which fields?,1
+144,10,mcq,Apakah tanggungjawab ibu bapa dalam pendidikan anak-anak menurut Islam?,What is the responsibility of parents in educating children according to Islam?,1
+145,10,mcq,Apakah peranan guru dalam Islam?,What is the role of teachers in Islam?,1
+146,10,binary,Ilmu yang tidak diamalkan dalam kehidupan seharian tidak memberi manfaat yang sebenar.,Knowledge that is not practiced in daily life does not bring real benefit.,1
+147,10,binary,Al-Quran dan hadis adalah sumber utama ilmu dalam Islam.,The Quran and Hadith are the primary sources of knowledge in Islam.,1
+148,10,binary,Islam menggalakkan seseorang untuk mengajar ilmu yang mereka pelajari kepada orang lain,Islam encourages people to teach the knowledge they have learned to others.,1
+149,10,binary,"Dalam Islam, menuntut ilmu hanya disarankan bagi mereka yang ingin menjadi pemimpin.","In Islam, seeking knowledge is only recommended for those who want to become leaders.",1
+150,10,binary,"Islam hanya menggalakkan umatnya belajar ilmu agama sahaja, bukan ilmu duniawi seperti sains dan matematik.","Islam only encourages learning religious knowledge, not worldly knowledge such as science and",1
+151,11,mcq,Berapakah jumlah rukun dalam wudhu?,How many pillars (essential steps) are there in wudhu?,2
+152,11,mcq,Apakah hukum membaca bismillah sebelum mengambil wudhu?,What is the ruling on reciting bismillah before performing wudhu?,2
+153,11,mcq,Berapa kali kita perlu membasuh setiap anggota wudhu?,How many times should we wash each part in wudhu?,2
+154,11,mcq,Apakah hukum wudhu dalam Islam bagi orang yang hendak solat?,What is the ruling on wudhu in Islam for those who want to pray?,2
+155,11,mcq,Apakah yang disunatkan sebelum memulakan wudhu?,What is recommended before starting wudhu?,2
+156,11,mcq,Apakah yang dilakukan selepas selesai mengambil wudhu?,What should be done after completing wudhu?,2
+157,11,mcq,Apakah hikmah disyariatkan wudhu dalam Islam?,What is the wisdom behind the obligation of wudhu in Islam?,2
+158,11,mcq,Apakah yang perlu dilakukan jika ada bahagian kulit yang tidak terkena air semasa wudhu?,What should you do if a part of your skin remains dry during wudhu?,2
+159,11,mcq,Adakah menyapu air pada telinga termasuk dalam wudhu?,Is wiping the ears part of wudhu?,2
+160,11,mcq,Manakah antara berikut yang boleh membatalkan wudhu?,Which of the following invalidates wudhu?,2
+161,11,mcq,"Jika seseorang ragu-ragu sama ada wudhunya batal atau tidak, apakah yang perlu dilakukan?","If someone doubts whether their wudhu is invalid or not, what should they do?",2
+162,11,mcq,Apakah hukum bercakap semasa mengambil wudhu?,What is the ruling on talking while performing wudhu?,2
+163,11,mcq,Apakah keutamaan mengambil wudhu dengan menggunakan air yang sedikit tetapi mencukupi?,What is the benefit of performing wudhu using minimal but sufficient water?,2
+164,11,mcq,Apakah doa yang dianjurkan selepas mengambil wudhu?,What is the recommended supplication after performing wudhu?,2
+165,11,ordered,Susun langkah-langkah rukun wudhu mengikut tertib yang betul.,Arrange the essential steps of wudhu in the correct order.,2
+166,12,mcq,Apakah hukum mandi wajib dalam Islam?,What is the ruling of performing ghusl (obligatory bath) in Islam?,2
+167,12,mcq,Manakah antara berikut adalah sebab yang mewajibkan mandi wajib?,Which of the following requires performing ghusl?,2
+168,12,mcq,Apakah niat yang betul sebelum mandi wajib?,What is the correct intention (niyyah) before performing ghusl?,2
+169,12,mcq,Bahagian manakah yang mesti diratakan air ketika mandi wajib?,Which parts of the body must be completely washed during ghusl?,2
+170,12,mcq,Apakah perkara sunat yang boleh dilakukan sebelum mandi wajib?,What are the recommended acts before performing ghusl?,2
+171,12,mcq,Bilakah masa yang paling afdhal untuk mandi wajib selepas haid atau nifas?,What is the best time to perform ghusl after menstruation or postnatal bleeding?,2
+172,12,mcq,Adakah wajib menggunakan sabun dan syampu ketika mandi wajib?,Is it obligatory to use soap and shampoo during ghusl?,2
+173,12,mcq,Apakah hukum bagi seseorang yang tidak mandi wajib setelah berjunub dan terus menunaikan solat?,What is the ruling for someone who does not perform ghusl after janabah (major impurity) and performs prayer?,2
+174,12,mcq,Apakah hikmah di sebalik mandi wajib dalam Islam?,What is the wisdom behind ghusl in Islam?,2
+175,12,mcq,"Jika seseorang mandi wajib tetapi terlupa membasuh rambut, apakah yang perlu dilakukan?","If someone performs ghusl but forgets to wash their hair, what should they do?",2
+176,12,binary,Tidak membaca niat sebelum mandi wajib menyebabkan mandi menjadi tidak sah.,Not making an intention before ghusl makes it invalid.,2
+177,12,binary,"Jika terdapat bahagian badan yang tidak terkena air, mandi wajib menjadi tidak sah.","If any part of the body remains dry, ghusl becomes invalid.",2
+178,12,binary,Seseorang yang berhadas besar boleh membaca Al-Quran sebelum mandi wajib.,A person in a state of major impurity can recite the Quran before performing ghusl.,2
+179,12,binary,Mandi wajib hanya perlu dilakukan selepas bersetubuh atau haid.,Ghusl is only required after sexual intercourse or menstruation.,2
+180,12,ordered,Susun langkah-langkah rukun mandi wajib dalam tertib yang betul.,Arrange the obligatory steps of ghusl in the correct order.,2
+181,13,mcq,Apakah bacaan yang wajib dibaca dalam setiap rakaat solat?,What is the obligatory recitation in every rak'ah of prayer?,2
+182,13,mcq,Apakah niat solat dalam Islam perlu dilafazkan secara lisan?,Is it necessary to verbalize the intention (niyyah) for prayer in Islam?,2
+183,13,mcq,Apakah yang boleh membatalkan solat seseorang?,Which of the following invalidates a person's prayer?,2
+184,13,mcq,Berapakah jumlah rakaat bagi solat fardu dalam sehari?,How many total rak'ahs (units) are there in the five daily prayers?,2
+185,13,mcq,Apakah hukum solat berjemaah bagi lelaki?,What is the ruling on performing congregational prayer for men?,2
+186,13,mcq,Apakah yang perlu dilakukan jika tertinggal satu rakaat dalam solat berjemaah?,What should be done if one misses a rak'ah in congregational prayer?,2
+187,13,mcq,Apakah bacaan yang disunatkan dalam rakaat kedua solat Subuh sebelum rukuk?,What is the recommended recitation in the second rak'ah of Fajr prayer before bowing (rukuk)?,2
+188,13,mcq,Apakah hukum meninggalkan solat dengan sengaja tanpa sebab?,What is the ruling for deliberately abandoning prayer without a valid reason?,2
+189,13,mcq,Apakah hikmah solat dalam kehidupan seorang Muslim?,What is the wisdom of prayer in a Muslim's life?,2
+190,13,binary,Meninggalkan solat fardu dengan sengaja tanpa sebab adalah dosa besar.,Deliberately abandoning obligatory prayer without a valid reason is a major sin.,2
+191,13,binary,"Jika seseorang terlupa membaca tahiyat awal dalam solat, solatnya batal dan perlu diulang dari awal.","If someone forgets to recite the first tashahhud in prayer, their prayer is invalid and must be restarted.",2
+192,13,binary,"Sujud sahwi dilakukan jika terdapat kesilapan kecil dalam solat, seperti terlupa rukun sunat.","Sujud sahwi is performed when there is a minor mistake in prayer, such as forgetting a sunnah action.",2
+193,13,binary,Lelaki wajib solat berjemaah di masjid dalam semua keadaan tanpa pengecualian.,Men are obligated to pray in congregation at the mosque in all situations without exception.,2
+194,13,binary,Solat boleh dilakukan dalam keadaan duduk jika seseorang tidak mampu berdiri.,Prayer can be performed while sitting if a person is unable to stand.,2
+195,13,ordered,Susun rukun solat mengikut tertib yang betul.,Arrange the pillars of prayer in the correct order.,2
+196,14,mcq,Apakah solat sunat yang dilakukan apabila seseorang menghadapi kesukaran dan memohon pertolongan Allah?,What is the voluntary prayer performed when facing difficulty and seeking Allah's help?,2
+197,14,mcq,Apakah yang perlu dilakukan jika seseorang tertidur dan terlepas solat fardu?,What should be done if someone sleeps through and misses an obligatory prayer?,2
+198,14,mcq,Solat sunat boleh dilakukan pada bila-bila masa kecuali dalam waktu yang dilarang. Bila waktu larangan ini?,Voluntary prayers can be performed at any time except during forbidden times. When are these times?,2
+199,14,mcq,Apakah solat sunat yang dianjurkan dilakukan secara berjemaah di bulan Ramadan?,Which voluntary prayer is recommended to be performed in congregation during Ramadan?,2
+200,14,mcq,Apakah kelebihan melakukan solat sunat Tahajjud?,What is the benefit of performing the Tahajjud prayer?,2
+201,14,mcq,Bilakah waktu terbaik untuk menunaikan solat Dhuha?,When is the best time to perform Dhuha prayer?,2
+202,14,mcq,Berapakah jumlah rakaat minimum solat sunat Rawatib?,What is the minimum number of rak'ahs for Rawatib voluntary prayers?,2
+203,14,mcq,Apakah solat sunat yang dilakukan untuk memohon petunjuk daripada Allah sebelum membuat keputusan?,Which voluntary prayer is performed to seek guidance from Allah before making a decision?,2
+204,14,mcq,"Jika seseorang tidak mampu menunaikan solat berdiri, apakah yang harus dilakukan?","If a person is unable to perform prayer while standing, what should they do?",2
+205,14,mcq,Manakah solat yang boleh dilakukan sebagai qada'?,Which prayer can be performed as qada' (make-up prayer)?,2
+206,14,binary,"Jika seseorang terlupa solat Witir selepas Isyak, dia boleh mengqada'nya sebelum Subuh.","If someone forgets to perform Witir after Isha, they can make it up before Fajr.",2
+207,14,binary,"Solat sunat Rawatib hanya boleh dilakukan selepas solat fardu, bukan sebelumnya.","Rawatib voluntary prayers can only be performed after obligatory prayers, not before.",2
+208,14,binary,Solat sunat boleh dilakukan walaupun tanpa wudhu.,Voluntary prayers can be performed even without wudhu.,2
+209,14,binary,Solat sunat Dhuha hanya boleh dilakukan sebelum Subuh.,Dhuha prayer can only be performed before Fajr.,2
+210,14,binary,Solat sunat Tahajjud hanya boleh dilakukan selepas tidur.,Tahajjud prayer can only be performed after sleeping.,2
+211,15,mcq,Apakah syarat wajib berpuasa Ramadan?,What are the requirements for fasting in Ramadan?,2
+212,15,mcq,Apakah perkara yang boleh membatalkan puasa?,Which of the following invalidates the fast?,2
+213,15,mcq,"Jika seseorang makan atau minum kerana terlupa, apakah hukumnya?","If someone eats or drinks by mistake while fasting, what is the ruling?",2
+214,15,mcq,Apakah keutamaan bersahur?,What is the significance of having suhoor?,2
+215,15,mcq,Apakah yang perlu dilakukan jika jatuh sakit dan tidak mampu berpuasa?,What should be done if someone falls ill and is unable to fast?,2
+216,15,mcq,Malam apakah yang lebih baik daripada 1000 bulan dan disambut dalam bulan Ramadan?,Which night in Ramadan is better than 1000 months?,2
+217,15,mcq,Apakah amalan sunat ketika berpuasa?,What are the recommended acts while fasting?,2
+218,15,mcq,Bagaimana cara menggantikan puasa bagi orang yang uzur seperti sakit kronik atau tua?,How should a person with a chronic illness or old age compensate for missed fasting?,2
+219,15,mcq,Apakah kelebihan berpuasa di bulan Ramadan?,What is the benefit of fasting in Ramadan?,2
+220,15,binary,Niat berpuasa boleh dilakukan dalam hati tanpa perlu dilafazkan secara kuat.,The intention to fast can be made in the heart without being verbally expressed.,2
+221,15,binary,Wanita yang sedang haid atau nifas tidak perlu berpuasa dan wajib menggantikannya selepas Ramadan.,Women who are menstruating or experiencing postpartum bleeding do not have to fast and must make up for it after Ramadan.,2
+222,15,binary,Berkumur dan memasukkan air ke dalam hidung ketika berwudhu semasa berpuasa boleh membatalkan puasa.,Rinsing the mouth and putting water into the nose while performing wudhu during fasting can break the fast.,2
+223,15,binary,Puasa boleh dibatalkan jika seseorang jatuh sakit dan tidak mampu meneruskannya.,Fasting can be broken if someone falls ill and is unable to continue.,2
+224,15,binary,Malam Lailatul Qadar hanya berlaku pada 10 malam terakhir Ramadan.,The Night of Qadr (Lailatul Qadr) only occurs in the last 10 nights of Ramadan.,2
+225,15,binary,Tidur sepanjang hari tanpa melakukan ibadah ketika berpuasa adalah amalan yang digalakkan.,Sleeping all day without engaging in worship while fasting is encouraged.,2
