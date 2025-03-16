@@ -39,7 +39,7 @@ export default function RayaAidilfitri() {
 
     return (
         <Layout>
-            <div className="p-6 text-center text-white dark:text-white">
+            <div className="p-6 text-center text-black dark:text-white">
                 {/* 🎉 Hari Raya Title */}
                 <h1 className="text-3xl font-bold text-white dark:text-black">
                     {translations[language].title}
@@ -52,7 +52,7 @@ export default function RayaAidilfitri() {
                     <h2 className="text-xl font-bold text-green-600 dark:text-black">
                         {translations[language].qrTitle}
                     </h2>
-                    <img src="/assets/button/qrcode.jpeg" alt="QR Code Duit Raya" className="mx-auto w-40 h-40 mt-3 shadow-lg rounded-lg" />
+                    <img src="/storage/assets/button/qrcode.jpeg" alt="QR Code Duit Raya" className="mx-auto w-40 h-40 mt-3 shadow-lg rounded-lg" />
                 </div>
 
                 {/* 📜 Toggle Sections */}
