@@ -18,6 +18,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/kad-raya', function () {
+    return Inertia::render('SpecialButton/KadRaya');
+});
+
 // Drawer Menu
 Route::get('/history', function () {
     return Inertia::render('History');

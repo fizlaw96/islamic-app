@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "@inertiajs/react";
 import Layout from "../../Layouts/Layout";
 
 export default function RayaAidilfitri() {
@@ -53,6 +54,12 @@ export default function RayaAidilfitri() {
                         {translations[language].qrTitle}
                     </h2>
                     <img src="/storage/assets/button/qrcode.jpeg" alt="QR Code Duit Raya" className="mx-auto w-40 h-40 mt-3 shadow-lg rounded-lg" />
+                </div>
+
+                <div className="m-6">
+                    <Link href="/kad-raya" className="bg-green-500 text-white py-2 px-4 rounded-md font-bold shadow-md hover:bg-green-600">
+                        🎆 View Kad Raya 🎆
+                    </Link>
                 </div>
 
                 {/* 📜 Toggle Sections */}
