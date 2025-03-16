@@ -23,10 +23,20 @@ export default function Ramadhan() {
                 </p>
 
                 <div className="mt-4 bg-white dark:bg-gray-800 p-4 shadow-md rounded-md border-l-4 border-green-500 text-gray-700 dark:text-gray-300">
+                    {/* Arabic Text */}
                     <p className="text-xl font-arabic text-right leading-loose">
                         يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ كَمَا كُتِبَ عَلَى ٱلَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ
                     </p>
+
+                    {/* Surah Reference */}
                     <p className="mt-2 font-bold text-right">— Surah Al-Baqarah (2:183)</p>
+
+                    {/* Translation Based on Selected Language */}
+                    <p className="mt-4 text-lg text-gray-700 dark:text-white">
+                        {language === "bm"
+                            ? "Wahai orang-orang yang beriman! Kamu diwajibkan berpuasa sebagaimana diwajibkan ke atas orang-orang yang dahulu daripada kamu, supaya kamu bertakwa."
+                            : "O you who believe! Fasting is prescribed for you as it was prescribed for those before you, so that you may become righteous."}
+                    </p>
                 </div>
 
                 <img src="/storage/assets/button/ramadan.jpg" alt="Ramadhan" className="mx-auto mt-6 w-60 h-auto rounded-lg shadow-lg" />
