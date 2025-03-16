@@ -42,7 +42,7 @@ export default function RayaAidilfitri() {
         <Layout>
             <div className="p-6 text-center text-black dark:text-white">
                 {/* 🎉 Hari Raya Title */}
-                <h1 className="text-3xl font-bold text-white dark:text-black">
+                <h1 className="text-3xl font-bold text-black dark:text-black">
                     {translations[language].title}
                 </h1>
                 <p className="mt-4 text-lg dark:text-black">{translations[language].message}</p>
@@ -243,7 +243,7 @@ export default function RayaAidilfitri() {
                 {/* 🌙 Festive Decoration */}
                 <div className="mt-8">
                     <h2 className="text-xl font-bold text-green-600 dark:text-green-400">🌙 Salam Lebaran! 🌙</h2>
-                    <p className="mt-2 text-white dark:text-black">
+                    <p className="mt-2 text-black dark:text-black">
                         {language === "bm" ? "Semoga hari raya ini dipenuhi dengan keberkatan dan kegembiraan. Maaf Zahir & Batin!"
                         : "May this Eid be filled with blessings and happiness. Forgive me for any shortcomings!"}
                     </p>
