@@ -3,7 +3,7 @@ import Layout from "../Layouts/Layout";
 
 const About = () => {
     // Load language from localStorage or default to English
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         // Listen for language changes from other components or tabs

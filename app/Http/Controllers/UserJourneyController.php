@@ -29,10 +29,10 @@ class UserJourneyController extends Controller
         // ✅ Count completed lessons
         $completedLessons = $completedLessonIds->count();
 
-        // ✅ Fetch last 3 completed lessons with lesson details, using `title_bm`
+        // ✅ Fetch last 3 completed lessons with lesson details
         $latestLessons = UserJourney::where('user_id', $user->id)
             ->where('completed', true)
-            ->with('lesson:id,title_bm') // ✅ Fix: Use `title_bm`
+            ->with('lesson:id,title_bm') // ✅ Use `title_bm`
             ->orderBy('updated_at', 'desc')
             ->take(3)
             ->get();
@@ -40,8 +40,24 @@ class UserJourneyController extends Controller
         // ✅ Find the next lesson to unlock
         $nextLesson = Lesson::whereNotIn('id', $completedLessonIds)->first();
 
-        // ✅ Calculate Streak
-        $streak = 0;
+        return Inertia::render('Admin/Dashboard', [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'profile_image' => $user->profile_image ?? 'storage/assets/avatars/avatar.png',
+            ],
+            'totalLessons' => $totalLessons,
+            'completedLessonIds' => $completedLessonIds->toArray(),
+            'completedLessons' => $completedLessons,
+            'latestLessons' => $latestLessons,
+            'nextLesson' => $nextLesson,
+        ]);
+    }
+
+
+    public function getStreak(Request $request)
+    {
+        $user = Auth::user();
         $today = Carbon::today();
 
         // ✅ Get unique completion dates sorted (latest first)
@@ -53,9 +69,10 @@ class UserJourneyController extends Controller
             ->sortDesc()
             ->values();
 
+        // ✅ Calculate Streak
+        $streak = 0;
         if ($dates->isNotEmpty() && ($dates[0] === $today->toDateString() || Carbon::parse($dates[0])->diffInDays($today) === 1)) {
             $streak = 1;
-
             for ($i = 1; $i < $dates->count(); $i++) {
                 if (Carbon::parse($dates[$i])->diffInDays(Carbon::parse($dates[$i - 1])) === 1) {
                     $streak++;
@@ -65,19 +82,33 @@ class UserJourneyController extends Controller
             }
         }
 
-        return Inertia::render('Admin/Dashboard', [
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'profile_image' => $user->profile_image ?? 'storage/assets/avatars/avatar.png',
-            ],
-            'totalLessons' => $totalLessons,
-            'completedLessonIds' => $completedLessonIds->toArray(), // ✅ Ensure array format
-            'completedLessons' => $completedLessons,
-            'latestLessons' => $latestLessons,
-            'nextLesson' => $nextLesson,
-            'streak' => $streak
-        ]);
+        return response()->json(['streak' => $streak]);
+    }
+
+    /**
+     * ✅ Update Streak When a Lesson is Completed
+     */
+    public function updateStreak(Request $request)
+    {
+        $user = Auth::user();
+        $today = Carbon::today()->toDateString();
+
+        // ✅ Check if today's lesson is already counted
+        $existing = UserJourney::where('user_id', $user->id)
+            ->whereDate('updated_at', $today)
+            ->where('completed', true)
+            ->exists();
+
+        if (!$existing) {
+            UserJourney::create([
+                'user_id' => $user->id,
+                'lesson_id' => $request->lesson_id, // Ensure frontend sends this
+                'completed' => true,
+                'updated_at' => now(),
+            ]);
+        }
+
+        return $this->getStreak($request);
     }
 
     public function updateProfileImage(Request $request)

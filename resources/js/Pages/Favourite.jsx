@@ -5,7 +5,7 @@ import Layout from "../Layouts/Layout";
 
 export default function Favourite() {
     const [favorites, setFavorites] = useState([]);
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const sessionId = localStorage.getItem("session_id"); // Get stored session ID
 
     useEffect(() => {

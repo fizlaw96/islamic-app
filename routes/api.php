@@ -63,6 +63,9 @@ Route::post('/questions/{question_id}/answer', [QuestionController::class, 'subm
 Route::post('/user/progress', [UserProgressController::class, 'getProgress']);
 Route::post('/user/progress/update', [UserProgressController::class, 'updateProgress']);
 
+Route::get('/streak', [UserJourneyController::class, 'getStreak']);
+Route::post('/streak/update', [UserJourneyController::class, 'updateStreak']);
+
 Route::post('/update-profile-image', [UserJourneyController::class, 'updateProfileImage']);
 Route::get('/user-progress', [UserJourneyController::class, 'getUserProgress']);
 Route::post('/lesson/complete', [UserJourneyController::class, 'storeScore']);

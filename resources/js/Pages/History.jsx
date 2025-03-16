@@ -5,7 +5,7 @@ import Layout from "../Layouts/Layout";
 
 export default function History() {
     const [history, setHistory] = useState([]);
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
     const sessionId = localStorage.getItem("session_id"); // Ensure session_id is fetched
 

@@ -12,7 +12,7 @@ export default function AuthenticatedLayout({ children }) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [isSpecial, setIsSpecial] = useState(false);
 
     useEffect(() => {

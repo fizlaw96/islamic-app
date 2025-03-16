@@ -7,7 +7,7 @@ export default function JourneyLoggedIn() {
     const { user, lessons, progress } = usePage().props;
 
     // ✅ Get language from localStorage (default: English)
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         const handleStorageChange = () => {

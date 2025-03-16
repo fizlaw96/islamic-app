@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function TopicButtons() {
     const [topics, setTopics] = useState([]);
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         axios.get("/api/islamic-contents")

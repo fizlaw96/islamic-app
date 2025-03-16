@@ -3,7 +3,7 @@ import Layout from "../../Layouts/Layout";
 
 export default function RayaAidiladha() {
     const [openSection, setOpenSection] = useState(null);
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     const toggleSection = (section) => {
         setOpenSection(openSection === section ? null : section);

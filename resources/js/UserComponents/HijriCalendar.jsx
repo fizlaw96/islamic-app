@@ -4,7 +4,7 @@ import moment from "moment-hijri";
 export default function HijriCalendar({ insideDrawer = false }) {
     const [hijriDate, setHijriDate] = useState("");
     const [reminder, setReminder] = useState("");
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         moment.locale("en"); // ✅ Moment.js stays in English

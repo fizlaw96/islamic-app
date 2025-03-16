@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 import Layout from "../Layouts/Layout"; // Import Layout Component
 
 export default function ListContentTopic({ topic, contents }) {
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [fontSize, setFontSize] = useState(parseInt(localStorage.getItem("fontSize")) || 16);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
     const [searchTerm, setSearchTerm] = useState(""); // ✅ Search state

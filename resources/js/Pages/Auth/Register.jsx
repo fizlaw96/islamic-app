@@ -15,7 +15,7 @@ export default function Register() {
     });
 
     // Language State
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         localStorage.setItem("language", language);

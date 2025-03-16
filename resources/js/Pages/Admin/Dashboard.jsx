@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // ✅ Import axios
 import { usePage, Link } from "@inertiajs/react";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import ProfileImage from "@/UserComponents/ProfileImage"; // Import ProfileImage component
-import { Flame, BookOpen, ChevronRight } from "lucide-react";
+import { Flame, BookOpen, ChevronRight, Globe } from "lucide-react";
 
 export default function Dashboard() {
     const {
@@ -10,19 +12,82 @@ export default function Dashboard() {
         completedLessons = 0,
         latestLessons = [],
         nextLesson = null,
-        streak = 0,
         totalLessons = 1 // Avoid division by zero
     } = usePage().props;
+
+    const [streak, setStreak] = useState(0);
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
+
+    useEffect(() => {
+        // ✅ Fetch Streak from API
+        axios.get('/api/streak')
+            .then(response => setStreak(response.data.streak))
+            .catch(error => console.error("Failed to fetch streak:", error));
+    }, []);
+
+    const handleLessonCompletion = async () => {
+        if (!nextLesson) return; // No lesson available
+
+        try {
+            // ✅ Send request to update streak
+            const response = await axios.post('/api/streak/update', { lesson_id: nextLesson.id });
+            setStreak(response.data.streak);
+        } catch (error) {
+            console.error("Failed to update streak:", error);
+        }
+    };
+
+    const handleLanguageChange = () => {
+        const newLanguage = language === "bm" ? "en" : "bm";
+        setLanguage(newLanguage);
+        localStorage.setItem("language", newLanguage);
+    };
 
     // ✅ Calculate lesson completion percentage safely
     const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 
+    // ✅ Translations (BM / EN)
+    const translations = {
+        bm: {
+            dashboard: "Papan Pemuka",
+            streak: "🔥 Terusan Berapi: ",
+            streakDesc: "Kekal konsisten! Jangan putuskan rentetan anda.",
+            lessonProgress: "📚 Kemajuan Pelajaran",
+            completed: "daripada",
+            nextLesson: "🎯 Pelajaran Seterusnya",
+            completeLesson: "Selesaikan Pelajaran",
+            switchLanguage: "Tukar Bahasa",
+        },
+        en: {
+            dashboard: "Dashboard",
+            streak: "🔥 Streak: ",
+            streakDesc: "Stay consistent! Don't break your streak.",
+            lessonProgress: "📚 Lesson Progress",
+            completed: "out of",
+            nextLesson: "🎯 Next Lesson",
+            completeLesson: "Complete Lesson",
+            switchLanguage: "Switch Language",
+        },
+    };
+
+    const t = translations[language];
+
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Dashboard
-                </h2>
+                <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                        {t.dashboard}
+                    </h2>
+                    {/* 🌍 Language Switcher */}
+                    <button
+                        onClick={handleLanguageChange}
+                        className="flex items-center gap-2 bg-blue-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-blue-600"
+                    >
+                        <Globe size={18} />
+                        {t.switchLanguage}
+                    </button>
+                </div>
             }
         >
             <Head title="Dashboard" />
@@ -38,15 +103,17 @@ export default function Dashboard() {
                         <div className="mt-8 bg-gray-100 dark:bg-gray-700 p-4 rounded-lg flex items-center gap-4">
                             <Flame size={32} className="text-red-500" />
                             <div>
-                                <h3 className="text-lg font-semibold">🔥 Streak: {streak} days</h3>
-                                <p className="text-gray-500 text-sm">Stay consistent! Don't break your streak.</p>
+                                <h3 className="text-lg font-semibold">{t.streak} {streak} hari</h3>
+                                <p className="text-gray-500 text-sm">{t.streakDesc}</p>
                             </div>
                         </div>
 
                         {/* ✅ Progress Section */}
                         <div className="mt-8">
-                            <h3 className="text-lg font-semibold">📚 Lesson Progress</h3>
-                            <p className="text-gray-500 text-sm">{completedLessons} out of {totalLessons} lessons completed</p>
+                            <h3 className="text-lg font-semibold">{t.lessonProgress}</h3>
+                            <p className="text-gray-500 text-sm">
+                                {completedLessons} {t.completed} {totalLessons} pelajaran selesai
+                            </p>
 
                             {/* ✅ Progress Bar */}
                             <div className="mt-2 w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
@@ -61,15 +128,15 @@ export default function Dashboard() {
                         {nextLesson && (
                             <div className="mt-8 bg-green-100 dark:bg-green-700 p-4 rounded-lg flex items-center justify-between">
                                 <div>
-                                    <h3 className="text-lg font-semibold">🎯 Next Lesson</h3>
+                                    <h3 className="text-lg font-semibold">{t.nextLesson}</h3>
                                     <p className="text-gray-500">{nextLesson.title}</p>
                                 </div>
-                                <Link
-                                    href={route("lesson.show", { id: nextLesson.id })}
+                                <button
+                                    onClick={handleLessonCompletion}
                                     className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 flex items-center gap-2"
                                 >
-                                    Continue <ChevronRight size={18} />
-                                </Link>
+                                    {t.completeLesson} <ChevronRight size={18} />
+                                </button>
                             </div>
                         )}
                     </div>

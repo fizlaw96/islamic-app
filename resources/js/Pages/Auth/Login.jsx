@@ -14,7 +14,7 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
         localStorage.setItem("language", language);

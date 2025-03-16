@@ -1,12 +1,38 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaStop, FaPlay, FaShareAlt } from "react-icons/fa";
 import Fireworks from "../../UserComponents/Fireworks";
 
 export default function KadRaya() {
     const [showFireworks, setShowFireworks] = useState(false);
-    const takbirAudioRef = useRef(null);
+    const takbirAudioRef = useRef(new Audio("/storage/assets/mp3/takbir.MP3"));
     const fireworksAudioRef = useRef(new Audio("/storage/assets/mp3/firework.mp3"));
     const pageUrl = window.location.href;
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopAllAudio();
+            }
+        };
+
+        const handleBeforeUnload = () => {
+            stopAllAudio();
+        };
+
+        const handlePopState = () => {
+            stopAllAudio();
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        window.addEventListener("popstate", handlePopState);
+
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, []);
 
     const handlePlay = () => {
         setShowFireworks(true);
@@ -17,7 +43,7 @@ export default function KadRaya() {
             takbirAudioRef.current.play().catch(() => {});
         }
 
-        // ✅ Play Fireworks audio (looping)
+        // ✅ Play Firework audio (looping)
         if (fireworksAudioRef.current) {
             fireworksAudioRef.current.loop = true;
             fireworksAudioRef.current.currentTime = 0;
@@ -27,14 +53,14 @@ export default function KadRaya() {
 
     const handleStop = () => {
         setShowFireworks(false);
+        stopAllAudio();
+    };
 
-        // ✅ Stop Takbir audio
+    const stopAllAudio = () => {
         if (takbirAudioRef.current) {
             takbirAudioRef.current.pause();
             takbirAudioRef.current.currentTime = 0;
         }
-
-        // ✅ Stop Fireworks audio
         if (fireworksAudioRef.current) {
             fireworksAudioRef.current.pause();
             fireworksAudioRef.current.currentTime = 0;
@@ -43,7 +69,6 @@ export default function KadRaya() {
 
     const handleShare = async () => {
         if (navigator.share) {
-            // ✅ Native Share API (Mobile-Friendly)
             navigator
                 .share({
                     title: "🎆 Selamat Hari Raya!",
@@ -52,11 +77,9 @@ export default function KadRaya() {
                 })
                 .catch(() => {});
         } else if (navigator.clipboard && navigator.clipboard.writeText) {
-            // ✅ Copy to Clipboard (Secure Context Only)
             await navigator.clipboard.writeText(pageUrl);
             alert("✅ Link copied! Share it with your friends.");
         } else {
-            // ✅ Fallback: Show input field for manual copying
             const textArea = document.createElement("textarea");
             textArea.value = pageUrl;
             document.body.appendChild(textArea);
@@ -71,7 +94,7 @@ export default function KadRaya() {
         <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden">
             {/* Fireworks Full Screen */}
             <div className="absolute inset-0 flex items-center justify-center bg-black overflow-hidden">
-                {showFireworks ? <Fireworks ref={fireworksAudioRef} isPlaying={showFireworks} /> : <p className="text-white text-2xl">🎇 Press Play!</p>}
+                {showFireworks ? <Fireworks isPlaying={showFireworks} /> : <p className="text-white text-2xl">🎇 Press Play!</p>}
             </div>
 
             {/* 🔗 Share Button (Top Left) */}
@@ -93,8 +116,9 @@ export default function KadRaya() {
                 </button>
             )}
 
-            {/* 🎶 Takbir Audio */}
-            <audio ref={takbirAudioRef} src="/storage/assets/mp3/takbir.MP3" preload="auto"></audio>
+            {/* 🎶 Takbir & Firework Audio */}
+            <audio ref={takbirAudioRef} preload="auto"></audio>
+            <audio ref={fireworksAudioRef} preload="auto"></audio>
         </div>
     );
 }

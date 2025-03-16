@@ -8,7 +8,7 @@ export default function IslamicContent() {
     const { content } = props; // Destructure props
 
     // State Variables
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [favorites, setFavorites] = useState([]);
     const [readHistory, setReadHistory] = useState([]);
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");

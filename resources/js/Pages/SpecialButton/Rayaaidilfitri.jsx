@@ -4,7 +4,7 @@ import Layout from "../../Layouts/Layout";
 
 export default function RayaAidilfitri() {
     const [openSection, setOpenSection] = useState(null);
-    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
     useEffect(() => {
