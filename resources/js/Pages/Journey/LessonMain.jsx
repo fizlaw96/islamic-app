@@ -9,7 +9,7 @@ import { CheckCircle, XCircle } from "lucide-react";
 export default function LessonMain() {
     const { user, lesson, questions } = usePage().props;
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [lives, setLives] = useState(3);
+    const [lives, setLives] = useState(5);
     const [score, setScore] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
