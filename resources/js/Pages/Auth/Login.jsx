@@ -30,7 +30,7 @@ export default function Login({ status, canResetPassword }) {
     return (
         <Layout>
             <Head title={language === "bm" ? "Masuk" : "Login"} />
-            <div className="flex items-center justify-center min-h-screen px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center m-6">
                 <div className="w-full sm:max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     {/* ✅ Title */}
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
@@ -89,7 +89,7 @@ export default function Login({ status, canResetPassword }) {
 
                     {/* 📌 Register Link */}
                     <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-300">
-                        {language === "bm" ? "Belum mempunyai akaun?" : "Don't have an account?"}{" "}
+                        {language === "bm" ? "Belum mempunyai akaun?" : "Don't have an account?"}{" "}<br/>
                         <Link href="/register" className="text-green-100 font-bold hover:underline">
                             {language === "bm" ? "Daftar di sini" : "Register here"}
                         </Link>

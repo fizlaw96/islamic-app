@@ -32,7 +32,7 @@ export default function Register() {
         <Layout>
             <Head title={language === "bm" ? "Daftar" : "Register"} />
 
-            <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center m-6">
                 <div className="w-full sm:max-w-md bg-white dark:bg-green-800 shadow-lg rounded-lg p-6">
                     <h2 className="text-center text-2xl font-bold text-green-700 dark:text-white">
                         {language === "bm" ? "🕌 Daftar Akaun" : "🕌 Create an Account"}

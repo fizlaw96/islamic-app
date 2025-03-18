@@ -37,7 +37,7 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
                             selectedOption === option
                                 ? "bg-blue-500 text-white dark:bg-blue-600"
                                 : "bg-gray-200 dark:bg-gray-700 dark:text-white"
-                        } ${isAnswered ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-300 dark:hover:bg-gray-600"}`}
+                        } ${isAnswered ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-500 dark:hover:bg-blue-500"}`}
                     >
                         {language === "bm" ? option.option_text_bm : option.option_text_en}
                     </button>
@@ -47,7 +47,7 @@ export default function MCQBinaryQuestion({ question, language, onAnswer }) {
             <button
                 onClick={handleSubmit}
                 disabled={!selectedOption || isAnswered} // Disable if no selection OR already answered
-                className={`mt-4 px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`mt-6 w-full px-6 py-3 text-lg font-semibold flex items-center justify-center gap-3 rounded-xl transition-all duration-200 ${
                     selectedOption && !isAnswered
                         ? "bg-green-500 text-white dark:bg-green-600 hover:bg-green-700"
                         : "bg-gray-400 dark:bg-gray-600 cursor-not-allowed opacity-50"

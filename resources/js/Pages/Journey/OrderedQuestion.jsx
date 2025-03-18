@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Menu } from "lucide-react"; // ✅ Import icon
 
 export default function OrderedQuestion({ question, language, onAnswer }) {
     const shuffleArray = (array) => {
@@ -57,10 +58,18 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
                                         <div
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            className="p-3 border rounded-lg bg-gray-200 cursor-move"
+                                            className="p-3 border rounded-lg bg-gray-200 cursor-move flex justify-between items-center"
                                         >
-                                            {language === "bm" ? option.option_text_bm : option.option_text_en}
+                                            {/* Option text */}
+                                            <span>{language === "bm" ? option.option_text_bm : option.option_text_en}</span>
+
+                                            {/* Drag handle button */}
+                                            <button
+                                                {...provided.dragHandleProps}
+                                                className="p-2 bg-gray-300 rounded-lg flex items-center gap-1 hover:bg-gray-400"
+                                            >
+                                                <Menu className="w-5 h-5 text-gray-600" />
+                                            </button>
                                         </div>
                                     )}
                                 </Draggable>
@@ -80,7 +89,7 @@ export default function OrderedQuestion({ question, language, onAnswer }) {
             <button
                 onClick={handleSubmit}
                 disabled={submitted}
-                className={`mt-4 px-4 py-2 rounded-lg transition-all duration-200 ${
+                className={`mt-6 w-full px-6 py-3 text-lg font-semibold flex items-center justify-center gap-3 rounded-xl transition-all duration-200 ${
                     submitted
                         ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
                         : "bg-green-500 text-white hover:bg-green-600"

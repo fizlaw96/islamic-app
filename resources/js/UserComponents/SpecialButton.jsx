@@ -11,13 +11,14 @@ export default function SpecialButton() {
         moment.locale("en"); // Ensure moment.js uses English
         const todayHijri = moment();
         const hijriMonth = todayHijri.iMonth() + 1; // Hijri month (1-12)
+        const hijriDay = todayHijri.iDate();
 
         let specialEvent = "Special Day";
         let specialImage = "/storage/assets/button/special.png"; // Default
         let specialStatus = false;
 
         // ✅ Show Special Event for the Whole Month with Correct Image
-        if (hijriMonth === 10) {
+        if ((hijriMonth === 9 && hijriDay >= 27) || hijriMonth === 10) {
             specialEvent = "Raya Aidilfitri";
             specialImage = "/storage/assets/button/raya.jpg";
             specialStatus = true;
@@ -57,7 +58,7 @@ export default function SpecialButton() {
                 )}
             </div>
 
-            <span className="text-xs sm:text-sm mt-1">{buttonName}</span>
+            {/* <span className="text-xs sm:text-sm mt-1">{buttonName}</span> */}
         </Link>
     );
 }

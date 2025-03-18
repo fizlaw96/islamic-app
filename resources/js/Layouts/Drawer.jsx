@@ -13,7 +13,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
             initial={{ x: -250 }}
             animate={{ x: menuOpen ? 0 : -270 }}
             transition={{ duration: 0.3 }}
-            className="fixed left-0 top-16 w-64 h-screen bg-green-800 dark:bg-green-800 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
+            className="fixed left-0 top-16 w-64 h-screen bg-green-100 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
         >
             {/* ✅ User Profile or Login/Register Section */}
             <div className="pt-3 space-y-2">
@@ -30,7 +30,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                                 />
 
                                 {/* User Name - Smoother Color Transition */}
-                                <p className="font-bold text-lg transition-colors duration-300 ease-in-out hover:text-green-300">
+                                <p className="font-bold text-lg text-black transition-colors duration-300 ease-in-out hover:text-green-800">
                                     {auth.user.name}
                                 </p>
                             </div>
@@ -67,14 +67,14 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                 )}
             </div>
 
-            <div className="flex flex-col flex-1 overflow-y-auto">
+            <div className="flex flex-col flex-1 overflow-y-auto mt-6">
                 {/* ✅ Navigation Links */}
                 <ul className="space-y-2 flex-1">
                     {/* ✅ Admin Section */}
                     {auth?.user?.role === "admin" && (
                         <>
                             <hr className="border-gray-400 my-2" />
-                            <span className="text-gray-300 text-sm font-semibold uppercase tracking-wide block px-2">
+                            <span className="text-gray-800 text-sm font-semibold uppercase tracking-wide block px-2">
                                 📌 {translations[language]?.adminSection || "Admin"}
                             </span>
                             <li className="p-2 border-b flex items-center gap-2">

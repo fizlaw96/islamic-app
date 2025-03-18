@@ -7,11 +7,14 @@ import Drawer from "./Drawer";
 import SpecialButton from "../UserComponents/SpecialButton";
 
 export default function Layout({ children }) {
-    const { auth } = usePage().props; // ✅ Get user data
+    const { url } = usePage();
+    const { auth } = usePage().props;
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
-    const [language, setLanguage] = useState("en"); // Default to EN
+    const [language, setLanguage] = useState("bm"); // Default to EN
     const [isSpecial, setIsSpecial] = useState(false); // Track if SpecialButton should be shown
+
+    const isActive = (path) => url === new URL(path, window.location.origin).pathname;
 
     useEffect(() => {
         const storedLanguage = localStorage.getItem("language");
@@ -47,6 +50,8 @@ export default function Layout({ children }) {
             journey: "Journey",
             settings: "Settings",
             favorite: "Favorite",
+            profile: "Profile",
+            article: "Article",
         },
         bm: {
             appName: "Aplikasi Islam",
@@ -65,6 +70,8 @@ export default function Layout({ children }) {
             journey: "Pengembaraan",
             settings: "Tetapan",
             favorite: "Kegemaran",
+            profile: "Profil",
+            article: "Artikel",
         },
     };
 
@@ -116,17 +123,33 @@ export default function Layout({ children }) {
                 {/* ✅ Dashboard (Login Redirect) */}
                 <Link
                     href={auth?.user ? route("dashboard") : route("login")}
-                    className="flex flex-col items-center ml-4 sm:ml-10 transition-transform duration-200 ease-in-out hover:scale-110"
+                    className={`flex flex-col items-center ml-4 sm:ml-10 transition-transform duration-200 ease-in-out hover:scale-110 ${
+                        isActive(route("dashboard")) ? "text-yellow-400" : "text-white"
+                    }`}
                 >
                     <User size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.profile || "Profile"}</span>
                 </Link>
 
                 {/* ✅ Journey (Login Redirect) */}
                 <Link
                     href={auth?.user ? route("journey.loggedin") : route("journey")}
-                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${isSpecial ? "mr-10 sm:mr-10" : ""}`}
+                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${
+                        isSpecial ? "mr-10 sm:mr-10" : ""
+                    } ${
+                        isActive(route("journey")) || isActive(route("journey.loggedin")) ? "text-yellow-400" : "text-white"
+                    }`}
                 >
-                    <img src="/storage/assets/button/journey.png" alt="Journey Icon" className="w-8 h-8" />
+                    <img
+                        src="/storage/assets/button/journey.svg"
+                        alt="Journey Icon"
+                        className={`w-8 h-8 transition-all duration-200 filter ${
+                            isActive(route("journey")) || isActive(route("journey.loggedin"))
+                                ? "invert-[75%] sepia-[90%] saturate-[500%] hue-rotate-[30deg] brightness-110 contrast-125" // Changes to yellow
+                                : "invert brightness-90 opacity-75"
+                        }`}
+                    />
+                    <span className="text-sm leading-tight">{translations[language]?.journey || "Journey"}</span>
                 </Link>
 
                 {/* ✅ Special Button (Only Renders If Exists) */}
@@ -139,17 +162,23 @@ export default function Layout({ children }) {
                 {/* ✅ Home (Replaced with Blog Icon) */}
                 <Link
                     href="/"
-                    className="flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110"
+                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${
+                        url === "/" ? "text-yellow-400" : ""
+                    }`}
                 >
                     <FileText size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.article || "Article"}</span>
                 </Link>
 
                 {/* ✅ Favourite */}
                 <Link
                     href="/favourite"
-                    className="flex flex-col items-center mr-4 sm:mr-10 transition-transform duration-200 ease-in-out hover:scale-110"
+                    className={`flex flex-col items-center mr-4 sm:mr-10 transition-transform duration-200 ease-in-out hover:scale-110 ${
+                        isActive("/favourite") ? "text-yellow-400" : ""
+                    }`}
                 >
                     <Star size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.favorite || "Favourite"}</span>
                 </Link>
             </motion.nav>
         </div>
