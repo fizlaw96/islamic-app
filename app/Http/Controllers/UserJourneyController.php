@@ -38,8 +38,13 @@ class UserJourneyController extends Controller
             ->take(3)
             ->get();
 
-        // ✅ Find the next lesson to unlock
-        $nextLesson = Lesson::whereNotIn('id', $completedLessonIds)->first();
+        // ✅ Find the next lesson to unlock (get the lowest ID that is not completed)
+        $nextLesson = Lesson::whereNotIn('id', $completedLessonIds)
+            ->orderBy('id', 'asc') // ✅ Ensures the correct order
+            ->first();
+
+        // ✅ If all lessons are completed, explicitly return null
+        $nextLesson = $nextLesson ?: null;
 
         return Inertia::render('Admin/Dashboard', [
             'user' => [

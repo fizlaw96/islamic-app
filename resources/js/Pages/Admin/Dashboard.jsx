@@ -37,18 +37,15 @@ export default function Dashboard() {
         fetchStreak();
     }, [user.id]);
 
-    const handleLessonCompletion = async () => {
-        if (!nextLesson) return;
-
-        try {
-            const response = await axios.post('/api/streak/update', {
-                user_id: user.id,
-                lesson_id: nextLesson.id
-            });
-            setStreak(response.data.streak);
-        } catch (error) {
-            console.error("Failed to update streak:", error);
+    const handleLessonCompletion = () => {
+        if (!nextLesson) {
+            console.warn("⚠️ No next lesson available to complete.");
+            return; // Prevent function execution
         }
+
+        // ✅ Redirect to the next lesson
+        console.log("📚 Redirecting to next lesson:", nextLesson.id);
+        window.location.href = `/lesson/${nextLesson.id}`;
     };
 
     const handleLanguageChange = () => {
