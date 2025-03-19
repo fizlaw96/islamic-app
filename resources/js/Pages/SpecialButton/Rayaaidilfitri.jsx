@@ -6,6 +6,8 @@ export default function RayaAidilfitri() {
     const [openSection, setOpenSection] = useState(null);
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
     const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+    const [showModal, setShowModal] = useState(false);
+    const [name, setName] = useState("");
 
     useEffect(() => {
         // Apply dark mode class globally
@@ -14,6 +16,12 @@ export default function RayaAidilfitri() {
 
     const toggleSection = (section) => {
         setOpenSection(openSection === section ? null : section);
+    };
+
+    const handleRedirect = () => {
+        const finalName = name.trim() ? name.trim() : "Tafheem"; // ✅ Default to "Tafheem" if empty
+        const encodedName = encodeURIComponent(finalName);
+        window.location.href = `/kad-raya?name=${encodedName}`;
     };
 
     // Translations for BM & EN
@@ -56,11 +64,43 @@ export default function RayaAidilfitri() {
                     <img src="/storage/assets/button/qrcode.jpeg" alt="QR Code Duit Raya" className="mx-auto w-40 h-40 mt-3 shadow-lg rounded-lg" />
                 </div>
 
-                <div className="m-6">
-                    <Link href="/kad-raya" className="bg-green-500 text-white py-2 px-4 rounded-md font-bold shadow-md hover:bg-green-600">
-                        🎆 View Kad Raya 🎆
-                    </Link>
-                </div>
+                {/* ✅ View Kad Raya Button */}
+                <button
+                    onClick={() => setShowModal(true)}
+                    className="bg-green-500 text-white py-2 px-4 rounded-md font-bold shadow-md hover:bg-green-600 m-4"
+                >
+                    {language === "bm" ? "🎆 Tengok Kad Raya 🎆" : "🎆 View Kad Raya 🎆"}
+                </button>
+
+                {/* ✅ Name Input Modal */}
+                {showModal && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-black">
+                        <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                            <h2 className="text-lg font-bold mb-4">Enter Your Name</h2>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="border p-2 rounded w-full mb-4"
+                                placeholder="Your Name"
+                            />
+                            <div className="flex justify-around">
+                                <button
+                                    onClick={handleRedirect}
+                                    className="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600"
+                                >
+                                    🎇 Continue
+                                </button>
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="bg-gray-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600"
+                                >
+                                    ❌ Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* 📜 Toggle Sections */}
                 <div className="mt-8 space-y-4">

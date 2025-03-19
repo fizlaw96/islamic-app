@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, forwardRef } from "react";
 import StaticElements from "./StaticElements";
 
-const Fireworks = forwardRef(({ isPlaying }, ref) => {
+const Fireworks = forwardRef(({ isPlaying,userName }, ref) => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -132,7 +132,7 @@ const Fireworks = forwardRef(({ isPlaying }, ref) => {
 
     return (
         <div className="relative w-full h-screen flex justify-center items-center">
-            <StaticElements />
+            <StaticElements userName={userName} />
             <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
         </div>
     );

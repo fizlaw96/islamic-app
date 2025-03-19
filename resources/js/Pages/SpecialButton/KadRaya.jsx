@@ -2,11 +2,29 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaStop, FaPlay, FaShareAlt } from "react-icons/fa";
 import Fireworks from "../../UserComponents/Fireworks";
 
+// ✅ Function to get query parameters from URL
+const getQueryParam = (param) => {
+    return new URLSearchParams(window.location.search).get(param);
+};
+
 export default function KadRaya() {
     const [showFireworks, setShowFireworks] = useState(false);
-    const takbirAudioRef = useRef(new Audio("/storage/assets/mp3/takbir.MP3"));
-    const fireworksAudioRef = useRef(new Audio("/storage/assets/mp3/firework.mp3"));
+    const takbirAudioRef = useRef(null);
+    const fireworksAudioRef = useRef(null);
     const pageUrl = window.location.href;
+    const userName = getQueryParam("name") || "Tafheem";
+
+    useEffect(() => {
+        // ✅ Initialize audio elements on mount
+        takbirAudioRef.current = new Audio("/storage/assets/mp3/takbir.MP3");
+        fireworksAudioRef.current = new Audio("/storage/assets/mp3/firework.mp3");
+
+        return () => {
+            // ✅ Cleanup audio elements on unmount
+            takbirAudioRef.current = null;
+            fireworksAudioRef.current = null;
+        };
+    }, []);
 
     useEffect(() => {
         const handleVisibilityChange = () => {
@@ -40,14 +58,14 @@ export default function KadRaya() {
         // ✅ Play Takbir audio
         if (takbirAudioRef.current) {
             takbirAudioRef.current.currentTime = 0;
-            takbirAudioRef.current.play().catch(() => {});
+            takbirAudioRef.current.play().catch((err) => console.error("❌ Error playing Takbir:", err));
         }
 
         // ✅ Play Firework audio (looping)
         if (fireworksAudioRef.current) {
             fireworksAudioRef.current.loop = true;
             fireworksAudioRef.current.currentTime = 0;
-            fireworksAudioRef.current.play().catch(() => {});
+            fireworksAudioRef.current.play().catch((err) => console.error("❌ Error playing Fireworks:", err));
         }
     };
 
@@ -94,7 +112,7 @@ export default function KadRaya() {
         <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden">
             {/* Fireworks Full Screen */}
             <div className="absolute inset-0 flex items-center justify-center bg-black overflow-hidden">
-                {showFireworks ? <Fireworks isPlaying={showFireworks} /> : <p className="text-white text-2xl">🎇 Press Play!</p>}
+                {showFireworks ? <Fireworks isPlaying={showFireworks} userName={userName} /> : <p className="text-white text-2xl">🎇 Press Play!</p>}
             </div>
 
             {/* 🔗 Share Button (Top Left) */}
@@ -115,10 +133,6 @@ export default function KadRaya() {
                     <FaPlay size={24} />
                 </button>
             )}
-
-            {/* 🎶 Takbir & Firework Audio */}
-            <audio ref={takbirAudioRef} preload="auto"></audio>
-            <audio ref={fireworksAudioRef} preload="auto"></audio>
         </div>
     );
 }
