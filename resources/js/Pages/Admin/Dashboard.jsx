@@ -19,18 +19,32 @@ export default function Dashboard() {
     const [language, setLanguage] = useState(localStorage.getItem("language") || "bm");
 
     useEffect(() => {
-        // ✅ Fetch Streak from API
-        axios.get('/api/streak')
-            .then(response => setStreak(response.data.streak))
-            .catch(error => console.error("Failed to fetch streak:", error));
-    }, []);
+        const fetchStreak = async () => {
+            try {
+                console.log("🚀 Fetching streak for user:", user.id);
+
+                const response = await axios.get(`/api/streak`, {
+                    params: { user_id: user.id },
+                });
+
+                setStreak(response.data.streak);
+            } catch (error) {
+                console.error("❌ Error fetching streak:", error.response?.data || error.message);
+                setStreak(0); // ✅ Default to 0 if error
+            }
+        };
+
+        fetchStreak();
+    }, [user.id]);
 
     const handleLessonCompletion = async () => {
-        if (!nextLesson) return; // No lesson available
+        if (!nextLesson) return;
 
         try {
-            // ✅ Send request to update streak
-            const response = await axios.post('/api/streak/update', { lesson_id: nextLesson.id });
+            const response = await axios.post('/api/streak/update', {
+                user_id: user.id,
+                lesson_id: nextLesson.id
+            });
             setStreak(response.data.streak);
         } catch (error) {
             console.error("Failed to update streak:", error);

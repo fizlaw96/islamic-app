@@ -46,22 +46,33 @@ export default function LessonComplete() {
     // ✅ Send Score to Backend
     const sendScoreToBackend = async () => {
         try {
-            console.log("🚀 Sending data to backend:", { user_id, lesson_id, score: percentage });
+            console.log("🚀 Sending lesson completion data:", { user_id, lesson_id, score: percentage });
 
-            await axios.get("/sanctum/csrf-cookie", { withCredentials: true });
-
-            const response = await axios.post(
+            // ✅ Send lesson completion request
+            await axios.post(
                 "/api/lesson/complete",
                 { user_id, lesson_id, score: percentage },
                 { withCredentials: true }
             );
 
-            console.log("✅ Score saved successfully:", response.data);
+            console.log("✅ Lesson completed successfully!");
+
+            // ✅ Now update the streak
+            console.log("🔥 Updating streak for user:", user_id);
+            const streakResponse = await axios.post(
+                "/api/streak/update",
+                { user_id },
+                { withCredentials: true }
+            );
+
+            console.log("✅ Streak updated:", streakResponse.data);
+
         } catch (error) {
-            console.error("❌ Error saving score:", error.response?.data || error.message);
+            console.error("❌ Error updating lesson or streak:", error.response?.data || error.message);
         }
     };
 
+    // ✅ Automatically send score and update streak when component mounts
     useEffect(() => {
         if (user_id && lesson_id && rawScore !== null) {
             sendScoreToBackend();

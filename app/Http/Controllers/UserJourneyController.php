@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Lesson;
 use App\Models\UserJourney;
 use App\Models\User;
+use App\Models\Streak;
 
 class UserJourneyController extends Controller
 {
@@ -57,58 +58,90 @@ class UserJourneyController extends Controller
 
     public function getStreak(Request $request)
     {
-        $user = Auth::user();
-        $today = Carbon::today();
+        $userId = $request->user_id; // ✅ Get user_id from request
 
-        // ✅ Get unique completion dates sorted (latest first)
-        $dates = UserJourney::where('user_id', $user->id)
-            ->where('completed', true)
-            ->pluck('updated_at')
-            ->map(fn ($date) => Carbon::parse($date)->toDateString()) // Convert to (Y-m-d)
-            ->unique()
-            ->sortDesc()
-            ->values();
-
-        // ✅ Calculate Streak
-        $streak = 0;
-        if ($dates->isNotEmpty() && ($dates[0] === $today->toDateString() || Carbon::parse($dates[0])->diffInDays($today) === 1)) {
-            $streak = 1;
-            for ($i = 1; $i < $dates->count(); $i++) {
-                if (Carbon::parse($dates[$i])->diffInDays(Carbon::parse($dates[$i - 1])) === 1) {
-                    $streak++;
-                } else {
-                    break; // ✅ Streak breaks if there's a missing day
-                }
-            }
+        if (!$userId) {
+            return response()->json(['error' => 'Invalid user ID'], 400);
         }
 
-        return response()->json(['streak' => $streak]);
+        // ✅ Find the user's streak record
+        $streak = Streak::where('user_id', $userId)->first();
+
+        if (!$streak) {
+            return response()->json(['streak' => 0]); // ✅ Default to 0 if streak does not exist
+        }
+
+        // ✅ If last_completed_date is NULL (first-time), return 0
+        if (is_null($streak->last_completed_date)) {
+            return response()->json(['streak' => 0]);
+        }
+
+        // ✅ Check if user skipped a day
+        $lastCompleted = \Carbon\Carbon::parse($streak->last_completed_date);
+        $daysDifference = $lastCompleted->diffInDays(now());
+
+        if ($daysDifference > 1) {
+            // ✅ Reset streak to 0 if user skipped a day
+            $streak->streak_count = 0;
+            $streak->save();
+        }
+
+        return response()->json(['streak' => $streak->streak_count]);
     }
 
-    /**
-     * ✅ Update Streak When a Lesson is Completed
-     */
     public function updateStreak(Request $request)
     {
-        $user = Auth::user();
-        $today = Carbon::today()->toDateString();
+        // ✅ Validate `user_id`
+        $userId = $request->user_id;
 
-        // ✅ Check if today's lesson is already counted
-        $existing = UserJourney::where('user_id', $user->id)
-            ->whereDate('updated_at', $today)
-            ->where('completed', true)
-            ->exists();
+        if (!$userId) {
+            return response()->json(['error' => 'Invalid user ID'], 400);
+        }
 
-        if (!$existing) {
-            UserJourney::create([
-                'user_id' => $user->id,
-                'lesson_id' => $request->lesson_id, // Ensure frontend sends this
-                'completed' => true,
-                'updated_at' => now(),
+        // ✅ Get today's date
+        $today = now()->toDateString();
+
+        // ✅ Find the existing streak record for the user
+        $streak = Streak::where('user_id', $userId)->first();
+
+        // ✅ If streak record does not exist, return an error
+        if (!$streak) {
+            return response()->json(['error' => 'Streak record not found'], 404);
+        }
+
+        // ✅ If the last completed date is today, do nothing (prevent double count)
+        if ($streak->last_completed_date === $today) {
+            return response()->json([
+                'message' => 'Streak already updated today',
+                'streak' => $streak->streak_count
             ]);
         }
 
-        return $this->getStreak($request);
+        // ✅ If last_completed_date is NULL (first-time update), start streak
+        if (is_null($streak->last_completed_date)) {
+            $streak->streak_count = 1;
+        } else {
+            // ✅ Calculate the difference in days
+            $lastCompleted = \Carbon\Carbon::parse($streak->last_completed_date);
+            $daysDifference = $lastCompleted->diffInDays(now());
+
+            if ($daysDifference === 1) {
+                // ✅ If the last update was yesterday, increase streak
+                $streak->streak_count += 1;
+            } else {
+                // ✅ If the user skipped a day, reset streak to 1
+                $streak->streak_count = 1;
+            }
+        }
+
+        // ✅ Update last completed date
+        $streak->last_completed_date = $today;
+        $streak->save();
+
+        return response()->json([
+            'message' => 'Streak updated successfully',
+            'streak' => $streak->streak_count
+        ]);
     }
 
     public function updateProfileImage(Request $request)

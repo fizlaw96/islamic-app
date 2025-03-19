@@ -46,4 +46,23 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // ✅ Automatically create a streak when a new user is created
+        static::created(function ($user) {
+            \App\Models\Streak::create([
+                'user_id' => $user->id,
+                'streak_count' => 0,
+                'last_completed_date' => null,
+            ]);
+        });
+    }
+
+    public function streak()
+    {
+        return $this->hasOne(\App\Models\Streak::class);
+    }
 }
