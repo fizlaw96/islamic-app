@@ -16,14 +16,6 @@ export default function LessonNav({ currentQuestion, totalQuestions, lives }) {
                         transition={{ duration: 0.5 }}
                     />
                 </div>
-
-                {/* ✅ Indicator (Animated Circle) */}
-                <motion.div
-                    className="absolute top-1/2 -translate-y-1/2 bg-blue-500 w-6 h-6 rounded-full"
-                    initial={{ left: "0%" }} // Start at 0
-                    animate={{ left: `${Math.max(progress, 0)}%` }} // Move based on progress
-                    transition={{ duration: 0.5 }}
-                />
             </div>
 
             {/* ✅ Heart with Number of Lives */}

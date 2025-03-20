@@ -127,7 +127,7 @@ export default function LessonComplete() {
 
     return (
         <Layout>
-            <div className="mt-20 flex flex-col items-center justify-center text-white dark:text-black space-y-6">
+            <div className="mt-6 flex flex-col items-center justify-center text-white dark:text-black space-y-6">
                 {/* ✅ Score Feedback Image (Fixed Margin) */}
                 <motion.div
                     initial={{ scale: 0.5, opacity: 0 }}

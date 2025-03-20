@@ -70,12 +70,18 @@ export default function LessonMain() {
             setStreak(0);
             setShowStreakFire(false);
 
+            // If lives reach 0, force redirect to lesson-complete
             if (lives - 1 === 0) {
-                setGameOver(true);
                 setFinished(true);
+                setGameOver(true);
                 setModalMessage(language === "bm" ? "Permainan Tamat!" : "Game Over!");
+
+                setTimeout(() => {
+                    window.location.href = `/lesson-complete?lesson_id=${lesson.id}&score=${score}&total=${questions.length}&time=${elapsedTime}`;
+                }, 1500);
             } else {
-                setLives(lives - 1);
+                // Decrease lives and show a random wrong message
+                setLives((prevLives) => prevLives - 1);
                 const wrongMessages = language === "bm"
                     ? ["Cuba lagi!", "Oops! Itu bukan jawapan yang betul.", "Salah kali ini, tapi cuba fikir lagi!"]
                     : ["Try again!", "Oops! That’s not correct.", "Wrong this time, but try thinking more!"];
@@ -106,6 +112,23 @@ export default function LessonMain() {
             setFinished(true);
         }
     };
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === "Enter" || event.keyCode === 13) {
+                event.preventDefault(); // Prevent unintended form submission
+                if (showModal) {
+                    handleNextQuestion();
+                }
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyPress);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [showModal]);
 
     return (
         <div className={`min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-8
