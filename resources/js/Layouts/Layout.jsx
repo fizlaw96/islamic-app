@@ -67,7 +67,7 @@ export default function Layout({ children }) {
             about: "Tentang Kami",
             logout: "Log Keluar",
             home: "Laman Utama",
-            journey: "Pengembaraan",
+            journey: "Modul",
             settings: "Tetapan",
             favorite: "Kegemaran",
             profile: "Profil",
@@ -142,9 +142,10 @@ export default function Layout({ children }) {
                 {/* ✅ Journey (Login Redirect) */}
                 <Link
                     href={auth?.user ? route("journey.loggedin") : route("journey")}
-                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${
-                        isActive(route("journey")) || isActive(route("journey.loggedin")) ? "text-yellow-400" : "text-white"
-                    }`}
+                    className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110
+                        mr-6 sm:mr-12 ${
+                            isActive(route("journey")) || isActive(route("journey.loggedin")) ? "text-yellow-400" : "text-white"
+                        }`}
                 >
                     <img
                         src="/storage/assets/button/journey.svg"
