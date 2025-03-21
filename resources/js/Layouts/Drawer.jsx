@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, usePage } from "@inertiajs/react";
 import {
-    Book, CalendarCheck, HelpCircle, MessageSquare, Heart, LogIn, UserPlus, User, LogOut, FileText
+    Book, CalendarCheck, Star, MessageSquare, Heart, LogIn, UserPlus, User, LogOut, FileText
 } from "lucide-react";
 
 export default function Drawer({ menuOpen, setMenuOpen, translations, language }) {
@@ -10,7 +10,7 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
 
     return (
         <motion.div
-            initial={{ x: -250 }}
+            initial={false}
             animate={{ x: menuOpen ? 0 : -270 }}
             transition={{ duration: 0.3 }}
             className="fixed left-0 top-16 w-64 h-screen bg-green-100 shadow-md p-4 z-50 flex flex-col justify-between overflow-y-auto"
@@ -92,8 +92,8 @@ export default function Drawer({ menuOpen, setMenuOpen, translations, language }
                         <Link href="/history">{translations[language]?.history || "History"}</Link>
                     </li>
                     <li className="p-2 border-b flex items-center gap-2 text-black">
-                        <HelpCircle size={20} />
-                        <Link href="/question">{translations[language]?.question || "Question"}</Link>
+                        <Star size={20} />
+                        <Link href="/favourite">{translations[language]?.favourite || "Favourite"}</Link>
                     </li>
                     {/* {auth?.user && (
                         <li className="p-2 border-b flex items-center gap-2 text-black">

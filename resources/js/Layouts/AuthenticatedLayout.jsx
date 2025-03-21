@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, usePage } from "@inertiajs/react";
-import { Menu, Bell, Settings, Star, User, FileText } from "lucide-react";
+import { Menu, Bell, Settings, Star, User, FileText, HelpCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import moment from "moment-hijri";
 import Drawer from "./Drawer";
@@ -87,7 +87,7 @@ export default function AuthenticatedLayout({ children }) {
         <div className={`min-h-screen flex flex-col ${darkMode ? "bg-green-900 text-white" : "bg-green-50 text-black"}`}>
             {/* ✅ Top Navbar */}
             <motion.nav
-                initial={{ opacity: 0, y: -20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="flex items-center justify-between p-4 bg-green-600 dark:bg-green-800 text-white shadow-md fixed top-0 left-0 w-full z-50"
@@ -118,33 +118,39 @@ export default function AuthenticatedLayout({ children }) {
             {/* ✅ Sidebar Drawer */}
             <Drawer menuOpen={menuOpen} setMenuOpen={setMenuOpen} translations={translations} language={language} />
 
+            {/* ✅ Overlay to close drawer when clicking outside */}
+            {menuOpen && (
+                <div
+                    onClick={() => setMenuOpen(false)}
+                    className="fixed inset-0 z-40 bg-black bg-opacity-30 backdrop-blur-sm"
+                ></div>
+            )}
+
             {/* ✅ Main Content (Adds padding to prevent navbar overlap) */}
             <main className="flex-1 pt-16 p-6">{children}</main>
 
             {/* ✅ Bottom Navbar */}
             <motion.nav
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="sticky bottom-0 w-full bg-green-600 dark:bg-green-800 text-white shadow-md p-3 flex items-center justify-between relative"
             >
-                {/* ✅ Dashboard (Login Redirect) */}
+                {/* ✅ Home (Article) */}
                 <Link
-                    href={auth?.user ? route("dashboard") : route("login")}
+                    href="/"
                     className={`flex flex-col items-center ml-4 sm:ml-10 transition-transform duration-200 ease-in-out hover:scale-110 ${
-                        isActive(route("dashboard")) ? "text-yellow-400" : "text-white"
+                        url === "/" ? "text-yellow-400" : "text-white"
                     }`}
                 >
-                    <User size={24} />
-                    <span className="text-sm leading-tight">{translations[language]?.profile || "Profile"}</span>
+                    <FileText size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.article || "Article"}</span>
                 </Link>
 
                 {/* ✅ Journey (Login Redirect) */}
                 <Link
                     href={auth?.user ? route("journey.loggedin") : route("journey")}
                     className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${
-                        isSpecial ? "mr-10 sm:mr-10" : ""
-                    } ${
                         isActive(route("journey")) || isActive(route("journey.loggedin")) ? "text-yellow-400" : "text-white"
                     }`}
                 >
@@ -153,7 +159,7 @@ export default function AuthenticatedLayout({ children }) {
                         alt="Journey Icon"
                         className={`w-8 h-8 transition-all duration-200 filter ${
                             isActive(route("journey")) || isActive(route("journey.loggedin"))
-                                ? "invert-[75%] sepia-[90%] saturate-[500%] hue-rotate-[30deg] brightness-110 contrast-125" // Changes to yellow
+                                ? "invert-[75%] sepia-[90%] saturate-[500%] hue-rotate-[30deg] brightness-110 contrast-125"
                                 : "invert brightness-90 opacity-75"
                         }`}
                     />
@@ -162,31 +168,31 @@ export default function AuthenticatedLayout({ children }) {
 
                 {/* ✅ Special Button (Only Renders If Exists) */}
                 {isSpecial && (
-                    <div className="absolute -top-4 sm:-top-6 left-1/2 transform -translate-x-1/2 animate-shine">
+                    <div className="absolute -top-4 sm:-top-4 left-1/2 transform -translate-x-1/2 animate-shine">
                         <SpecialButton />
                     </div>
                 )}
 
-                {/* ✅ Home (Replaced with Blog Icon) */}
+                {/* ✅ Question */}
                 <Link
-                    href="/"
+                    href={route("question.index")}
                     className={`flex flex-col items-center transition-transform duration-200 ease-in-out hover:scale-110 ${
-                        url === "/" ? "text-yellow-400" : ""
+                        isActive(route("question.index")) ? "text-yellow-400" : "text-white"
                     }`}
                 >
-                    <FileText size={24} />
-                    <span className="text-sm leading-tight">{translations[language]?.article || "Article"}</span>
+                    <HelpCircle size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.question || "Question"}</span>
                 </Link>
 
-                {/* ✅ Favourite */}
+                {/* ✅ Profile (Dashboard/Login) */}
                 <Link
-                    href="/favourite"
+                    href={auth?.user ? route("dashboard") : route("login")}
                     className={`flex flex-col items-center mr-4 sm:mr-10 transition-transform duration-200 ease-in-out hover:scale-110 ${
-                        isActive("/favourite") ? "text-yellow-400" : ""
+                        isActive(route("dashboard")) ? "text-yellow-400" : "text-white"
                     }`}
                 >
-                    <Star size={24} />
-                    <span className="text-sm leading-tight">{translations[language]?.favorite || "Favourite"}</span>
+                    <User size={24} />
+                    <span className="text-sm leading-tight">{translations[language]?.profile || "Profile"}</span>
                 </Link>
             </motion.nav>
         </div>
